@@ -1,0 +1,25 @@
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+ORG := $(shell basename '$(CURDIR)')
+REPOS := $(wildcard *)
+REPOS := $(filter-out makefile,$(REPOS))
+
+# -----------------------------------------------------------------------------
+.PHONY: all
+
+all: status
+
+# -----------------------------------------------------------------------------
+.PHONY: status push pull
+
+status push pull:
+	@for i in $(REPOS); do (echo "\n-- $$i"; cd $$i; git $@;); done
+
+# -----------------------------------------------------------------------------
+
+clone-%:
+	git clone git@github.com:$(ORG)/$*.git
+

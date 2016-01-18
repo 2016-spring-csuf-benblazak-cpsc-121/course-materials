@@ -1,0 +1,40 @@
+!dnl vim: ft=markdown
+!dnl --------------------------------------------------------------------------
+!dnl Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+!dnl Released under the [MIT License] (http://opensource.org/licenses/MIT)
+!dnl --------------------------------------------------------------------------
+!gexec(((
+
+    import standards
+
+)))!exec(((
+
+    self.input('common.prep')
+
+)))
+!dws,dnl ----------------------------------------------------------------------
+
+
+# !(document.title)
+
+!('\n\n'.join([
+    '\n'.join(
+        [ '- '+g+' ('+str(round(standards.multipliers[(g,)]*100))+'%)' ]
+        + [ '    - ' + s for s in ss if s != '' ]
+    )
+    for g,ss in standards.groups.items()
+]))
+
+
+-------------------------------------------------------------------------------
+!(license)
+
+
+## References
+
+- [University Catalog :: Computer Science, B.S.]
+  (http://catalog.fullerton.edu/preview_program.php?poid=537)
+
+- [ECS Wiki :: Curriculum Outline :: CPSC 121]
+  (https://wiki.ecs.fullerton.edu/twinkie/CPSC_121)
+

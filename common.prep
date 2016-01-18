@@ -1,0 +1,61 @@
+!exec(((
+# vim: ft=python
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+global document
+document = Namespace()
+
+document.jobname = self._jobname
+document.title = os.path.basename(document.jobname).split('.')[0].title()
+
+
+# .............................................................................
+
+global github
+global year, season, school, author, course
+github = Namespace()
+author = Namespace()
+course = Namespace()
+
+_authors = {
+    'benblazak': {
+        'name': 'Ben Blazak',
+        'email': 'bblazak@fullerton.edu',
+        'phone': 'None',
+        'office': 'CS 303',
+    }
+}
+
+github.organization = os.path.split(os.path.split(os.getcwd())[0])[1]
+
+( year, season, school, github.author, course.subject, course.number )\
+    = github.organization.split('-')
+
+season = season.title()
+school = school.upper()
+course.subject = course.subject.upper()
+
+for k in _authors[github.author]:
+    setattr( author, k, _authors[github.author][k] )
+
+# -----------------------------------------------------------------------------
+)))!exec,prep(((
+# -----------------------------------------------------------------------------
+
+global license 
+
+license = !repr,strip,prep(((
+[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)]
+(http://creativecommons.org/licenses/by/4.0/)  
+Copyright &copy; !(year) !(author.name) <!(author.email)>  
+This work is licensed under a [Creative Commons Attribution 4.0 International
+License] (http://creativecommons.org/licenses/by/4.0/)  
+Project located at <https://github.com/!(github.organization)>
+)))
+
+# -----------------------------------------------------------------------------
+)))!dws
+
