@@ -129,13 +129,31 @@
 
 # !(document.title)
 
-!(season) !(year)  
-Object-Oriented Programming
-
+!(season) !(year), Object-Oriented Programming  
 CPSC 121, !dnl
 section!('s' if len(sections) > 1 else '') !(', '.join(sorted(sections)))  
-!(author.name) <!(author.email)>  
 <https://github.com/!(github.organization)>
+
+
+## Instructor
+
+|   |   |
+|---|---|
+name   | !(author.name)
+phone  | !(author.phone)
+email  | <!(author.email)>
+office | !(author.office)
+
+### Office hours
+
+| section | day | time | place |
+|---------|-----|------|-------|
+!('\n'.join([
+    ' | '.join( [s] + sections[s]['office hour'] ) for s in sorted(sections)
+]))
+
+And by appointment. During final exam week, office hours are by appointment
+only.
 
 
 ## Calendar
@@ -172,17 +190,6 @@ section!('s' if len(sections) > 1 else '') !(', '.join(sorted(sections)))
     ])
     for s in sorted(sections)
 ]))
-
-### Office hours
-
-| section | day | time | place |
-|---------|-----|------|-------|
-!('\n'.join([
-    ' | '.join( [s] + sections[s]['office hour'] ) for s in sorted(sections)
-]))
-
-And by appointment. During final exam week, office hours are by appointment
-only.
 
 ### Homework and Lab Assignments
 
@@ -454,8 +461,8 @@ Per [UPS 300.004]
 
 ## Credits
 
-- This document as a whole is based on the template distributed by the Computer
-  Science department, along with the [template]
+- This document as a whole is based on the [template] (https://goo.gl/IhT8hU)
+  distributed by the Computer Science department, along with the [template]
   (http://fdc.fullerton.edu//teaching/Sample%20Syllabus%20Template%20Rev%208-16-15.docx)
   available via the CSUF [Faculty Development Center]
   (http://fdc.fullerton.edu//teaching/basics.php)

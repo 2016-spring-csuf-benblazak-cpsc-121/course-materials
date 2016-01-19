@@ -1,11 +1,31 @@
 # Syllabus
 
-Spring 2016  
-Object-Oriented Programming
-
+Spring 2016, Object-Oriented Programming  
 CPSC 121, sections 01, 03, 09, 11, 17  
-Ben Blazak <bblazak@fullerton.edu>  
 <https://github.com/2016-spring-csuf-benblazak-cpsc-121>
+
+
+## Instructor
+
+|   |   |
+|---|---|
+name   | Ben Blazak
+phone  | None
+email  | <bblazak@fullerton.edu>
+office | CS 303
+
+### Office hours
+
+| section | day | time | place |
+|---------|-----|------|-------|
+01 | Tu | 7pm--8pm | CS 303
+03 | Tu | 7pm--8pm | CS 303
+09 | Th | 7pm--8pm | CS 303
+11 | Th | 7pm--8pm | CS 303
+17 | M | 3:30pm--4:30pm | CS 303
+
+And by appointment. During final exam week, office hours are by appointment
+only.
 
 
 ## Calendar
@@ -49,19 +69,6 @@ Ben Blazak <bblazak@fullerton.edu>
    |   final | Tuesday, May 17 | 5pm--6:50pm | E 202
 17 | midterm | Monday, March 21 | during lab | CS 104
    |   final | Wednesday, May 18 | 2:30pm--4:20pm | CS 102B
-
-### Office hours
-
-| section | day | time | place |
-|---------|-----|------|-------|
-01 | Tu | 7pm--8pm | CS 303
-03 | Tu | 7pm--8pm | CS 303
-09 | Th | 7pm--8pm | CS 303
-11 | Th | 7pm--8pm | CS 303
-17 | M | 3:30pm--4:30pm | CS 303
-
-And by appointment. During final exam week, office hours are by appointment
-only.
 
 ### Homework and Lab Assignments
 
@@ -359,8 +366,8 @@ Project located at <https://github.com/2016-spring-csuf-benblazak-cpsc-121>
 
 ## Credits
 
-- This document as a whole is based on the template distributed by the Computer
-  Science department, along with the [template]
+- This document as a whole is based on the [template] (https://goo.gl/IhT8hU)
+  distributed by the Computer Science department, along with the [template]
   (http://fdc.fullerton.edu//teaching/Sample%20Syllabus%20Template%20Rev%208-16-15.docx)
   available via the CSUF [Faculty Development Center]
   (http://fdc.fullerton.edu//teaching/basics.php)
