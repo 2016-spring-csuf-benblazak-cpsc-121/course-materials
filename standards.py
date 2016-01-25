@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python3 -B
 # -----------------------------------------------------------------------------
 # Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
@@ -97,14 +97,23 @@ if sum([m for g,m in multipliers.items() if len(g) == 1]) != 1:
     raise Error( 'Group multipliers do not sum to 1' )
 
 for g,m in {g:m for g,m in multipliers.items() if len(g) == 1}.items():
-    if m*100 != round(m*100):
+    if m != round(m,2):
         raise Error( 'Fractional percent in multiplier \'{}\': {}'.format(g,m) )
 
 # -----------------------------------------------------------------------------
 
-def long(string):
+def lookup(string):
     '''Convert the given string to a tuple of the form used to index
-    `multipliers`.  For example, `long('oop.c')` should return
+    `multipliers`.
+
+    The given string is interpreted as a sequence of '.' separated fields, each
+    representing a key for the corresponding level of the `groups` dictionary.
+    A field in the short string is a match for a key if it contains the first
+    letter of each run of "word" characters in that key, or if it is a nonempty
+    initial subset of that key.  If a match is not unique, an `Error` is
+    raised.
+    
+    For example, `lookup('oop.c')` should return
     `('object-oriented programming', 'classes')`.
     '''
 

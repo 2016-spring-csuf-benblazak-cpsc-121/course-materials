@@ -1,0 +1,21 @@
+!dnl vim: ft=markdown
+!dws,input(common.prep)
+# !(doc.title)
+
+## Administrative
+
+- Math salute!
+- Call roll (mention attendance policy)
+- Start waiting list
+- Go over [syllabus](../syllabus.md)
+- Questions
+
+
+## Activity
+
+- TODO
+
+
+-------------------------------------------------------------------------------
+!(doc.license.md)
+

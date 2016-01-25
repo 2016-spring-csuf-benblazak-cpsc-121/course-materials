@@ -5,20 +5,30 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
-global document
-document = Namespace()
+def strip_extension(self, _in, n=1):
+    '''Strip `n` filetype extensions from a filename.  If `n` is 0 or larger
+    than the number of extensions, strip all extensions.
+    '''
+    _in = _in.split('.')
+    if n <= 0 or n >= len(_in):
+        return _in[0]
+    return '.'.join(_in[:-n])
 
-document.jobname = self._jobname
-document.title = os.path.basename(document.jobname).split('.')[0].title()
+type(self).strip_extension = strip_extension
 
+# -----------------------------------------------------------------------------
+
+global doc
+doc = Namespace()
+
+doc.jobname = self._jobname
+doc.title = self.strip_extension(doc.jobname, 2).title()
 
 # .............................................................................
 
-global github
-global year, season, school, author, course
-github = Namespace()
-author = Namespace()
-course = Namespace()
+doc.github = Namespace()
+doc.author = Namespace()
+doc.course = Namespace()
 
 _authors = {
     'benblazak': {
@@ -29,31 +39,37 @@ _authors = {
     }
 }
 
-github.organization = os.path.split(os.path.split(os.getcwd())[0])[1]
+doc.github.organization = os.path.split(os.path.split(os.getcwd())[0])[1]
 
-( year, season, school, github.author, course.subject, course.number )\
-    = github.organization.split('-')
+(
+    doc.year,
+    doc.season,
+    doc.school,
+    doc.github.author,
+    doc.course.subject,
+    doc.course.number
+) = doc.github.organization.split('-')
 
-season = season.title()
-school = school.upper()
-course.subject = course.subject.upper()
+doc.season = doc.season.title()
+doc.school = doc.school.upper()
+doc.course.subject = doc.course.subject.upper()
 
-for k in _authors[github.author]:
-    setattr( author, k, _authors[github.author][k] )
+for k in _authors[doc.github.author]:
+    setattr( doc.author, k, _authors[doc.github.author][k] )
 
 # -----------------------------------------------------------------------------
 )))!exec,prep(((
 # -----------------------------------------------------------------------------
 
-global license 
+doc.license = Namespace()
 
-license = !repr,strip,prep(((
+doc.license.md = !repr,strip,prep(((
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)]
 (http://creativecommons.org/licenses/by/4.0/)  
-Copyright &copy; !(year) !(author.name) <!(author.email)>  
+Copyright &copy; !(doc.year) !(doc.author.name) <!(doc.author.email)>  
 This work is licensed under a [Creative Commons Attribution 4.0 International
 License] (http://creativecommons.org/licenses/by/4.0/)  
-Project located at <https://github.com/!(github.organization)>
+Project located at <https://github.com/!(doc.github.organization)>
 )))
 
 # -----------------------------------------------------------------------------

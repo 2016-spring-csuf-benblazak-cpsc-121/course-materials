@@ -1,0 +1,37 @@
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+# part time faculty work room
+PRINTER := ptr0940_fullerton_edu
+
+# office
+# PRINTER := ptr0941_fullerton_edu
+
+# -----------------------------------------------------------------------------
+.PHONY: all clean
+
+all: print clean
+
+clean:
+	i="printed/$$(date '+%Y-%m-%d')"; mkdir -p $$i; mv *.pdf $$i
+
+# .............................................................................
+.PHONY: list-options print print-%
+
+list-options:
+	lpoptions -p $(PRINTER) -l
+
+print:
+	for p in *.pdf; do make "print-$$p"; done
+
+print-%:
+	lpr -P $(PRINTER) \
+	    -o InputSlot=Tray3 \
+	    -o XRFinishing=Staple \
+	    -o XRStapleOption=1Staple \
+	    -o XRStapleLocation=TopLeft \
+	    -o sides=two-sided-long-edge \
+	    '$*'
+

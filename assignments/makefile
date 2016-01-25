@@ -3,39 +3,30 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
-PREP := ./scripts/prep.py
-SECTION := ./scripts/section.py
+PREP := ../scripts/prep.py
+SECTION := ../scripts/section.py
 
 # .............................................................................
 
-PREPPED := $(wildcard *.md.prep) $(wildcard meetings/*.md.prep)
+PREPPED := $(wildcard *.md.prep)
 PREPPED := $(PREPPED:%.prep=%)
-
-SECTIONED := grades.py
-SECTIONED := $(SECTIONED:%=.gen.%.section.all)
 
 # -----------------------------------------------------------------------------
 .PHONY: all clean cleanall
 
-all: $(SECTIONED) $(PREPPED)
+all: $(PREPPED)
 
 clean:
-	-rm -r gen.* .gen.* */gen.* */.gen.*
 
-cleanall: clean
-	-rm $(PREPPED)
+cleanall:
+	-rm -r $(PREPPED)
 
 # -----------------------------------------------------------------------------
 
 %:: %.prep
 	$(PREP) -o '$@' '$<'
 
-# this generates more than the specified file
-.gen.%.section.all: %
-	cp '$<' '.gen.$<'; $(SECTION) '.gen.$<'
-
 # -----------------------------------------------------------------------------
 
 %:: makefile
-$(PREPPED): common.prep
 

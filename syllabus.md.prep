@@ -72,7 +72,7 @@
             sections[s]['final'][2] = sections[s]['lecture'][2]
 
         if sections[s]['office hour'][2] is None:
-            sections[s]['office hour'][2] = author.office
+            sections[s]['office hour'][2] = doc.author.office
 
     # -------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@
     schedule = [
         [ 'Review of CPSC 120', '1--6, 8',                   weeks(2) ],
         # - roman numerals
-        # - maze
+        # -- maze
 
         [ 'Pointers', '10',                                  weeks(1) ],
         [ 'OOP Introduction', '7',                           weeks(2) ],
@@ -127,22 +127,22 @@
 !dws,dnl ----------------------------------------------------------------------
 
 
-# !(document.title)
+# !(doc.title)
 
-!(season) !(year), Object-Oriented Programming  
+!(doc.season) !(doc.year), Object-Oriented Programming  
 CPSC 121, !dnl
 section!('s' if len(sections) > 1 else '') !(', '.join(sorted(sections)))  
-<https://github.com/!(github.organization)>
+<https://github.com/!(doc.github.organization)>
 
 
 ## Instructor
 
 |   |   |
 |---|---|
-name   | !(author.name)
-phone  | !(author.phone)
-email  | <!(author.email)>
-office | !(author.office)
+name   | !(doc.author.name)
+phone  | !(doc.author.phone)
+email  | <!(doc.author.email)>
+office | !(doc.author.office)
 
 ### Office hours
 
@@ -448,7 +448,7 @@ Per [UPS 300.004]
 > announced to students with a reasonable timetable for completion.
 
 
-[GitHub page]: https://github.com/!(github.organization)
+[GitHub page]: https://github.com/!(doc.github.organization)
 
 [tentative schedule]: #tentative-schedule
 
@@ -456,7 +456,7 @@ Per [UPS 300.004]
 [standards]: ./standards.md
 
 -------------------------------------------------------------------------------
-!(license)
+!(doc.license.md)
 
 
 ## Credits

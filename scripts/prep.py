@@ -2,6 +2,7 @@
 # -----------------------------------------------------------------------------
 # Copyright &copy; 2016 Ben Blazak <benblazak.dev@gmail.com>
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# Project located at <https://github.com/benblazak/text-processing-utilities>
 # -----------------------------------------------------------------------------
 
 '''A script/module implementing a simple preprocessor for text files.
@@ -30,6 +31,7 @@ References:
 # -----------------------------------------------------------------------------
 
 import functools
+import os
 import os.path
 import re
 import sys
@@ -54,23 +56,28 @@ class Prep:
     class SyntaxError(Error):
         pass
 
-    def raiseError(self, message):
-        raise self.Error(
-            '"' + self._filename + '"'
-            + ' line '
-            + str( self._in.count('\n', 0, self._pos) + 1 )
-            + ': '
-            + message
+    def raiseError(self, message, errortype=None):
+        if errortype is None: errortype = self.Error
+
+        # tracebacks for these errors aren't very helpful
+        sys.tracebacklimit = 1
+
+        lineno = self._in.count('\n', 0, self._pos) + 1
+        linepos = [
+            self._in.rfind('\n', 0, self._pos) + 1,
+            self._in.find('\n', self._pos),
+        ]
+        linepos = [ p if p != -1 else 0 for p in linepos ]
+
+        raise errortype(
+            '"' + self._filename + '"' + ' line ' + str(lineno)
+            + ': ' + message + '\n'
+            + self._in[slice(*linepos)] + '\n'
+            + ' ' * ( self._pos - linepos[0] ) + '^'
         )
 
     def raiseSyntaxError(self, message):
-        raise self.SyntaxError(
-            '"' + self._filename + '"'
-            + ' line '
-            + str( self._in.count('\n', 0, self._pos) + 1 )
-            + ': '
-            + message
-        )
+        self.raiseError(message, self.SyntaxError)
 
     # . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -92,6 +99,14 @@ class Prep:
         self._indent = 4  # the default number of spaces to indent
 
     # (managed by `self.input`)
+
+    @property
+    def _cwd(self):
+        return os.getcwd()
+
+    @_cwd.setter
+    def _cwd(self, p):
+        os.chdir(p)
 
     @property
     def _path(self):
@@ -320,7 +335,10 @@ class Prep:
                         functools.reduce(getattr, [self]+function.split('.'))
                     substring = function(substring)
                     substring = str(substring) if substring is not None else ''
-                except Exception:
+                except Exception as e:
+                    if isinstance(e, self.Error): raise
+                    # raising another doesn't seem to be helpful in this case
+
                     self._pos = start_pos
                     self.raiseError( '`prep` failed' )
             self._out.append(substring)
@@ -437,15 +455,9 @@ class Prep:
         if inputs == []:
             inputs.append(sys.stdin)
 
-        if output is not None:
-            if output == '-':
-                output = sys.stdout
-            else:
-                output = open(output, 'w')
-
         # prep
 
-        old = ( self._jobname, self._filename, self._path )
+        old = ( self._jobname, self._filename, self._cwd, self._path )
         _out = []
 
         if jobname is not None:
@@ -461,6 +473,7 @@ class Prep:
 
         for i in inputs:
             self._path = old[-1].copy()  # each input has its own sys.path
+            self._cwd = old[-2]          # each input has its own cwd
 
             if i == sys.stdin:
                 self._filename = ''
@@ -468,11 +481,19 @@ class Prep:
             else:
                 self._filename = os.path.normpath(i.name)
                 self._path[0] = os.path.dirname(os.path.abspath(i.name))
+                self._cwd = self._path[0]
 
             _out += self.prep(i.read())
 
         _out = ''.join(_out)
-        ( self._jobname, self._filename, self._path ) = old
+        ( self._jobname, self._filename, self._cwd, self._path ) = old
+
+        # normalize
+        if output is not None:
+            if output == '-':
+                output = sys.stdout
+            else:
+                output = open(output, 'w')
 
         # return
         if output is not None:

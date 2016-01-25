@@ -1,0 +1,18 @@
+!exec(((
+# vim: ft=python
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+self.input('../common.prep')
+
+title = self.strip_extension(doc.jobname, 0).split(',')
+title[0] = ' '.join(title[0].split('-'))
+title[1] = ' '.join(title[1].split('-'))
+doc.title = ( title[1] + ': ' + title[0] ).title() \
+    + '\nplease turn in by 11pm on ' + title[2]
+
+# -----------------------------------------------------------------------------
+)))!dws
+
