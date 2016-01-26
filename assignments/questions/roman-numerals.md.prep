@@ -1,7 +1,3 @@
-!dnl vim: ft=markdown
-!dws,input(common.prep)
-# !(doc.title)
-
 ## Requirements
 
 Write a program that

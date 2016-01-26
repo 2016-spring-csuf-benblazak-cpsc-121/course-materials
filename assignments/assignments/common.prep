@@ -5,13 +5,13 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
-self.input('../common.prep')
+self.input('../../common.prep')
 
 title = self.strip_extension(doc.jobname, 0).split(',')
 title[0] = ' '.join(title[0].split('-'))
-title[1] = ' '.join(title[1].split('-'))
-doc.title = ( title[1] + ': ' + title[0] ).title() \
-    + '\nplease turn in by 11pm on ' + title[2]
+title[2] = ' '.join(title[2].split('-'))
+doc.title = ( title[0] + ': ' + title[2] ).title() \
+    + '\nplease turn in by 11pm on ' + title[1]
 
 # -----------------------------------------------------------------------------
 )))!dws

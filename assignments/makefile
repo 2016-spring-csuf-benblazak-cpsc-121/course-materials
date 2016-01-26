@@ -8,8 +8,12 @@ SECTION := ../scripts/section.py
 
 # .............................................................................
 
-PREPPED := $(wildcard *.md.prep)
-PREPPED := $(PREPPED:%.prep=%)
+BUILDDIR := gen.md
+
+# .............................................................................
+
+PREPPED := $(wildcard assignments/*.md.prep)
+PREPPED := $(PREPPED:assignments/%.prep=$(BUILDDIR)/%)
 
 # -----------------------------------------------------------------------------
 .PHONY: all clean cleanall
@@ -18,13 +22,22 @@ all: $(PREPPED)
 
 clean:
 
-cleanall:
-	-rm -r $(PREPPED)
+cleanall: clean
+	-rm -r $(BUILDDIR)
 
 # -----------------------------------------------------------------------------
 
-%:: %.prep
-	$(PREP) -o '$@' '$<'
+$(BUILDDIR)/%.md:: assignments/%.md.prep
+	mkdir -p $(BUILDDIR)
+	i='$*'; \
+	i=($${i//,/ }); \
+	( echo '!dnl,exec(self._filename="$<")'; \
+	  echo '!dnl,exec(self._cwd="assignments")'; \
+	  echo '!dws,input(common.prep)'; \
+	  echo '# !(doc.title)'; \
+	  echo ''; \
+	) | $(PREP) -o '$@' '$<' - "questions/$${i[2]}.md.prep"; \
+	if [ -d "../../$${i[0]}" ]; then cp '$@' "../../$${i[0]}/readme.md"; fi;
 
 # -----------------------------------------------------------------------------
 
