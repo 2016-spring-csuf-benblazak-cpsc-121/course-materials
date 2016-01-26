@@ -22,7 +22,7 @@ office | CS 303
 03 | Tu | 7pm--8pm | CS 303
 09 | Th | 7pm--8pm | CS 303
 11 | Th | 7pm--8pm | CS 303
-17 | M | 3:30pm--4:30pm | CS 303
+17 | W | 3:30pm--4:30pm | CS 303
 
 And by appointment. During final exam week, office hours are by appointment
 only.

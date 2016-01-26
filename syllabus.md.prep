@@ -22,7 +22,7 @@
             'lab': [ 'M', '3:30pm--5:20pm', 'CS 104' ],
             'midterm': [ None, None, None ],
             'final': ['Wednesday, May 18', '2:30pm--4:20pm', None ],
-            'office hour': [ 'M', '3:30pm--4:30pm', None ],
+            'office hour': [ 'W', '3:30pm--4:30pm', None ],
         },
         '01': {
             'lecture': [ 'TuTh', '1:00pm--1:50pm', 'E 202' ],
