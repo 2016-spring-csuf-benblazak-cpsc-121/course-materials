@@ -8,7 +8,7 @@ SECTION := ./scripts/section.py
 
 # .............................................................................
 
-PREPPED := $(wildcard *.md.prep) $(wildcard meetings/*.md.prep)
+PREPPED := $(wildcard *.md.prep)
 PREPPED := $(PREPPED:%.prep=%)
 
 SECTIONED := grades.py
