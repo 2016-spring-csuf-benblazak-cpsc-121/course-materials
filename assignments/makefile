@@ -42,4 +42,5 @@ $(BUILDDIR)/%.md:: assignments/%.md.prep
 # -----------------------------------------------------------------------------
 
 %:: makefile
+$(PREPPED): assignments/common.prep
 

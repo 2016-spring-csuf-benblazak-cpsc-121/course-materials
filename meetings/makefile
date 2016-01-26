@@ -44,4 +44,5 @@ $(BUILDDIR)/%.md:: meetings/%.md.prep
 # -----------------------------------------------------------------------------
 
 %:: makefile
+$(PREPPED): meetings/common.prep
 
