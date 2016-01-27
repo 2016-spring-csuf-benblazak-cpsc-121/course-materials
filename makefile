@@ -14,16 +14,21 @@ PREPPED := $(PREPPED:%.prep=%)
 SECTIONED := grades.py
 SECTIONED := $(SECTIONED:%=.gen.%.section.all)
 
+SUBMAKE := assignments meetings
+
 # -----------------------------------------------------------------------------
 .PHONY: all clean cleanall
 
 all: $(SECTIONED) $(PREPPED)
+	for i in $(SUBMAKE); do (cd $$i; make $@;); done
 
 clean:
-	-rm -r gen.* .gen.* */gen.* */.gen.*
+	-rm -r .gen.*
+	for i in $(SUBMAKE); do (cd $$i; make $@;); done
 
 cleanall: clean
 	-rm $(PREPPED)
+	for i in $(SUBMAKE); do (cd $$i; make $@;); done
 
 # -----------------------------------------------------------------------------
 
