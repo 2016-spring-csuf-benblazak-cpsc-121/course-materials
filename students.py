@@ -20,8 +20,11 @@ class Error(Exception):
 
 def _gen_students():
 
+    filedir = os.path.dirname(os.path.abspath(__file__))
+
     if common.DEBUG: studentdir = './test/students'
     else:            studentdir = '../../../students'
+    studentdir = os.path.abspath(os.path.join(filedir, studentdir))
 
     titandir = os.path.join(studentdir, 'titan-online')
 
@@ -57,19 +60,26 @@ def _gen_students():
             section = entry.name.split('.')[0]
             cwid = m.group('cwid')
             email = m.group('email')
-            name = m.group('name')
+            name = ' '.join(reversed( m.group('name').split(',', maxsplit=1) ))
 
-            students[cwid] = {}
-            students[cwid]['section'] = section
-            students[cwid]['email'] = email
-            students[cwid]['name'] = \
-                    ' '.join( reversed(name.split(',', maxsplit=1)) )
+            alias = name.split()
+            if len(alias) == 1:
+                alias = alias[0]
+            elif alias[-1] in ( 'I', 'II', 'III', 'IV', ) and len(alias) > 2:
+                alias = ' '.join([ alias[0], alias[-2] ])
+            else:
+                alias = ' '.join([ alias[0], alias[-1] ])
+
+            students[cwid] = {
+                'section': section,
+                'email': email,
+                'name': name,
+                'alias': alias,
+            }
 
     # .........................................................................
 
-    sys.path.insert(0, studentdir)
-    import students as private
-    del sys.path[0]
+    private = common.importfile(os.path.join(studentdir, 'students.py'))
 
     for k in private.students:
         if k in students: students[k].update(private.students[k])
@@ -93,12 +103,11 @@ def lookup(string):
     fields.
     - If the first field contains a number, it is interpreted as the student's
       section number.
-    - If there are two non-numeric fields, they are interpreted as the
-      student's short first name and short last name, in that order.
-      Otherwise, the first non-numeric field is interpreted as the student's
-      short first name, the second as the student's short first middle name (if
-      present), etc., where a "short name" is some nonempty initial subset of a
-      name.
+    - Each field besides the section number (if present) is interpreted as a
+      short name (where a "short name" is some nonempty initial subset of a
+      name).  The short name fields are matched in order against each student's
+      names (first, middle, ..., last, ...), and then against their alias
+      names.
 
     For example, if there was a student named "One Student" who's initials were
     unique, `lookup('o s')` should return that student's CWID.
@@ -106,33 +115,39 @@ def lookup(string):
 
     ret = None
 
-    s = string.split()
+    s = string.lower().split()
 
     section = None
     if s[0].isdecimal():
         section = s[0]
         s = s[1:]
 
-    for cwid,other in students.items():
-        n = other['name'].split()
-
-        if section is not None and section != other['section']:
+    for cwid,info in students.items():
+        if section is not None and section != info['section']:
             continue
 
-        if len(s) > len(n):
-            continue
+        n = info['name'].lower().split()
+        a = info['alias'].lower().split()
 
-        if len(s) == 2:
-            n = [ n[0], n[-1] ]
-
-        for np,sp in zip(n, s):
-            if not np.lower().startswith(sp.lower()):
-                break
-        else:
-            if ret is None:
-                ret = cwid
+        if len(s) <= len(n):
+            for np,sp in zip(n, s):
+                if not np.startswith(sp):
+                    break
             else:
-                raise Error( 'Multiple matches found for \''+string+'\'' )
+                if ret is None:
+                    ret = cwid
+                else:
+                    raise Error( 'Multiple matches found for \''+string+'\'' )
+
+        if len(s) <= len(a):
+            for ap,sp in zip(a, s):
+                if not ap.startswith(sp):
+                    break
+            else:
+                if ret is None:
+                    ret = cwid
+                else:
+                    raise Error( 'Multiple matches found for \''+string+'\'' )
 
     if ret is None:
         raise Error( 'No match found for \''+string+'\'' )

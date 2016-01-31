@@ -4,6 +4,19 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
-DEBUG = True
-# DEBUG = False
+import importlib.machinery
+import os.path
+
+# -----------------------------------------------------------------------------
+
+# DEBUG = True
+DEBUG = False
+
+# -----------------------------------------------------------------------------
+
+def importfile(path, name=None):
+    if name is None:
+        name = os.path.basename(path).rsplit('.',maxsplit=1)[0]
+
+    return importlib.machinery.SourceFileLoader( name, path ).load_module()
 
