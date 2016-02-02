@@ -7,7 +7,7 @@ on openEmail(myRecipients)
 	set mySender to "Ben Blazak <bblazak@fullerton.edu>"
 	set mySubject to "[CPSC 121] "
 	
-	set myContent to "Dear class,
+	set myContent to "Dear students,
 
 
 

@@ -4,8 +4,11 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
+import collections
 import os
 import os.path
+
+import github3
 
 import common
 import standards
@@ -18,9 +21,9 @@ class Error(Exception):
 
 # -----------------------------------------------------------------------------
 
-
-# TODO: not sure if this is how we want to do things
 def _gen_grades():
+    org = '2016-spring-csuf-benblazak-cpsc-121'
+
     if common.DEBUG: studentdir = './test/students'
     else:            studentdir = '../../../students'
 
@@ -28,7 +31,47 @@ def _gen_grades():
 
     # .........................................................................
 
-    # TODO: pull assignments from github
+    name2cwid = {
+        v['github'].lower():k
+        for k,v in students.students.items()
+        if 'github' in v
+    }
+
+    grades = {
+        cwid: collections.OrderedDict((
+            ((g,s,),collections.OrderedDict())
+            for g,ss in standards.groups.items()
+            for s in ss
+        ))
+        for cwid in students.students
+    }
+
+    # .........................................................................
+
+    # TODO: write this out to a file, in case we can't get it from github (and
+    # fall back to that)
+
+    github = github3.GitHub()
+
+    for r in github.iter_user_repos(org):
+        r = r.name
+        if r in ( 'course-materials', ): continue
+        assignment = 'a' + r[-2:]
+
+        for cwid in students.students:
+            grades[cwid][('assignment completion', '')][assignment] = None
+
+        for pr in github.iter_repo_issues(org, r, state='all'):
+            name = pr.user.login
+            if name not in name2cwid: continue
+
+            grades[name2cwid[name]] \
+                  [('assignment completion', '')] \
+                  [assignment] = 4
+
+        import pprint
+        pprint.pprint(grades)
+        exit(0)
 
     # .........................................................................
     
