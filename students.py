@@ -134,7 +134,7 @@ def lookup(string):
                 if not np.startswith(sp):
                     break
             else:
-                if ret is None:
+                if ret is None or ret == cwid:
                     ret = cwid
                 else:
                     raise Error( 'Multiple matches found for \''+string+'\'' )
@@ -144,7 +144,7 @@ def lookup(string):
                 if not ap.startswith(sp):
                     break
             else:
-                if ret is None:
+                if ret is None or ret == cwid:
                     ret = cwid
                 else:
                     raise Error( 'Multiple matches found for \''+string+'\'' )

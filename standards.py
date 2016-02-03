@@ -4,8 +4,8 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
-import collections
 import re
+from collections import OrderedDict
 
 # -----------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ class Error(Exception):
 
 # -----------------------------------------------------------------------------
 
-groups = collections.OrderedDict((
+groups = OrderedDict((
     (
         'assignment completion',
         (
