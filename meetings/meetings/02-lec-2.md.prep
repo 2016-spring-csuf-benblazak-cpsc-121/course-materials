@@ -11,7 +11,7 @@
 - Operators
     - `ans == 'y' || 'Y'`
     - ...
-- data types
+- Data types
     - integer sizes and representations
     - ...
 - Go over [assignment-01](../../../../assignment-01)
