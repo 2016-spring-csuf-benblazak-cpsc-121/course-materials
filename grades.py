@@ -46,11 +46,15 @@ def _gen_grades():
     }
 
     grades = {
-        cwid: OrderedDict( [ ('extra credit', 0) ] + [
+        cwid: OrderedDict( [
+            ('extra credit', 0),
+            ('overall', None),
+            ('predictions', OrderedDict()),
+        ] + [
             ((g,s,),OrderedDict())
             for g,ss in standards.groups.items()
             for s in ss
-        ])
+        ] )
         for cwid in students.students
     }
 
@@ -123,13 +127,49 @@ def _gen_grades():
 
     # .........................................................................
 
-    # TODO: calculate overall grades
-
-    # .........................................................................
-
     # TODO: update grades from other file
 
     # .........................................................................
+
+    for cwid in grades:
+        overall = 0
+        maximum = 0
+
+        for sta,assessments in grades[cwid].items():
+            if isinstance(sta, str): continue
+
+            scos = [ sco for sco in assessments.values() if sco is not None ]
+
+            if len(scos) == 0:
+                assessments['overall'] = sco
+
+            else:
+                if len(scos) == 1 or scos[-1] >= scos[-2]:
+                    sco = scos[-1]
+
+                else:  # scos[-1] < scos[-2]
+                    sco = [ sco for sco in [1, 2, 3, 3.5, 3.75, 4]
+                            if (scos[-1]+scos[-2])/2 <= sco ][0]
+
+                assessments['overall'] = sco
+                overall += sco / 4 * standards.multipliers[sta]
+                maximum += standards.multipliers[sta]
+
+        ec = grades[cwid]['extra credit'] * 0.002
+
+        if grades[cwid]['overall'] is None:
+            grades[cwid]['overall'] = overall + ec
+        if maximum == 0:
+            grades[cwid]['predictions']['average'] = None
+            grades[cwid]['predictions']['maximum without reassessing'] = None
+        else:
+            grades[cwid]['predictions']['average'] = overall / maximum
+            grades[cwid]['predictions']['maximum without reassessing'] = \
+                1 - maximum + overall + ec
+
+    # .........................................................................
+#     import pprint
+#     pprint.pprint(grades)
 
     return grades
 
