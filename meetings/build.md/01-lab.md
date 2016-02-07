@@ -10,7 +10,7 @@
 - Create GitHub accounts
 - Email me CWID and GitHub username (and any other info)
 - GitHub forks and pull request (and other Git and GitHub familiarization)
-- Work on [assignment-01](../../../../assignment-01)
+- Work on [assignment-01](../../../../../assignment-01)
 
 
 -------------------------------------------------------------------------------

@@ -14,7 +14,7 @@
 - Data types
     - integer sizes and representations
     - ...
-- Go over [assignment-01](../../../../assignment-01)
+- Go over !(doc.gen_assignment_link('01'))
     - Parallel arrays
     - ...
 

@@ -12,6 +12,14 @@ title[0] = 'Week ' + title[0] + ','
 if title[1] == 'lec': title[1] = 'lecture'
 doc.title = ' '.join(title).title()
 
+doc.course_materials_dir = '../..'
+doc.organization_dir = '../../../../..'
+
+def gen_assignment_link(assignment):
+    return '[assignment-' + assignment + ']' \
+           + '(' + doc.organization_dir + '/assignment-' + assignment + ')'
+doc.gen_assignment_link = gen_assignment_link
+
 # -----------------------------------------------------------------------------
 )))!dws
 
