@@ -1,0 +1,18 @@
+!dwsr,dnl vim: ft=markdown
+
+## Administrative
+
+- Math salute!
+- Questions
+
+
+## Discussion
+
+- ADTs (and other vocabulary and concepts)
+- Structs (and the C way of doing things)
+- More about classes
+    - `const` correctness
+    - `this`
+    - `static` members
+    - More about initializer lists and initialization
+

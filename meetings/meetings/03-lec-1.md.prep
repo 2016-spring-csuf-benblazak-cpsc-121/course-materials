@@ -1,0 +1,24 @@
+!dwsr,dnl vim: ft=markdown
+
+## Administrative
+
+- Math salute!
+- Questions
+
+
+## Discussion
+
+- Pointers overview
+    - Stack vs heap
+    - Dynamic memory allocation
+    - Deallocating dynamically allocated memory
+
+- Classes overview
+    - Basic syntax
+    - Access specifiers
+    - Constructors and destructors
+    - Initializer lists
+
+- Multiple file projects
+- Overview of !(doc.gen_assignment_link('02'))
+
