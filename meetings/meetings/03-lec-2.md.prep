@@ -8,8 +8,10 @@
 
 ## Discussion
 
-- More about dynamic memory
 - Dynamic memory with constructors / destructors
-- Pointers vs arrays vs references
-- [cdecl.org](http://cdecl.org) and more about types
+- More about classes
+    - `const` correctness
+    - `this`
+    - `static` members
+    - More about initializer lists and initialization
 
