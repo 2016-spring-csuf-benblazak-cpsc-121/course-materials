@@ -123,6 +123,9 @@ def lookup(string):
         s = s[1:]
 
     for cwid,info in students.items():
+        if 'section' not in info or 'name' not in info:
+            continue
+
         if section is not None and section != info['section']:
             continue
 
