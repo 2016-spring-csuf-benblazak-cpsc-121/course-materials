@@ -127,7 +127,11 @@ def _gen_grades():
 
     # .........................................................................
 
-    # TODO: update grades from other file
+    private = common.importfile(os.path.join(studentdir, 'grades.py'))
+
+    for cwid in private.grades:
+        if cwid in grades: grades[cwid].update(private.grades[cwid])
+        else:              grades[cwid] = private.grades[cwid]
 
     # .........................................................................
 
@@ -141,7 +145,7 @@ def _gen_grades():
             scos = [ sco for sco in assessments.values() if sco is not None ]
 
             if len(scos) == 0:
-                assessments['overall'] = sco
+                assessments['overall'] = None
 
             else:
                 if len(scos) == 1 or scos[-1] >= scos[-2]:
@@ -168,8 +172,6 @@ def _gen_grades():
                 1 - maximum + overall + ec
 
     # .........................................................................
-#     import pprint
-#     pprint.pprint(grades)
 
     return grades
 

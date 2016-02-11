@@ -81,9 +81,9 @@ def _gen_students():
 
     private = common.importfile(os.path.join(studentdir, 'students.py'))
 
-    for k in private.students:
-        if k in students: students[k].update(private.students[k])
-        else:             students[k] = private.students[k]
+    for cwid in private.students:
+        if cwid in students: students[cwid].update(private.students[cwid])
+        else:                students[cwid] = private.students[cwid]
 
     # .........................................................................
 
