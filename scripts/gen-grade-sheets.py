@@ -18,6 +18,11 @@ import preppy
 
 import common
 
+# .............................................................................
+
+filedir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(filedir)
+
 sys.path.insert(1, '..')
 
 import grades
@@ -28,14 +33,25 @@ del sys.path[0]
 
 # .............................................................................
 
-filedir = os.path.dirname(os.path.abspath(__file__))
-
 if common.DEBUG: studentdir = '../test/students'
 else:            studentdir = '../../../../students'
 studentdir = os.path.abspath(os.path.join(filedir, studentdir))
 
 htmlbuilddir = os.path.join(studentdir, 'build.grades.html')
 pdfbuilddir = os.path.join(studentdir, 'build.grades.pdf')
+
+# -----------------------------------------------------------------------------
+
+if len(sys.argv) == 1:
+    arg = 'all'
+elif len(sys.argv) == 2:
+    arg = sys.argv[1]
+    if arg not in ( 'all', 'html', 'pdf' ):
+        print('ERROR: unknown argument \'' + arg + '\'')
+        sys.exit(1)
+else:
+    print('ERROR: too many arguments')
+    sys.exit(1)
 
 # .............................................................................
 
@@ -45,8 +61,10 @@ shutil.rmtree(pdfbuilddir, ignore_errors=True)
 os.makedirs(htmlbuilddir)
 os.makedirs(pdfbuilddir)
 
-for cwid in students.students:
-    name = students.students[cwid]['alias'].lower().replace(' ', '-')
+for cwid,info in students.students.items():
+    if 'name' not in info: continue
+
+    name = students.students[cwid]['alias'].lower()
     html = os.path.join(htmlbuilddir, name + '.html')
     pdf = os.path.join(pdfbuilddir, name + '.pdf')
 
@@ -59,9 +77,11 @@ for cwid in students.students:
             ).get(cwid, grades, standards, students)
         )
 
-    sp = subprocess.Popen( "wkhtmltopdf '" + html + "' '" + pdf + "'",
-                           shell = True,
-                           stdout = subprocess.DEVNULL,
-                           stderr = subprocess.DEVNULL,
-                           universal_newlines = True )
+    if arg in ( 'all', 'pdf' ):
+        sp = subprocess.Popen( "wkhtmltopdf '" + html + "' '" + pdf + "'",
+                               shell = True,
+                               stdout = subprocess.DEVNULL,
+                               stderr = subprocess.DEVNULL,
+                               universal_newlines = True )
+        sp.communicate()
 
