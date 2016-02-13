@@ -1,0 +1,139 @@
+{{def(cwid,grades,standards,students)}}
+{{script}}
+
+# vim: ft=html
+
+import datetime
+
+{{endscript}}
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>grade sheet</title>
+
+  <style> {{open('lib/pure.css/pure-min.css').read()}} </style>
+  <style> {{open('lib/pure.css/side-menu.css').read()}} </style>
+
+  <style>
+    .pure-table th, .pure-table td {
+      white-space: nowrap;
+      padding: 0.125em 0.5em;
+    }
+    .content-subhead {
+      margin: 40px 0 20px 0;
+    }
+    .assessment {
+      color: lightgray;
+    }
+    .prediction {
+      text-align: right;
+    }
+    .grade-A {
+      color: #859900 !important;  /* green, from solarized */
+    }
+    .grade-B, .grade-C {
+      color: #b58900 !important;  /* yellow, from solarized */
+    }
+    .grade-D, .grade-F {
+      color: #dc322f !important;  /* red, from solarized */
+    }
+    .grade-other {
+      color: #268bd2 !important;  /* blue, from solarized */
+    }
+  </style>
+
+</head>
+<body>
+  <div id='main'>
+
+    <div class='header'>
+
+      <h1>{{students.students[cwid]['alias']}}</h1>
+      <h2>grades as of {{datetime.datetime.today()}}</h2>
+
+    </div>
+    <div class='content'>
+
+      <table class='pure-table pure-table-bordered'>
+        <tr>
+          <td class='grade-other'>
+            <span class='assessment'>extra credit : </span>
+            {{grades.grades[cwid]['extra credit']}}
+          </td>
+          {{for a,sco in grades.grades[cwid]['predictions'].items()}}
+          {{script}}
+            try:
+              sco = round(sco*100, 1)
+              c = 'grade-' + grades.letter(sco)[0]
+              sco = str(sco)+'%'
+            except TypeError:
+              c = 'grade-other'
+            tt = {
+              'current grade': 'the grade you would get if class ended today',
+              'average': 'the grade you will get if you maintain your average',
+              'maximum without reassessing':
+                'the highest grade you could get without reassessing',
+            }[a]
+          {{endscript}}
+            <td title='{{tt}}' class='prediction {{c}}'>
+              <span class='assessment'>{{a}} : </span>
+              {{sco}}
+            </td>
+          {{endfor}}
+        </tr>
+      </table>
+
+      {{for g,stas in standards.groups.items()}}
+        <h2 title='{{standards.multipliers[(g,)]*100}}%' class='content-subhead'>{{g}}</h2>
+
+        {{for sta in stas}}
+          <table class='pure-table pure-table-bordered'>
+            <tr title='{{standards.multipliers[(g,sta)]*100}}%'>
+
+              {{script}}
+                d = grades.grades[cwid][(g,sta)].copy()
+                c = 'grade-' + ( grades.letter(round(d['overall']/4*100,1))[0]
+                                 if d['overall'] is not None
+                                 else 'None' )
+              {{endscript}}
+
+              <td class={{c}}>
+                <span class='assessment'>overall : </span>
+                {{if g == 'assignment completion'}}
+                  {{round(d['overall']*100, 1)}}%
+                {{else}}
+                  {{d['overall']}}
+                {{endif}}
+              </td>
+              {{script}}del d['overall']{{endscript}}
+
+              {{if sta != ''}}
+                <td>{{sta}}</td>
+              {{endif}}
+
+              {{for a,sco in d.items()}}
+                <td>
+                  <span class='assessment'>{{a}} : </span>
+                  {{if sco is True}}
+                    turned in
+                  {{else}}
+                    {{sco}}
+                  {{endif}}
+                </td>
+              {{endfor}}
+
+            </tr>
+          </table>
+        {{endfor}}
+
+      {{endfor}}
+
+    </div>
+  </div>
+</body>
+</html>
+

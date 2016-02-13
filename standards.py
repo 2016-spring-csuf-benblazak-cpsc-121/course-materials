@@ -92,13 +92,15 @@ for g,ss in groups.items():
 
 # .............................................................................
 # error check
+# - commented out for actual use: sometimes the floating point arithmetic
+#   doesn't work out, even though it should
 
-if sum([m for g,m in multipliers.items() if len(g) == 1]) != 1:
-    raise Error( 'Group multipliers do not sum to 1' )
-
-for g,m in {g:m for g,m in multipliers.items() if len(g) == 1}.items():
-    if m != round(m,2):
-        raise Error( 'Fractional percent in multiplier \'{}\': {}'.format(g,m) )
+# if sum([m for g,m in multipliers.items() if len(g) == 1]) != 1:
+#     raise Error( 'Group multipliers do not sum to 1' )
+# 
+# for g,m in {g:m for g,m in multipliers.items() if len(g) == 1}.items():
+#     if m != round(m,2):
+#         raise Error( 'Fractional percent in multiplier \'{}\': {}'.format(g,m) )
 
 # -----------------------------------------------------------------------------
 

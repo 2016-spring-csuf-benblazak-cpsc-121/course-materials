@@ -26,8 +26,6 @@ class Namespace():
 # -----------------------------------------------------------------------------
 
 def _gen_grades():
-    org = '2016-spring-csuf-benblazak-cpsc-121'
-
     filedir = os.path.dirname(os.path.abspath(__file__))
 
     if common.DEBUG: studentdir = './test/students'
@@ -59,24 +57,25 @@ def _gen_grades():
     }
 
     # .........................................................................
+    # from github
 
     github = github3.GitHub()
 
     try:
-        for r in sorted([ r.name for r in github.iter_user_repos(org) ]):
+        for r in sorted([ r.name for r in github.iter_user_repos(common.org) ]):
             if r in ( 'course-materials', ): continue
             assignment = 'a' + r[-2:]
 
             for cwid in students.students:
                 grades[cwid][('assignment completion', '')][assignment] = None
 
-            for pr in github.iter_repo_issues(org, r, state='all'):
+            for pr in github.iter_repo_issues(common.org, r, state='all'):
                 name = pr.user.login
                 if name not in name2cwid: continue
 
                 grades[name2cwid[name]] \
                       [('assignment completion', '')] \
-                      [assignment] = 4
+                      [assignment] = True
 
         with open(assignmentsfile, 'w') as f:
             f.write(repr({
@@ -96,6 +95,7 @@ def _gen_grades():
                 grades[cwid][('assignment completion', '')] = none
 
     # .........................................................................
+    # from scans
     
     for d in sorted(os.listdir(scandir)):
         if d.startswith('.'): continue
@@ -126,6 +126,7 @@ def _gen_grades():
                 grades[students.lookup(i.name)][sta][i.assessment] = sco
 
     # .........................................................................
+    # from file
 
     private = common.importfile(os.path.join(studentdir, 'grades.py'))
 
@@ -144,6 +145,13 @@ def _gen_grades():
 
             scos = [ sco for sco in assessments.values() if sco is not None ]
 
+            if sta == ('assignment completion', ''):
+                sco = len(scos)/len(assessments) if len(assessments) > 0 else 0
+                assessments['overall'] = sco
+                overall += sco * standards.multipliers[sta]
+                maximum += standards.multipliers[sta]
+                continue
+
             if len(scos) == 0:
                 assessments['overall'] = None
 
@@ -156,13 +164,16 @@ def _gen_grades():
                             if (scos[-1]+scos[-2])/2 <= sco ][0]
 
                 assessments['overall'] = sco
-                overall += sco / 4 * standards.multipliers[sta]
+                if sco >= 3:
+                    overall += sco / 4 * standards.multipliers[sta]
                 maximum += standards.multipliers[sta]
 
         ec = grades[cwid]['extra credit'] * 0.002
 
         if grades[cwid]['overall'] is None:
             grades[cwid]['overall'] = overall + ec
+
+        grades[cwid]['predictions']['current grade'] = grades[cwid]['overall']
         if maximum == 0:
             grades[cwid]['predictions']['average'] = None
             grades[cwid]['predictions']['maximum without reassessing'] = None

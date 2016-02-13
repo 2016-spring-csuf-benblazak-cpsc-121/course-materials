@@ -1,1 +1,1 @@
-{'000000001': OrderedDict([('a01', None), ('a02', None)]), '000000003': OrderedDict([('a01', None), ('a02', None)]), '000000002': OrderedDict([('a01', None), ('a02', None)]), '000000004': OrderedDict([('a01', 4), ('a02', None)])}
+{'000000001': OrderedDict([('a01', None), ('a02', None)]), '000000002': OrderedDict([('a01', None), ('a02', None)]), '000000003': OrderedDict([('a01', None), ('a02', None)]), '000000004': OrderedDict([('a01', True), ('a02', None)])}

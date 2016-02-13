@@ -14,8 +14,6 @@ import sys
 
 import common
 
-# .............................................................................
-
 filedir = os.path.dirname(os.path.abspath(__file__))
 
 students = common.importfile( os.path.join(filedir, '../students.py') )
