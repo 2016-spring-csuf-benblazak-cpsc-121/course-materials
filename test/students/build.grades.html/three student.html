@@ -276,13 +276,14 @@ Hides the menu at `48em`, but modify this based on your app's needs.
       padding: 0.125em 0.5em;
     }
     .content-subhead {
-      margin: 40px 0 20px 0;
+      margin: 25px 0 15px 0;
     }
     .assessment {
       color: lightgray;
     }
     .prediction {
-      text-align: right;
+      width: 100%;
+      text-align: center;
     }
     .grade-A {
       color: #859900 !important;  /* green, from solarized */
@@ -304,35 +305,43 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
     <div class='header'>
 
-      <h1>One Student</h1>
-      <h2>grades as of 2016-02-12 20:58:09.500931</h2>
+      <h1>Three Student</h1>
+      <h2>grades as of 2016-02-13 20:29:14.727900</h2>
 
     </div>
     <div class='content'>
 
-      <table class='pure-table pure-table-bordered'>
-        <tr>
-          <td class='grade-other'>
-            <span class='assessment'>extra credit : </span>
-            1
-          </td>
+      <table class='prediction pure-table pure-table-bordered pure-table-striped'>
+        
+        <tr class='prediction'>
+          <td>extra credit</td>
           
+            <td title='the grade you would get if class ended today'>current grade</td>
           
-            <td title='the grade you would get if class ended today' class='prediction grade-F'>
-              <span class='assessment'>current grade : </span>
-              0.2%
+            <td title='the grade you will get if you maintain your average'>average</td>
+          
+            <td title='the highest grade you could get without reassessing'>maximum without reassessing</td>
+          
+        </tr>
+        <tr class='prediction'>
+          <td class='grade-other'>0</td>
+          
+            
+            <td title='the grade you would get if class ended today' class='grade-F'>
+              7.3%
+               : F 
             </td>
           
-          
-            <td title='the grade you will get if you maintain your average' class='prediction grade-F'>
-              <span class='assessment'>average : </span>
-              0.0%
+            
+            <td title='the grade you will get if you maintain your average' class='grade-D'>
+              58.1%
+               : D 
             </td>
           
-          
-            <td title='the highest grade you could get without reassessing' class='prediction grade-B'>
-              <span class='assessment'>maximum without reassessing : </span>
-              87.7%
+            
+            <td title='the highest grade you could get without reassessing' class='grade-A'>
+              94.8%
+               : A 
             </td>
           
         </tr>
@@ -501,10 +510,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
               
 
-              <td class=grade-F>
+              <td class=grade-A>
                 <span class='assessment'>overall : </span>
                 
-                  1
+                  3.75
                 
               </td>
               
@@ -517,7 +526,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
                 <td>
                   <span class='assessment'>q01 : </span>
                   
-                    1
+                    3.75
                   
                 </td>
               
@@ -530,10 +539,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
               
 
-              <td class=grade-D>
+              <td class=grade-A>
                 <span class='assessment'>overall : </span>
                 
-                  2
+                  4
                 
               </td>
               
@@ -546,14 +555,14 @@ Hides the menu at `48em`, but modify this based on your app's needs.
                 <td>
                   <span class='assessment'>q01 : </span>
                   
-                    3
+                    4
                   
                 </td>
               
                 <td>
                   <span class='assessment'>r01 : </span>
                   
-                    1
+                    
                   
                 </td>
               

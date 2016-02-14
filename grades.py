@@ -196,10 +196,10 @@ grades = _gen_grades()
 def letter(percent):
     if   percent >= 97: return 'A+'
     elif percent >= 93: return 'A'
-    elif percent >= 90: return 'A-;'
+    elif percent >= 90: return 'A-'
     elif percent >= 87: return 'B+'
     elif percent >= 83: return 'B'
-    elif percent >= 80: return 'B-;'
+    elif percent >= 80: return 'B-'
     elif percent >= 77: return 'C+'
     elif percent >= 70: return 'C'
     elif percent >= 50: return 'D'

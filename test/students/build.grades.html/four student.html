@@ -275,11 +275,15 @@ Hides the menu at `48em`, but modify this based on your app's needs.
       white-space: nowrap;
       padding: 0.125em 0.5em;
     }
+    .content-subhead {
+      margin: 25px 0 15px 0;
+    }
     .assessment {
       color: lightgray;
     }
     .prediction {
-      text-align: right;
+      width: 100%;
+      text-align: center;
     }
     .grade-A {
       color: #859900 !important;  /* green, from solarized */
@@ -301,35 +305,43 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
     <div class='header'>
 
-      <h1>Two Student</h1>
-      <h2>grades as of 2016-02-12 20:18:30.340142</h2>
+      <h1>Four Student</h1>
+      <h2>grades as of 2016-02-13 20:29:19.449426</h2>
 
     </div>
     <div class='content'>
 
-      <table class='pure-table pure-table-bordered'>
-        <tr>
-          <td class='grade-other'>
-            <span class='assessment'>extra credit : </span>
-            0
-          </td>
+      <table class='prediction pure-table pure-table-bordered pure-table-striped'>
+        
+        <tr class='prediction'>
+          <td>extra credit</td>
           
+            <td title='the grade you would get if class ended today'>current grade</td>
           
-            <td title='the grade you would get if class ended today' class='prediction grade-F'>
-              <span class='assessment'>current grade : </span>
-              3.3%
+            <td title='the grade you will get if you maintain your average'>average</td>
+          
+            <td title='the highest grade you could get without reassessing'>maximum without reassessing</td>
+          
+        </tr>
+        <tr class='prediction'>
+          <td class='grade-other'>0</td>
+          
+            
+            <td title='the grade you would get if class ended today' class='grade-other'>
+              I
+              
             </td>
           
-          
-            <td title='the grade you will get if you maintain your average' class='prediction grade-F'>
-              <span class='assessment'>average : </span>
-              37.5%
+            
+            <td title='the grade you will get if you maintain your average' class='grade-C'>
+              72.5%
+               : C 
             </td>
           
-          
-            <td title='the highest grade you could get without reassessing' class='prediction grade-A'>
-              <span class='assessment'>maximum without reassessing : </span>
-              94.5%
+            
+            <td title='the highest grade you could get without reassessing' class='grade-A'>
+              96.6%
+               : A 
             </td>
           
         </tr>
@@ -347,7 +359,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
               <td class=grade-F>
                 <span class='assessment'>overall : </span>
                 
-                  0.0%
+                  50.0%
                 
               </td>
               
@@ -358,7 +370,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
                 <td>
                   <span class='assessment'>a01 : </span>
                   
-                    
+                    turned in
                   
                 </td>
               
@@ -498,10 +510,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
               
 
-              <td class=grade-None>
+              <td class=grade-C>
                 <span class='assessment'>overall : </span>
                 
-                  
+                  3
                 
               </td>
               
@@ -514,7 +526,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
                 <td>
                   <span class='assessment'>q01 : </span>
                   
-                    
+                    3
                   
                 </td>
               
@@ -527,10 +539,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
               
 
-              <td class=grade-B>
+              <td class=grade-A>
                 <span class='assessment'>overall : </span>
                 
-                  3.5
+                  4
                 
               </td>
               
@@ -543,14 +555,14 @@ Hides the menu at `48em`, but modify this based on your app's needs.
                 <td>
                   <span class='assessment'>q01 : </span>
                   
-                    3.5
+                    2
                   
                 </td>
               
                 <td>
                   <span class='assessment'>r01 : </span>
                   
-                    
+                    4
                   
                 </td>
               
@@ -1064,5 +1076,4 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   </div>
 </body>
 </html>
-
 

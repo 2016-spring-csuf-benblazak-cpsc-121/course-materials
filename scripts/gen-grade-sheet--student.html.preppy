@@ -1,10 +1,14 @@
 {{def(cwid,grades,standards,students)}}
 {{script}}
-
 # vim: ft=html
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
 
 import datetime
 
+# -----------------------------------------------------------------------------
 {{endscript}}
 
 <!doctype html>
@@ -24,13 +28,14 @@ import datetime
       padding: 0.125em 0.5em;
     }
     .content-subhead {
-      margin: 40px 0 20px 0;
+      margin: 25px 0 15px 0;
     }
     .assessment {
       color: lightgray;
     }
     .prediction {
-      text-align: right;
+      width: 100%;
+      text-align: center;
     }
     .grade-A {
       color: #859900 !important;  /* green, from solarized */
@@ -58,30 +63,40 @@ import datetime
     </div>
     <div class='content'>
 
-      <table class='pure-table pure-table-bordered'>
-        <tr>
-          <td class='grade-other'>
-            <span class='assessment'>extra credit : </span>
-            {{grades.grades[cwid]['extra credit']}}
-          </td>
-          {{for a,sco in grades.grades[cwid]['predictions'].items()}}
-          {{script}}
-            try:
-              sco = round(sco*100, 1)
-              c = 'grade-' + grades.letter(sco)[0]
-              sco = str(sco)+'%'
-            except TypeError:
+      <table class='prediction pure-table pure-table-bordered pure-table-striped'>
+        {{script}}
+          d = grades.grades[cwid]
+          tt = {
+            'current grade': 'the grade you would get if class ended today',
+            'average': 'the grade you will get if you maintain your average',
+            'maximum without reassessing':
+              'the highest grade you could get without reassessing',
+          }
+        {{endscript}}
+        <tr class='prediction'>
+          <td>extra credit</td>
+          {{for p in d['predictions']}}
+            <td title='{{tt[p]}}'>{{p}}</td>
+          {{endfor}}
+        </tr>
+        <tr class='prediction'>
+          <td class='grade-other'>{{d['extra credit']}}</td>
+          {{for p,sco in d['predictions'].items()}}
+            {{script}}
               c = 'grade-other'
-            tt = {
-              'current grade': 'the grade you would get if class ended today',
-              'average': 'the grade you will get if you maintain your average',
-              'maximum without reassessing':
-                'the highest grade you could get without reassessing',
-            }[a]
-          {{endscript}}
-            <td title='{{tt}}' class='prediction {{c}}'>
-              <span class='assessment'>{{a}} : </span>
+              letter = None
+              try:
+                sco = round(sco*100, 1)
+                c = 'grade-' + grades.letter(sco)[0]
+                letter = grades.letter(sco).replace('+','&plus;') \
+                                           .replace('-','&minus;')
+                sco = str(sco)+'%'
+              except TypeError:
+                pass
+            {{endscript}}
+            <td title='{{tt[p]}}' class='{{c}}'>
               {{sco}}
+              {{if letter is not None}} : {{letter}} {{endif}}
             </td>
           {{endfor}}
         </tr>

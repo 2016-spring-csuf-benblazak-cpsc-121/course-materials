@@ -55,16 +55,17 @@ else:
 
 # .............................................................................
 
-def send_email(f, to, subject, body, attachments=None):
+def gen_email(f, to, subject, body, attachments=None):
     if attachments is None: attachments = []
 
     boundary = 'CONTENTBOUNDARY'
     body = body.replace('=','=3D')
-    student = to.split('<')[0].strip()
 
-    email = "sendmail -f '" + f + "' '" + to + "' <<END"
+    email = ''
 
     email += textwrap.dedent( '''
+        To: {to}
+        From: {f}
         Subject: {subject}
         Content-Type: multipart/mixed; boundary={boundary}
 
@@ -99,10 +100,36 @@ def send_email(f, to, subject, body, attachments=None):
         '''.format(**locals()) )
         email += '\n' + base64 + '\n'
 
-    email += '\n--' + boundary + '--\nEND\n'
+    email += '\n--' + boundary + '--\n'
 
-    subprocess.Popen( email, shell = True )
+    return email
+
+def send_email(*args):
+    tempfile = os.path.abspath(os.path.join(
+        filedir, 'send-grade-emails--temp.eml'
+    ))
+
+    with open(tempfile, 'w') as f:
+        f.write(gen_email(*args))
+
+    script = textwrap.dedent('''
+        osascript <<END
+        tell application "Mail"
+            open "{tempfile}"
+            activate
+        end tell
+        delay 1
+        tell application "System Events" to ¬
+            keystroke "d" using {{command down, shift down}}
+        tell application "System Events" to ¬
+            keystroke "d" using {{command down, shift down}}
+        END
+    ''').format(**locals())
+
+    sp = subprocess.Popen( script, shell = True )
     sp.communicate()
+
+    os.remove(tempfile)
 
 # .............................................................................
 
@@ -110,20 +137,6 @@ sp = subprocess.Popen( './gen-grade-sheets--pdf.command', shell = True )
 sp.communicate()
 
 files = {}
-
-if arg in ( 'all', ):
-    for f in os.listdir(gradedir):
-        if f.startswith('.'): continue
-        if f.startswith('_'): continue
-
-        cwid = students.lookup(os.path.basename(f).split('.')[0])
-
-        fname = ( 'grade-sheet--'
-                  + students.students[cwid]['alias'].lower().replace(' ','-')
-                  + '.' + os.path.basename(f).split('.')[-1] )
-
-        if cwid not in files: files[cwid] = []
-        files[cwid].append([fname, os.path.join(gradedir, f)])
 
 for d in os.listdir(scandir):
     if d.startswith('.'): continue
@@ -142,11 +155,24 @@ for d in os.listdir(scandir):
         if cwid not in files: files[cwid] = []
         files[cwid].append([fname, os.path.join(scandir, d, f)])
 
+for f in os.listdir(gradedir):
+    if f.startswith('.'): continue
+    if f.startswith('_'): continue
+
+    cwid = students.lookup(os.path.basename(f).split('.')[0])
+
+    fname = ( 'grade-sheet--'
+              + students.students[cwid]['alias'].lower().replace(' ','-')
+              + '.' + os.path.basename(f).split('.')[-1] )
+
+    if arg in ( 'all', ) or cwid in files:
+        if cwid not in files: files[cwid] = []
+        files[cwid].append([fname, os.path.join(gradedir, f)])
+
 for cwid,attachments in files.items():
     alias = students.students[cwid]['alias']
 
-#     f = 'bblazak@fullerton.edu'
-    f = 'benblazak@gmail.com'
+    f = 'Ben Blazak <bblazak@fullerton.edu>'
     to = alias + ' <' + students.students[cwid]['email'] + '>'
 
     subject = '[CPSC 121] grades'
@@ -154,7 +180,7 @@ for cwid,attachments in files.items():
     body = textwrap.dedent( '''\
         Dear {alias},
 
-        Your updated grade sheet is attached, along with any graded quizzes which have not previously been sent.  Please let me know if you find any errors, or if you have any questions.  Available answer sheets for quizzes will be posted to <Google Drive <https://drive.google.com/folderview?id=0By3dRR4gD9xtOTZjVm5MMElqeVE&usp=sharing>>.
+        Your updated grade sheet is attached, along with any graded quizzes which have not previously been sent.  Please let me know if you find any errors, or if you have any questions.  Available answer keys for quizzes will be posted to Google Drive: https://drive.google.com/folderview?id=0By3dRR4gD9xtOTZjVm5MMElqeVE&usp=sharing .
 
         Sincerely,
         Ben Blazak

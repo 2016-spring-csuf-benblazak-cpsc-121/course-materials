@@ -1,0 +1,101 @@
+{{def(title,cwids,grades,standards,students)}}
+{{script}}
+# vim: ft=html
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+import datetime
+
+# -----------------------------------------------------------------------------
+{{endscript}}
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>grade sheet</title>
+
+  <style> {{open('lib/pure.css/pure-min.css').read()}} </style>
+  <style> {{open('lib/pure.css/side-menu.css').read()}} </style>
+
+  <style>
+    .pure-table th {
+      text-align: center;
+    }
+    .pure-table th, .pure-table td {
+      white-space: nowrap;
+      padding: 0.125em 0.5em;
+    }
+    .prediction, .percent, .name {
+      text-align: right;
+    }
+    .grade-A {
+      color: #859900 !important;  /* green, from solarized */
+    }
+    .grade-B, .grade-C {
+      color: #b58900 !important;  /* yellow, from solarized */
+    }
+    .grade-D, .grade-F {
+      color: #dc322f !important;  /* red, from solarized */
+    }
+    .grade-other {
+      color: #268bd2 !important;  /* blue, from solarized */
+    }
+  </style>
+
+</head>
+<body>
+  <div id='main'>
+
+    <div class='header'>
+
+      <h1>{{title}}</h1>
+      <h2>grades as of {{datetime.datetime.today()}}</h2>
+
+    </div>
+    <div class='content'>
+
+      <table class='pure-table pure-table-bordered pure-table-striped'>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>grade</th>
+            <th>cwid</th>
+            <th>percent</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{for cwid in cwids}}
+          {{script}}
+            percent = None
+            grade = grades.grades[cwid]['overall']
+            c = 'grade-other'
+            try:
+              percent = round(grade*100, 1)
+              grade = grades.letter(percent).replace('+','&plus;') \
+                                            .replace('-','&minus;')
+              c = 'grade-' + grades.letter(percent)[0]
+              percent = str(percent) + '%'
+            except TypeError:
+              pass
+            name = ', '.join(reversed(students.students[cwid]['alias'].split()))
+          {{endscript}}
+          <tr>
+            <td class='name'>{{name}}</td>
+            <td class='{{c}}'>{{grade}}</td>
+            <td>{{cwid}}</td>
+            <td class='{{c}} percent'>{{percent}}</td>
+          </tr>
+          {{endfor}}
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</body>
+</html>
+

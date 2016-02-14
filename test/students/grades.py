@@ -25,5 +25,7 @@ _github2cwid = {
 grades = {
     _students.lookup('o s'): { 'extra credit': 1 },
     _students.lookup('f s'): { 'overall': 'I' },
+    _students.lookup('o s'): { 'overall': 0.98 },
+    _students.lookup('tw s'): { 'overall': 0.82 },
 }
 
