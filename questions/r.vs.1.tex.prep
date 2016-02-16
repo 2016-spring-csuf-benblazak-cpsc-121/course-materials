@@ -1,0 +1,46 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Demonstrate the following using Visual Studio:
+\begin{itemize}
+  \item project with multiple \mintinline{text}{.h} and \mintinline{text}{.cpp}
+    files
+    \begin{itemize}
+      \item Begin with an empty project.
+      \item Create a file named \mintinline{cpp}{function.h} containing a
+        prototype for a \mintinline{cpp}{void} function that takes one argument
+        (of your favorite type) and prints it to \mintinline{cpp}{stdout}.
+      \item Create a file named \mintinline{cpp}{function.cpp} containing the
+        definition of the function prototyped in \mintinline{cpp}{function.h}.
+      \item Create a file named \mintinline{cpp}{main.cpp} containing the
+        definition of \mintinline{cpp}{main()}.  Your \mintinline{cpp}{main()}
+        should call the function prototyped in \mintinline{cpp}{function.h}.
+    \end{itemize}
+  \item file I/O
+    \begin{itemize}
+      \item Use Notepad to create a text file, containing a single integer,
+        on the Desktop.
+      \item Move the file wherever you like (or don't move it at all).
+      \item In the \mintinline{cpp}{main()} function written above, open the
+        file.
+      \item Read the integer from the file.
+      \item Print it to \mintinline{cpp}{stdout}.
+      \item Close the file.
+      \item Open a new file for writing.
+      \item Print \mintinline{cpp}{"hello world\n"} to the file.
+      \item Close the file.
+      \item Move the file to the Desktop (if it is not already there).
+    \end{itemize}
+\end{itemize}
+
+\end{document}
+
+

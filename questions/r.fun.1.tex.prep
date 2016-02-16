@@ -1,0 +1,48 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Assuming that all necessary headers have been included and all required symbols
+are in the standard namespace, do the following:
+
+\begin{itemize}
+
+  \item Write a prototype and definition for a function named
+    \mintinline{cpp}{abs} that accepts one \mintinline{cpp}{int} and returns
+    the absolute value as an \mintinline{cpp}{int}.
+    \textAnswer{\showCodeLeft{question}{abs}}
+    \vfill
+
+  \item Write a prototype and definition for a function named
+    \mintinline{cpp}{swap} that accepts two \mintinline{cpp}{int}s, both passed
+    by reference, and swaps their values.
+    \textAnswer{\showCodeLeft{question}{swap}}
+    \vfill
+
+  \item Write a \mintinline{cpp}{main()} to do the following:
+    \begin{itemize}
+      \item Let \mintinline{cpp}{int a = 5, b = -7;}.
+      \item Output the value returned by \mintinline{cpp}{abs} when called with
+        \mintinline{cpp}{a} as its argument, and the value returned by
+        \mintinline{cpp}{abs} when called with \mintinline{cpp}{b} as its
+        argument, separated by whitespace, followed by a newline.
+      \item Output the values of \mintinline{cpp}{a} and \mintinline{cpp}{b},
+        separated by whitespace, followed by a newline.
+      \item Call \mintinline{cpp}{swap} with \mintinline{cpp}{a} and
+        \mintinline{cpp}{b} as its arguments.
+      \item Output the values of \mintinline{cpp}{a} and \mintinline{cpp}{b},
+        separated by whitespace, followed by a newline.
+    \end{itemize}
+  \item Indicate the output of \mintinline{cpp}{main()}.
+    \textAnswer{\showCodeLeft{question}{main}}
+    \vfill
+
+\end{itemize}
+

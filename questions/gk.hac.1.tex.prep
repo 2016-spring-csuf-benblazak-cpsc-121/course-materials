@@ -1,0 +1,90 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\subsection*{People}
+In roughly 2 or 3 sentences, explain who each person is and what they did that
+is relevant to our class.
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item Ken Thompson
+    \vfill\textQuestion{\makeDashedLine}
+  \item Brian Kernighan
+    \vfill\textQuestion{\makeDashedLine}
+  \item Dennis Ritchie
+    \vfill\textQuestion{\makeDashedLine}
+  \item Bjarne Stroustrup
+    \vfill\textQuestion{\makeDashedLine}
+  \item Alan Kay
+    \vfill
+\end{itemize}
+
+\newpage
+
+\subsection*{Places}
+In roughly 2 or 3 sentences, explain what happened at each of these places that is relevant to our class.
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item MIT AI Lab (Hint: See the history section of the Wikipedia entry on
+    object-oriented programming.)
+    \vfill\textQuestion{\makeDashedLine}
+  \item Xerox PARC
+    \vfill\textQuestion{\makeDashedLine}
+  \item AT\&T Bell Labs
+    \vfill
+\end{itemize}
+
+\subsection*{Languages}
+In roughly 2 or 3 sentences, explain why each of these programming languages is
+relevant to our class.
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item Simula
+    \vfill\textQuestion{\makeDashedLine}
+  \item Smalltalk
+    \vfill
+\end{itemize}
+
+\newpage
+
+\subsection*{Languages (continued)}
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item Name at least 3 other object oriented programming languages.
+    \vfill\textQuestion{\makeDashedLine}
+  \item List the 3 (or 4) major programming language paradigms.
+    \vfill
+\end{itemize}
+
+\subsection*{C++}
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item Why are there both pointers and references in C++? (Hint: See Bjarne
+    Stroustrup's C++ FAQ.)
+    \vfill
+    \vfill\textQuestion{\makeDashedLine}
+  \item Why is \mintinline{cpp}{this} a pointer instead of a reference? (Hint:
+    See Bjarne Stroustrup's C++ FAQ.)
+    \vfill
+    \vfill
+\end{itemize}
+
+\subsection*{Safety}
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item What is ergonomics?  Why do we care?
+    \vfill
+    \vfill\textQuestion{\makeDashedLine}
+  \item What is RSI?  Why do we care?  What can be done to prevent it?
+    \vfill
+    \vfill
+    \vfill
+\end{itemize}
+

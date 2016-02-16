@@ -1,0 +1,36 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Briefly explain each concept and why it's important.
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item unit testing
+    \vfill\textQuestion{\makeDashedLine}
+  \item encapsulation
+    \vfill\textQuestion{\makeDashedLine}
+  \item decoupling
+    \vfill\textQuestion{\makeDashedLine}
+  \item top down vs bottom up
+    \vfill
+
+\newpage
+    \vfill\textQuestion{\makeDashedLine}
+
+  \item ADT
+    \vfill\textQuestion{\makeDashedLine}
+  \item RAII
+    \vfill\textQuestion{\makeDashedLine}
+  \item information hiding
+    \vfill\textQuestion{\makeDashedLine}
+  \item composition vs inheritance
+    \vfill
+\end{itemize}
+

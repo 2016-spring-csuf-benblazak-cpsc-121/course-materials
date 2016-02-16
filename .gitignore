@@ -1,0 +1,12 @@
+.gen
+.gen.*
+gen
+gen.*
+
+.local
+.local.*
+local
+local.*
+
+build.pdf
+

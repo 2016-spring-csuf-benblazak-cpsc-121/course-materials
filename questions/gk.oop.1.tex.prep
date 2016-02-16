@@ -1,0 +1,87 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Give brief definitions of the following terms:
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item object
+    \textAnswer{\par
+      A collection of data (what the object is made of) and methods (or member
+      functions) on that data (what the object can do, or what messages the
+      object understands) having a type (what the object is seen as).
+    }
+    \vfill\vfill\textQuestion{\makeDashedLine}
+  \item class
+    \textAnswer{\par
+      A description of (or a template (though not in the C++ and Java sense) for
+      creating) an object.
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item instance
+    \textAnswer{\par
+      A specific object existing in memory.
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item superclass
+    \textAnswer{\par
+      A class that is a parent of the class to which we are referring (i.e.~a
+      class from which we directly or indirectly inherit).
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item subclass
+    \textAnswer{\par
+      A class that is a child of the class to which we are referring (i.e.~a
+      class that directly or indirectly inherits from us).
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item member
+    \textAnswer{\par
+      A datum or method belonging to a class.
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item method
+    \textAnswer{\par
+      Or member function.  An action that an object is able to perform, or a
+      message that an object is able to understand.
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item getters and setters
+    \textAnswer{\par
+      Methods used for retrieving (getting) or modifying (setting) an object's
+      data members.
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item accessors and mutators
+    \textAnswer{\par
+      The same as getters and setters.
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item access modifiers
+    \begin{itemize}
+      \item public
+        \textAnswer{\par
+          Visible to everyone.
+        }
+        \vfill\textQuestion{\makeDashedLine}
+      \item private
+        \textAnswer{\par
+          Visible within the class, and to friends.
+        }
+        \vfill\textQuestion{\makeDashedLine}
+      \item protected
+        \textAnswer{\par
+          Visible within the class, to child classes, and to friends.
+        }
+        \vfill
+        \vfill
+    \end{itemize}
+\end{itemize}
+

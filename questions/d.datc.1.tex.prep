@@ -1,0 +1,28 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\vspace{3.5ex}
+
+Correct each of the following code sections.
+
+\vspace{3.5ex}
+\begin{itemize}
+  \item \correctCodeTop{question}{max} \vspace{7ex}
+  \item \correctCodeTop{question}{void} \vspace{7ex}
+    \newpage
+  \item \correctCodeTop{question}{equals} \vspace{7ex}
+  \item \correctCodeTop{question}{or} \vspace{7ex}
+    \newpage
+  \item \correctCodeTop{question}{for} \vspace{7ex}
+  \item \correctCodeTop{question}{infinite} \vspace{7ex}
+  \item \correctCodeTop{question}{uninitialized} \vspace{7ex}
+\end{itemize}
+
