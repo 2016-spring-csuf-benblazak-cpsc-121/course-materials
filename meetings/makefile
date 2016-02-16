@@ -28,6 +28,8 @@ cleanall: clean
 # -----------------------------------------------------------------------------
 
 $(BUILDDIR)/%.md:: meetings/%.md.prep
+	-rm -r '$(BUILDDIR)/$*'
+	if [ -d 'meetings/$*' ]; then cp -R 'meetings/$*/' '$(BUILDDIR)/$*/'; fi
 	mkdir -p $(BUILDDIR)
 	( echo '!dnl,exec(self._filename="$<")'; \
 	  echo '!dnl,exec(self._cwd="meetings")'; \
