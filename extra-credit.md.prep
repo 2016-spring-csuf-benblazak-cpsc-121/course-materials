@@ -1,0 +1,26 @@
+!dnl vim: ft=markdown
+!dnl --------------------------------------------------------------------------
+!dnl Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+!dnl Released under the [MIT License] (http://opensource.org/licenses/MIT)
+!dnl --------------------------------------------------------------------------
+!exec(((
+
+    self.input('common.prep')
+
+)))
+!dws,dnl ----------------------------------------------------------------------
+
+
+# !(doc.title)
+
+- (5 points) demonstrate a substantial working knowledge of the linux command
+  line
+
+- (5 points) demonstrate a substantial working knowledge of vim
+
+- (5 points) demonstrate a substantial working knowledge of make
+
+
+-------------------------------------------------------------------------------
+!(doc.license.md)
+

@@ -22,7 +22,7 @@ global doc
 doc = Namespace()
 
 doc.jobname = self._jobname
-doc.title = self.strip_extension(doc.jobname, 2).title()
+doc.title = self.strip_extension(doc.jobname, 2).replace('-',' ').title()
 
 # .............................................................................
 

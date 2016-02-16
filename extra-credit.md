@@ -1,26 +1,11 @@
-# Week 04, Lecture 2
+# Extra Credit
 
-## Administrative
+- (5 points) demonstrate a substantial working knowledge of the linux command
+  line
 
-- Math salute!
-- Questions
+- (5 points) demonstrate a substantial working knowledge of vim
 
-
-## Discussion
-
-- [Why objects?](http://mythz.servicestack.net/blog/2013/02/27/the-deep-insights-of-alan-kay/)
-- Structs (and the C way of doing things)
-
-- Constants vs macros
-- Passing objects to functions
-
-- Pointers vs arrays vs references
-- [cdecl.org](http://cdecl.org) and more about types
-
-
-## Activity
-
-- OO development
+- (5 points) demonstrate a substantial working knowledge of make
 
 
 -------------------------------------------------------------------------------
