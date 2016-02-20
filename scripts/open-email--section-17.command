@@ -9,5 +9,5 @@ cd "$(dirname "$0")"
 arg=${0#*--}
 arg=${arg%.*}
 
-./open-email.bash ${arg}
+./open-email.py ${arg}
 

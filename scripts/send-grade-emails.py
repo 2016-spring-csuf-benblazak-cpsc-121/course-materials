@@ -55,7 +55,7 @@ else:
 
 # .............................................................................
 
-def gen_email(f, to, subject, body, attachments=None):
+def gen_email(_from, _to, subject, body, attachments=None):
     if attachments is None: attachments = []
 
     boundary = 'CONTENTBOUNDARY'
@@ -64,8 +64,8 @@ def gen_email(f, to, subject, body, attachments=None):
     email = ''
 
     email += textwrap.dedent( '''
-        To: {to}
-        From: {f}
+        To: {_to}
+        From: {_from}
         Subject: {subject}
         Content-Type: multipart/mixed; boundary={boundary}
 
