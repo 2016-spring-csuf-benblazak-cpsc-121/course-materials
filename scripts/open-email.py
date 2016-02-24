@@ -97,6 +97,8 @@ tempfile = os.path.abspath(os.path.join(
 with open(tempfile, 'w') as f:
     f.write(email)
 
+time.sleep(1)
+
 script = textwrap.dedent('''
     osascript <<END
     tell application "Mail"
