@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import sys
 import textwrap
+import time
 
 import common
 
@@ -111,6 +112,8 @@ def send_email(*args):
 
     with open(tempfile, 'w') as f:
         f.write(gen_email(*args))
+
+    time.sleep(1)
 
     script = textwrap.dedent('''
         osascript <<END

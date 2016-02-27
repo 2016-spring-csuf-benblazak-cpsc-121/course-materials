@@ -65,7 +65,7 @@ def _gen_students():
             alias = name.split()
             if len(alias) == 1:
                 alias = alias[0]
-            elif alias[-1] in ( 'I', 'II', 'III', 'IV', ) and len(alias) > 2:
+            elif alias[-1].lower() in ( 'i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'jr' ) and len(alias) > 2:
                 alias = ' '.join([ alias[0], alias[-2] ])
             else:
                 alias = ' '.join([ alias[0], alias[-1] ])
@@ -106,8 +106,7 @@ def lookup(string):
     - Each field besides the section number (if present) is interpreted as a
       short name (where a "short name" is some nonempty initial subset of a
       name).  The short name fields are matched in order against each student's
-      names (first, middle, ..., last, ...), and then against their alias
-      names.
+      alias names (first, last)
 
     For example, if there was a student named "One Student" who's initials were
     unique, `lookup('o s')` should return that student's CWID.
@@ -129,18 +128,18 @@ def lookup(string):
         if section is not None and section != info['section']:
             continue
 
-        n = info['name'].lower().split()
+#         n = info['name'].lower().split()
         a = info['alias'].lower().split()
 
-        if len(s) <= len(n):
-            for np,sp in zip(n, s):
-                if not np.startswith(sp):
-                    break
-            else:
-                if ret is None or ret == cwid:
-                    ret = cwid
-                else:
-                    raise Error( 'Multiple matches found for \''+string+'\'' )
+#         if len(s) <= len(n):
+#             for np,sp in zip(n, s):
+#                 if not np.startswith(sp):
+#                     break
+#             else:
+#                 if ret is None or ret == cwid:
+#                     ret = cwid
+#                 else:
+#                     raise Error( 'Multiple matches found for \''+string+'\'' )
 
         if len(s) <= len(a):
             for ap,sp in zip(a, s):
