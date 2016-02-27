@@ -32,7 +32,7 @@ rotate: backup
 split-%: backup
 	# mostly from <http://unix.stackexchange.com/a/66932>
 	for file in *.pdf; do \
-		pages="$$(pdfinfo $${file}|grep 'Pages:'|sed 's/.*  *//')"; \
+		pages="$$(pdfinfo "$${file}"|grep 'Pages:'|sed 's/.*  *//')"; \
 		start=1; \
 		for end in $$(seq $$(($*)) $* $$((pages-1))) $${pages}; do \
 			pdftk "$${file}" \

@@ -7,6 +7,7 @@
 import os
 import os.path
 import requests
+import sys
 from collections import OrderedDict
 
 import github3
@@ -114,12 +115,23 @@ def _gen_grades():
 
             (i.name, i.scores) = \
                 f.split('.',maxsplit=1)[0].split(',', maxsplit=1)
+            i.scores = i.scores.split(',')
+
+            if '' in i.scores:
+                raise Error(
+                    'WARNING: empty score in'
+                    + ' "' + os.path.join(d, f) + '"' )
+            if len(i.scores) != len(i.standards):
+                raise Error(
+                    'WARNING: mismatch in number of scores for'
+                    + ' "' + os.path.join(d, f) + '"' )
+
             i.scores = [
-                None if s == '' else
+                None if s == 'x' else
                 3.5 if s == '5' else
                 3.75 if s == '7' else
                 int(s)
-                for s in i.scores.split(',')
+                for s in i.scores
             ]
 
             for sta,sco in zip(i.standards,i.scores):
