@@ -1,0 +1,45 @@
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2015 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+.PHONY: all
+
+all: 
+
+# -----------------------------------------------------------------------------
+.PHONY: backup join rotate split
+
+backup:
+	dir="_original/$$(date | tr ' ' '_' | tr ':' ',')"; \
+	mkdir -p "$${dir}"; \
+	cp *.pdf "$${dir}";
+
+# .............................................................................
+
+join: backup
+	pdftk *.pdf cat output _joined.pdf.join
+	rm *.pdf
+	mv _joined.pdf.join _joined.pdf
+
+rotate: backup
+	for i in *.pdf; do \
+		pdftk "$$i" cat 1-enddown output "$$i.rotate"; \
+		mv "$$i.rotate" "$$i"; \
+	done
+
+split-%: backup
+	# mostly from <http://unix.stackexchange.com/a/66932>
+	for file in *.pdf; do \
+		pages="$$(pdfinfo $${file}|grep 'Pages:'|sed 's/.*  *//')"; \
+		start=1; \
+		for end in $$(seq $$(($*)) $* $$((pages-1))) $${pages}; do \
+			pdftk "$${file}" \
+			      cat $${start}-$${end} \
+			      output "$${file%.pdf}_$$(printf %04d $${start}).pdf"; \
+			start=$$((end+1)); \
+		done; \
+		rm "$${file}"; \
+	done;
+
