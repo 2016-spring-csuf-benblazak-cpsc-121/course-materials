@@ -71,7 +71,7 @@ def _gen_grades():
                 grades[cwid][('assignment completion', '')][assignment] = None
 
             for pr in github.iter_repo_issues(common.org, r, state='all'):
-                name = pr.user.login
+                name = pr.user.login.lower()
                 if name not in name2cwid: continue
 
                 grades[name2cwid[name]] \
