@@ -119,6 +119,7 @@ def send_email(*args):
         open "{tempfile}"
         osascript <<END
         tell application "Mail" to activate
+        delay 1
         tell application "System Events" to ¬
             keystroke "d" using {{command down, shift down}}
         tell application "System Events" to ¬
@@ -175,7 +176,7 @@ for cwid,attachments in files.items():
     f = 'Ben Blazak <bblazak@fullerton.edu>'
     to = alias + ' <' + students.students[cwid]['email'] + '>'
 
-    subject = '[CPSC 121] grades'
+    subject = '[CPSC 121] grades (' + alias + ')'
 
     body = textwrap.dedent( '''\
         Dear {alias},

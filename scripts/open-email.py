@@ -103,6 +103,7 @@ script = textwrap.dedent('''
     open "{tempfile}"
     osascript <<END
     tell application "Mail" to activate
+    delay 1
     tell application "System Events" to ¬
         keystroke "d" using {{command down, shift down}}
     END
