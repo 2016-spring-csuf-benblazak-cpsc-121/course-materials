@@ -100,12 +100,9 @@ with open(tempfile, 'w') as f:
 time.sleep(1)
 
 script = textwrap.dedent('''
+    open "{tempfile}"
     osascript <<END
-    tell application "Mail"
-        open "{tempfile}"
-        activate
-    end tell
-    delay 1
+    tell application "Mail" to activate
     tell application "System Events" to ¬
         keystroke "d" using {{command down, shift down}}
     END
