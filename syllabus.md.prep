@@ -105,12 +105,13 @@
         # - parable of polygons
 
         [ 'Exceptions, Templates, and the STL', '16',        weeks(1) ],
-        [ 'Searching, Sorting, and Algorithm Analysis', '9', weeks(1) ],
+        [ 'Recursion', '14',                                 weeks(1) ],
+        # - practice with exceptions, templates, and the STL
+        # - classic recursive functions
+        # - challenge: int to words
+        [ 'Searching, Sorting, and Algorithm Analysis', '9', weeks(2) ],
         # - selection sort
         # - merge sort
-        [ 'Recursion', '14',                                 weeks(2) ],
-        # - (classic functions)
-        # - int to words
 
         [ '*(Midterm)*', '',                                 weeks(0,'lab') ],
         [ '*(Spring Recess)*', '', '' ],

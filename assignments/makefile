@@ -30,7 +30,9 @@ cleanall: clean
 $(BUILDDIR)/%.md:: assignments/%.md.prep
 	mkdir -p $(BUILDDIR)
 	i='$*'; \
-	i=($${i//,/ }); \
+	i=$${i/,/ }; \
+	i=$${i/,/ }; \
+	i=($${i}); \
 	( echo '!dnl,exec(self._filename="$<")'; \
 	  echo '!dnl,exec(self._cwd="assignments")'; \
 	  echo '!dws,input(common.prep)'; \

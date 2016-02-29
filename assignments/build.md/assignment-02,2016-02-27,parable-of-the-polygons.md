@@ -1,4 +1,4 @@
-# Assignment 02: Parable Of The Polygons
+# Assignment 02: Parable Of the Polygons
 please turn in by 11pm on 2016-02-27
 
 - This project is based on a "playable post" by Vi Hart and Nicky Case called

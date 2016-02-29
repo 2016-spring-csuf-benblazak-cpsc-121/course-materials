@@ -7,10 +7,19 @@
 
 self.input('../../common.prep')
 
-title = self.strip_extension(doc.jobname, 0).split(',')
+title = self.strip_extension(doc.jobname, 0).split(',',maxsplit=2)
 title[0] = ' '.join(title[0].split('-'))
 title[2] = ' '.join(title[2].split('-'))
-doc.title = ( title[0] + ': ' + title[2] ).title() \
+
+title[0] = title[0].title()
+title[2] = ' '.join([
+    s if s in ( 'and', 'the', 'with', )
+    else s.upper() if s in ( 'stl', )
+    else s.title()
+    for s in title[2].lower().split()
+])
+
+doc.title = ( title[0] + ': ' + title[2] ) \
     + '\nplease turn in by 11pm on ' + title[1]
 
 # -----------------------------------------------------------------------------
