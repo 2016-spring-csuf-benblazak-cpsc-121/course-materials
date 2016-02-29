@@ -13,7 +13,7 @@ title[2] = ' '.join(title[2].split('-'))
 
 title[0] = title[0].title()
 title[2] = ' '.join([
-    s if s in ( 'and', 'the', 'with', )
+    s if s in ( 'and', 'of', 'the', 'with', )
     else s.upper() if s in ( 'stl', )
     else s.title()
     for s in title[2].lower().split()
