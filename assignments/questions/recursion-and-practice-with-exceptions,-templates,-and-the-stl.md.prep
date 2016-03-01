@@ -8,7 +8,9 @@ You are allowed to write everything in one file this time, so long it is
 organized and the file is not too long.  If the file gets too long, please
 split it into multiple `.h` and `.cpp` files, and have a `main.cpp` that
 `#include`s the `.h` files, and can be used to call the test functions
-prototyped in them.
+prototyped in them.  I recommend having one pair of `.h` and `.cpp` files for
+Parts 1--3, and another pair for Part 4 (and the challenge, if you choose to
+take it).
 
 All the files you produce must be able to exist within a single project.  You
 will submit these files via github as normal.
@@ -47,6 +49,11 @@ Write as many of the following functions as you can in roughly 3 hours:
 
 - TBA (various recursive functions)
 <!-- TODO -->
+
+### Part 5
+
+Rewrite the functions you wrote in Part 4 as iterative functions (append
+`_iter` to your name for the recursive version of the function).
 
 ### Challenge
 
