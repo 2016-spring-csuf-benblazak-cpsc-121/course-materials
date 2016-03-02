@@ -95,8 +95,8 @@ Review of CPSC 120 | 1--6, 8 | 1--2
 Pointers | 10 | 3
 OOP Introduction | 7 | 4--5
 Exceptions, Templates, and the STL | 16 | 6
-Searching, Sorting, and Algorithm Analysis | 9 | 7
-Recursion | 14 | 8--9
+Recursion | 14 | 7
+Searching, Sorting, and Algorithm Analysis | 9 | 8--9
 *(Midterm)* |  | 9 lab
 *(Spring Recess)* |  | 
 More OOP | 11 | 10--11

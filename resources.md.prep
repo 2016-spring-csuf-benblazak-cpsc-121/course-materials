@@ -154,6 +154,9 @@
   > [...] there is no such thing as a "template class," there is only a "class
   > template."
 
+- [Why should I use a pointer rather than the object itself?]
+  (http://stackoverflow.com/a/22146244)
+
 
 ## Tutorials
 
