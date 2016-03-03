@@ -54,19 +54,19 @@ Write definitions for as many of the following functions as you can in roughly
   Returns the greatest common divisor of two integers using Euclid's algorithm.
   This function has the following properties:
 
-    0. `gcd(a,0)` evaluates to `abs(a)`
-    0. `gcd(a,b)` is equivalent to `gcd(b,a)`
-    0. `gcd(a,b)` is equivalent to `gcd(abs(a),abs(b))`
-    0. `gcd(a,b)` is equivalent to `gcd(a-b,b)` is equivalent to `gcd(a,b-a)`
+    - `gcd(a,0)` evaluates to `abs(a)`
+    - `gcd(a,b)` is equivalent to `gcd(b,a)`
+    - `gcd(a,b)` is equivalent to `gcd(abs(a),abs(b))`
+    - `gcd(a,b)` is equivalent to `gcd(a-b,b)` is equivalent to `gcd(a,b-a)`
 
   Pseudocode for this function might look like the following:
 
-    0. Normalize `a` and `b` by making them positive
-    0. If `a` or `b` is `0`, return the one that is nonzero
-    0. If `a > b` return `gcd(a-b, b)`
-    0. Otherwise return `gcd(a, b-a)`
+    - Normalize `a` and `b` by making them positive
+    - If `a` or `b` is `0`, return the one that is nonzero
+    - If `a > b` return `gcd(a-b, b)`
+    - Otherwise return `gcd(a, b-a)`
 
-  where step (1) is the base case, and steps (2) and (3) are the recursive
+  where line (2) is the base case, and lines (3) and (4) are the recursive
   case.
 
 - `int fib(int n);`
