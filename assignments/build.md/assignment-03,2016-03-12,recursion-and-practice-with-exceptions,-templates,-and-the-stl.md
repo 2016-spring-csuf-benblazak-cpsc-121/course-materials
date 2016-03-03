@@ -49,8 +49,10 @@ will submit these files via github as normal.
 Write definitions for as many of the following functions as you can in roughly
 3 hours.  Be sure to label the base case and recursive case in each function.
 
-- `int gcd(int a, int b);`: Returns the greatest common divisor of two integers
-  using Euclid's algorithm.  This function has the following properties:
+- `int gcd(int a, int b);`
+
+  Returns the greatest common divisor of two integers using Euclid's algorithm.
+  This function has the following properties:
 
     0. `gcd(a,0)` evaluates to `abs(a)`
     0. `gcd(a,b)` is equivalent to `gcd(b,a)`
@@ -67,18 +69,22 @@ Write definitions for as many of the following functions as you can in roughly
   where step (1) is the base case, and steps (2) and (3) are the recursive
   case.
 
-- `int fib(int n);`: Returns the `n`th Fibonacci number.  Recall that the
-  Fibonacci sequence is defined as follows:
+- `int fib(int n);`
+
+  Returns the `n`th Fibonacci number.  Recall that the Fibonacci sequence is
+  defined as follows:
 
     - `fib(1)` evaluates to `1`
     - `fib(2)` evaluates to `1`
     - `fib(n)` evaluates to `fib(n-1) + fib(n-2)`
 
-- `int pow(int a, int b);`: Returns `a` raised to the `b`th power (for positive
-  `b`).
+- `int pow(int a, int b);`
 
-- `int tri(int n);`: Returns the `n`th triangular number.  Triangular numbers
-  are, informally
+  Returns `a` raised to the `b`th power (for positive `b`).
+
+- `int tri(int n);`
+
+  Returns the `n`th triangular number.  Triangular numbers are, informally
 
   ```
   1    .
@@ -105,12 +111,15 @@ Rewrite the functions you wrote in Part 4 as iterative functions (append
 
 ### Challenge
 
-- `std::string int_to_roman(int n);`: A recursive version of the
-  `int_to_roman()` function from assignment-01
+- `std::string int_to_roman(int n);`
 
-- `std::string int_to_words(int n);`: A recursive function taking in any
-  integer, `n`, and returning a string containing the English representation of
-  that number.  For example, the following code:
+  A recursive version of the `int_to_roman()` function from assignment-01
+
+- `std::string int_to_words(int n);`
+
+  A recursive function taking in any integer, `n`, and returning a string
+  containing the English representation of that number.  For example, the
+  following code:
 
   ```c++
     cout << 0 << " == " << int_to_words(0) << endl;
