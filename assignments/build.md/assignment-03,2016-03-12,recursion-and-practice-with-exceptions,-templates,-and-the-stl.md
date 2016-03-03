@@ -46,10 +46,57 @@ will submit these files via github as normal.
 
 ### Part 4
 
-Write as many of the following functions as you can in roughly 3 hours:
+Write definitions for as many of the following functions as you can in roughly
+3 hours.  Be sure to label the base case and recursive case in each function.
 
-- TBA (various recursive functions)
-<!-- TODO -->
+- `int gcd(int a, int b);`: Returns the greatest common divisor of two integers
+  using Euclid's algorithm.  This function has the following properties:
+
+    0. `gcd(a,0)` evaluates to `abs(a)`
+    0. `gcd(a,b)` is equivalent to `gcd(b,a)`
+    0. `gcd(a,b)` is equivalent to `gcd(abs(a),abs(b))`
+    0. `gcd(a,b)` is equivalent to `gcd(a-b,b)` is equivalent to `gcd(a,b-a)`
+
+  Pseudocode for this function might look like the following:
+
+    0. Normalize `a` and `b` by making them positive
+    0. If `a` or `b` is `0`, return the one that is nonzero
+    0. If `a > b` return `gcd(a-b, b)`
+    0. Otherwise return `gcd(a, b-a)`
+
+  where step (1) is the base case, and steps (2) and (3) are the recursive
+  case.
+
+- `int fib(int n);`: Returns the `n`th Fibonacci number.  Recall that the
+  Fibonacci sequence is defined as follows:
+
+    - `fib(1)` evaluates to `1`
+    - `fib(2)` evaluates to `1`
+    - `fib(n)` evaluates to `fib(n-1) + fib(n-2)`
+
+- `int pow(int a, int b);`: Returns `a` raised to the `b`th power (for positive
+  `b`).
+
+- `int tri(int n);`: Returns the `n`th triangular number.  Triangular numbers
+  are, informally
+
+  ```
+  1    .
+ 
+       .
+  3   . .
+
+       .
+      . .
+  6  . . .
+  ```
+
+  and so on.  More formally, the `n`th triangular number, for `n > 0`, is the
+  sum of the integers between `1` and `n`, inclusive.
+
+  Note that there is a closed form expression for finding the `n`th triangular
+  number (and a famous story about Gauss coming up with it, as a child); but
+  for this assignment, please find the answer algorithmically :-).
 
 ### Part 5
 
@@ -58,9 +105,77 @@ Rewrite the functions you wrote in Part 4 as iterative functions (append
 
 ### Challenge
 
-- TBA (int to words)
-<!-- TODO -->
+- `std::string int_to_roman(int n);`: A recursive version of the
+  `int_to_roman()` function from assignment-01
 
+- `std::string int_to_words(int n);`: A recursive function taking in any
+  integer, `n`, and returning a string containing the English representation of
+  that number.  For example, the following code:
+
+  ```c++
+    cout << 0 << " == " << int_to_words(0) << endl;
+    cout << 1 << " == " << int_to_words(1) << endl;
+    cout << -1 << " == " << int_to_words(-1) << endl;
+    cout << 123 << " == " << int_to_words(123) << endl;
+    cout << 123123 << " == " << int_to_words(123123) << endl;
+    cout << 123000123 << " == " << int_to_words(123000123) << endl;
+    cout << 123123000 << " == " << int_to_words(123123000) << endl;
+  ```
+
+  should produce the following output:
+
+  ```
+  0 == zero
+  1 == one
+  -1 == negative one
+  123 == one hundred twenty three
+  123123 == one hundred twenty three thousand one hundred twenty three
+  123000123 == one hundred twenty three million one hundred twenty three
+  123123000 == one hundred twenty three million one hundred twenty three thousand
+  ```
+
+  While writing this, remember the use of `const` arrays in the in-class
+  solution to assignment-01.  A similar technique may save you a lot of `if ...
+  else` statements.
+
+  Also, if you find it useful, you may modify the function signature slightly.
+
+  As a general approach to solving this problem, I would recommend starting by
+  writing a function that can correctly handle all the numbers from 1--999,
+  then extending it to handle all possible numbers by splitting the original
+  number into groups of 3 digits, recursively passing these smaller groups
+  to itself, and appending the correct suffix (e.g. "thousand") to each group.
+
+- `std::string magic_number(int n);`
+
+  Ponder this:
+
+  ```
+  1 is 3
+  3 is 5
+  5 is 4
+  4 is the magic number!
+
+  7 is 5
+  5 is 4
+  4 is the magic number!
+
+  13 is 8
+  8 is 5
+  5 is 4
+  4 is the magic number!
+  ```
+
+  Why is 4 the magic number?  Is 4 always the magic number?
+
+  Once you figure it out, write a recursive function that generates the above
+  example given the following:
+
+  ```c++
+  cout << magic_number(1) << endl;
+  cout << magic_number(7) << endl;
+  cout << magic_number(13) << endl;
+  ```
 
 ## Requests
 
