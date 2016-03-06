@@ -1,0 +1,22 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Write a recursive function called \mintinline{cpp}{factorial} that takes as an
+argument some nonnegative integer and returns the factorial of that integer --
+i.e.~for a $n\geq0$, \mintinline{cpp}{factorial(n)} should return $1 \cdot 2
+\cdots (n-1) \cdot n$.  As a special case, \mintinline{cpp}{factorial(0)}
+should return \mintinline{cpp}{1}.  If the value passed is invalid, the
+function should return \mintinline{cpp}{0}.  For example:
+
+\showCodeLeft{question}{main}
+
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.function}}
+

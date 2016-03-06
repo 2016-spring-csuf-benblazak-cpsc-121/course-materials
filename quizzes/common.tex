@@ -258,24 +258,28 @@
 
 % .............................................................................
 
-\long\def \standardsSection #1{{
+\long\def \standardsSectionStretch #1#2{{
   \section*{Standards}
-  \def\arraystretch{2}
+  \def\arraystretch{#1}
   \setlength\tabcolsep{1em}
   \begin{tabular}{|r|l|}
-    \hline \textbf{Standard} & \textbf{Score} \\\hline #1
+    \hline \textbf{Standard} & \textbf{Score} \\\hline #2
   \end{tabular}
   \newpage
 }}
-\long\def \standards #1{{
+\long\def \standardsStretch #1#2{{
   \vspace{-1em}
-  \def\arraystretch{2}
+  \def\arraystretch{#1}
   \setlength\tabcolsep{1em}
   \begin{tabular}{|r|l|}
-    \hline #1
+    \hline #2
   \end{tabular}
   \vspace{1em}
 }}
+
+\long\def \standardsSection #1{\standardsSectionStretch{2}{#1}}
+\long\def \standards #1{\standardsStretch{2}{#1}}
+
 \def \standard #1{
   #1 & ~~~ \\\hline
 }

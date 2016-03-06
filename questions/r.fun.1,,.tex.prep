@@ -17,13 +17,13 @@ are in the standard namespace, do the following:
   \item Write a prototype and definition for a function named
     \mintinline{cpp}{abs} that accepts one \mintinline{cpp}{int} and returns
     the absolute value as an \mintinline{cpp}{int}.
-    \textAnswer{\showCodeLeft{question}{abs}}
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.abs}}
     \vfill
 
   \item Write a prototype and definition for a function named
     \mintinline{cpp}{swap} that accepts two \mintinline{cpp}{int}s, both passed
     by reference, and swaps their values.
-    \textAnswer{\showCodeLeft{question}{swap}}
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.swap}}
     \vfill
 
   \item Write a \mintinline{cpp}{main()} to do the following:

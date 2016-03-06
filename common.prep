@@ -11,7 +11,7 @@ self._path.insert(1, '..')
 global standards
 import standards
 
-doc.args = self.strip_extension(doc.jobname, 2).split(',')
+doc.args = doc.jobname.split(',,')[:-1]
 doc.jobnameroot = doc.args[0]
 
 # -----------------------------------------------------------------------------
@@ -21,7 +21,7 @@ doc.jobnameroot = doc.args[0]
 !cnl# to use write `!exec,prep,(doc.gen_question_header)`
 doc.gen_question_header = !repr(((
     !exec(((
-        doc.questions = doc.args
+        doc.questions = [ e for a in doc.args for e in a.split(',') ]
         doc.standards = [
             standards.lookup(self.strip_extension(s)) for s in doc.questions
         ]
@@ -56,11 +56,16 @@ doc.gen_quiz_tex = !repr(((
             doc.title = doc.args[0]
         doc.title = doc.title.title()
 
-        doc.questions = doc.args[1:]
+        doc.questions = [ e for a in doc.args[1:] for e in a.split(',') ]
 
         doc.standards = [
             standards.lookup(self.strip_extension(s)) for s in doc.questions
         ]
+
+        if len(doc.standards) <= 20:
+            doc.standards_section_stretch = 2
+        else:
+            doc.standards_section_stretch = 1.85
     )))
 
     self.print( !repr,prep,dedent(((
@@ -80,10 +85,10 @@ doc.gen_quiz_tex = !repr(((
             # - there is more than one standard
             # - the one standard begins on an even page
             print_list = False
-            if len(doc.standards) > 1:
+            if len(doc.args[1:]) > 1:
                 print_list = True
             else:
-                with open('../questions/'+doc.questions[0]+'.tex.prep') as f:
+                with open('../questions/'+doc.args[1]+',,.tex.prep') as f:
                     for line in f:
                         if line.startswith('\\newpage'):
                             print_list = False
@@ -93,7 +98,7 @@ doc.gen_quiz_tex = !repr(((
                             break
             if print_list:
                 self.print( !repr,prep,dedent(((
-                    \standardsSection{
+                    \standardsSectionStretch{!(doc.standards_section_stretch)}{
                       !('\n'.join([
                           '\\standard{' + ' :: '.join(s) + '}'
                           for s in doc.standards
@@ -104,7 +109,7 @@ doc.gen_quiz_tex = !repr(((
                 ))) )
         )))
         !('\n'.join([
-            '\\input{../questions/.gen.' + q + '.tex}' for q in doc.questions
+            '\\input{../questions/.gen.' + q + ',,.tex}' for q in doc.args[1:]
         ]))
 
         \end{document}

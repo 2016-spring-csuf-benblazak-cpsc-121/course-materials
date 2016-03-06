@@ -1,0 +1,57 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\section*{Instructions}
+
+{
+  \long\def\answer#1{#1}
+  Write declarations for the following descriptions, and descriptions for the
+  following declarations:
+  \begin{itemize}
+    \item \mintinline{cpp}{int i}
+      \textAnswer{\par{}declare i as int}
+    \item declare a as array 3 of int
+      \textAnswer{\par{}\mintinline{cpp}{int a[3]}}
+  \end{itemize}
+}
+
+\section*{Questions}
+
+Write declarations for the following descriptions, and descriptions for the
+following declarations:
+\begin{itemize}
+
+  \item declare p as pointer to int
+    \textAnswer{\par{}\mintinline{cpp}{int * p}}
+    \vfill
+
+  \item declare r as reference to int
+    \textAnswer{\par{}\mintinline{cpp}{int & r}}
+    \vfill
+
+  \item \mintinline{cpp}{int (*p)[3]}
+    \textAnswer{\par{}declare p as pointer to array 3 of int}
+    \vfill
+
+  \item \mintinline{cpp}{int (&r)[3]}
+    \textAnswer{\par{}declare r as reference to array 3 of int}
+    \vfill
+
+  \item \mintinline{cpp}{void (*p)()}
+    \textAnswer{\par{}declare p as pointer to function returning void}
+    \vfill
+
+  \item declare p as pointer to function (int, array of int) returning int
+    \textAnswer{\par{}\mintinline{cpp}{int (*p)(int, int[])}}
+    \vfill
+
+\end{itemize}
+

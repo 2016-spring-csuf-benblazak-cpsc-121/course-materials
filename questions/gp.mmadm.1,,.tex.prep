@@ -1,0 +1,58 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Given a \mintinline{cpp}{const int SIZE} set to some positive value,
+    use either the C style functions or the C++ style operators to write
+    statements to do the following:
+    \begin{itemize}
+      \item Dynamically allocate memory for an array of \mintinline{cpp}{SIZE}
+        \mintinline{cpp}{char}s, and store the resulting pointer to the first
+        element in a variable of the appropriate type.
+      \item Deallocate the dynamically allocated memory.
+    \end{itemize}
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+    \vfill
+
+  \item In what section of memory are automatic variables placed?
+    \textAnswer{\par
+      the stack
+    }
+    \vfill
+
+  \item In what section of memory are dynamically allocated variables placed?
+    \textAnswer{\par
+      the heap (when using C style functions) or the free store (when using C++
+      style operators) (though the free store is often informally referred to
+      as the heap)
+    }
+    \vfill
+
+  \item What happens when you dynamically allocate memory, but fail to
+    deallocate it?
+    \textAnswer{\par
+      The memory remains allocated to your program until the program is
+      terminated (at which time \textit{all} memory in use by your program is
+      reclaimed by the operating system).  This is known as a memory leak.
+    }
+    \vfill
+
+  \item What happens when you deallocate a block of dynamically allocated
+    memory, but keep a pointer to the beginning of the block?
+    \textAnswer{\par
+      The pointer may still be used in some ways, but dereferencing it leads to
+      undefined behavior.  This is known as a dangling pointer.
+    }
+    \vfill
+
+\end{itemize}
+

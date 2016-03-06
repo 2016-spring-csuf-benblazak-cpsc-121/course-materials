@@ -1,0 +1,92 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Complete the following table for a typical 64 bit system:
+
+    {
+      \def\arraystretch{2}
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Literal}
+        & \textbf{\hbox to 2in{\hfill{}Type\hfill}}
+        & \textbf{Size (in bytes)}
+        \\\hline
+        \mintinline{cpp}{true}
+        & \textAnswer{\mintinline{cpp}{bool}}
+        & \textAnswer{1}
+        \\\hline
+        \mintinline{cpp}{3}
+        & \textAnswer{\mintinline{cpp}{int}}
+        & \textAnswer{4}
+        \\\hline
+        \mintinline{cpp}{'a'}
+        & \textAnswer{\mintinline{cpp}{char}}
+        & \textAnswer{1}
+        \\\hline
+        \mintinline{cpp}{3.14}
+        & \textAnswer{\mintinline{cpp}{double}}
+        & \textAnswer{8}
+        \\\hline
+        \mintinline{cpp}{3.14F}
+        & \textAnswer{\mintinline{cpp}{float}}
+        & \textAnswer{4}
+        \\\hline
+        \mintinline{cpp}{":)"}
+        & \textAnswer{\mintinline{cpp}{const char[3]}}
+        & \textAnswer{3}
+        \\\hline
+      \end{tabular}
+    }
+    \vspace{3ex}
+
+  \item Complete the following table:
+
+    {
+      \def\arraystretch{2}
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{binary}
+        & \textbf{decimal}
+        & \textbf{hexadecimal}
+        \\\hline
+        \mintinline{cpp}{0b0111}
+        & \textAnswer{\mintinline{cpp}{7}}
+        & \textAnswer{\mintinline{cpp}{0x7}}
+        \\\hline
+        \textAnswer{\mintinline{cpp}{0b1011}}
+        & \mintinline{cpp}{11}
+        & \textAnswer{\mintinline{cpp}{0xB}}
+        \\\hline
+        \textAnswer{\mintinline{cpp}{0b1101}}
+        & \textAnswer{\mintinline{cpp}{13}}
+        & \mintinline{cpp}{0xD}
+        \\\hline
+      \end{tabular}
+    }
+    \vspace{3ex}
+
+  \item What would be the minimum and maximum values of a signed 8-bit integer?
+    \textAnswer{\par
+      $-2^{8-1} = -128$ and $2^{8-1}-1 = 127$
+    }
+    \vfill
+
+  \item What would be the minimum and maximum values of a unsigned 8-bit
+    integer?
+    \textAnswer{\par
+      $0$ and $2^8-1 = 255$
+    }
+    \vfill
+
+\end{itemize}
+

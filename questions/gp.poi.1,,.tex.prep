@@ -1,0 +1,71 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Write statements to do the following:
+    \begin{itemize}
+      \item Declare a \mintinline{cpp}{char} named \mintinline{cpp}{c} and set
+        it equal to \mintinline{cpp}{'a'}.
+      \item Declare a pointer named \mintinline{cpp}{p} and use it to set
+        \mintinline{cpp}{c} equal to \mintinline{cpp}{'b'}.
+      \item Declare a reference named \mintinline{cpp}{r} and use it to set
+        \mintinline{cpp}{c} equal to \mintinline{cpp}{'c'}.
+      \item Output the value of \mintinline{cpp}{c}, the value pointed to by
+        \mintinline{cpp}{p}, and the value referenced by \mintinline{cpp}{r},
+        separated by whitespace, and \textbf{indicate the results of this
+        statement}.
+    \end{itemize}
+    \textAnswer{\showCodeLeft{question-1}{all}}
+    \vfill
+
+  \item Show the output of the following program:
+    \evaluateCodeLeft{question-2}{all}
+
+    \filbreak
+
+  \item Show the output of the following program.  Recall that
+    \mintinline{cpp}{uintptr_t} is an unsigned integer type capable of
+    storing any valid pointer value without loss of precision, and that
+    \mintinline{cpp}{(uintptr_t)a} is a C style cast of \mintinline{cpp}{a} to
+    type \mintinline{cpp}{uintptr_t}.
+    \evaluateCodeTop{question-3}{all}
+    \vspace{3ex}
+
+  \item List one similarity between an array and a pointer to the array's first
+    element.
+    \textAnswer{\par
+      \begin{itemize}
+        \item Either may be used to access any element of the array, with the
+          same syntax.
+        \item They both convert to the same integral value.
+        \item $\cdots$
+      \end{itemize}
+    }
+    \vfill
+
+  \item List one difference between an array and a pointer to the array's first
+    element.
+    \textAnswer{\par
+      \begin{itemize}
+        \item They have different type.
+        \item The pointer may be assigned to, whereas the array may not.
+        \item Taking \mintinline{cpp}{sizeof(p)} and
+          \mintinline{cpp}{sizeof(a)} (assuming the array is called
+          \mintinline{cpp}{a} and the pointer is called \mintinline{cpp}{p})
+          will give different results.
+        \item $\cdots$
+      \end{itemize}
+    }
+    \vfill
+
+\end{itemize}
+

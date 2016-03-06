@@ -1,0 +1,56 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Leave a bit of room at the top of the page for comments,
+\mintinline{cpp}{#include} directives, and \mintinline{cpp}{using} statements.
+
+Write a class template named \mintinline{cpp}{Complex} that accepts one
+template argument, \mintinline{cpp}{T}, and has two public data members of type
+\mintinline{cpp}{T}: \mintinline{cpp}{r} to store the real part, and
+\mintinline{cpp}{i} to store the imaginary part.
+%
+Write a function member named \mintinline{cpp}{add} that takes one argument of
+type \mintinline{cpp}{Complex<T>} as a \mintinline{cpp}{const} reference, and
+returns a \mintinline{cpp}{Complex<T>} representing the sum of the two complex
+numbers (the one represented by the current instance, and the one passed as an
+argument).
+%
+Recall that the formula for adding two complex numbers
+$(a_1+b_1i)$ and $(a_2+b_2i)$ is
+\begin{align*}
+  (a_1+b_1i)+(a_2+b_2i) &= (a_1+a_2) + (b_1+b_2)i
+\end{align*}
+
+Write a \mintinline{cpp}{main()} to do the following:
+\begin{itemize}
+  \item Create two objects, \mintinline{cpp}{a} and \mintinline{cpp}{b}, using
+    the class template \mintinline{cpp}{Complex} with the template argument
+    \mintinline{cpp}{int}.
+  \item For \mintinline{cpp}{a}, set the real part to \mintinline{cpp}{1} and
+    the imaginary part to \mintinline{cpp}{2}.
+  \item For \mintinline{cpp}{b}, set the real part to \mintinline{cpp}{3} and
+    the imaginary part to \mintinline{cpp}{4}.
+  \item Create an object named \mintinline{cpp}{c} of the same type as
+    \mintinline{cpp}{a} and \mintinline{cpp}{b}, and use the
+    \mintinline{cpp}{add} function member to set it equal to the sum of
+    \mintinline{cpp}{a} and \mintinline{cpp}{b}.
+  \item Output the value of \mintinline{cpp}{c} using the following statement:
+    \mintinline{cpp}{cout << c.r << " + " << c.i << "i\n";}.
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{~}
+

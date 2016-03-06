@@ -1,0 +1,47 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Assuming that all necessary headers have been included and all required symbols
+are in the standard namespace, do the following:
+
+\begin{itemize}
+
+  \item Write a prototype and definition for a function named
+    \mintinline{cpp}{max} that accepts two \mintinline{cpp}{float}s and returns
+    the largest as a \mintinline{cpp}{float}.
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.max}}
+    \vfill
+
+  \item Write a prototype and definition for a function named
+    \mintinline{cpp}{times2} that accepts two \mintinline{cpp}{int}s, both
+    passed by reference, and sets them equal to two times their original value.
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.times2}}
+    \vfill
+
+  \item Write a \mintinline{cpp}{main()} to do the following:
+    \begin{itemize}
+      \item Let \mintinline{cpp}{int a = 5, b = 3;}.
+      \item Output the value returned by \mintinline{cpp}{max} called with the
+        arguments \mintinline{cpp}{a} and \mintinline{cpp}{b}, followed by a
+        newline.
+      \item Output the values of \mintinline{cpp}{a} and \mintinline{cpp}{b},
+        separated by whitespace, followed by a newline.
+      \item Call \mintinline{cpp}{times2} with \mintinline{cpp}{a} and
+        \mintinline{cpp}{b} as its arguments.
+      \item Output the values of \mintinline{cpp}{a} and \mintinline{cpp}{b},
+        separated by whitespace, followed by a newline.
+    \end{itemize}
+  \item Indicate the output of \mintinline{cpp}{main()}.
+    \textAnswer{\showCodeLeft{question}{main}}
+    \vfill
+
+\end{itemize}
+

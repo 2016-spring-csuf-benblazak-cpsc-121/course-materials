@@ -19,7 +19,9 @@ PDF := $(PDF:quizzes/%.tex.prep=$(BUILDDIR)/%.answers.pdf) \
 # -----------------------------------------------------------------------------
 .PHONY: all clean cleanall
 
-all: $(PDF)
+all:
+	touch quizzes/*
+	make $(PDF)
 
 clean: cleanquestions cleanshuffle
 	-rm -r .gen.* */.gen.*
@@ -31,6 +33,7 @@ cleanall: clean
 .PHONY: all-% clean-% allquestions cleanquestions
 
 all-%:
+	touch quizzes/$**
 	make $(filter $(BUILDDIR)/$*%,$(PDF))
 
 clean-%:
@@ -45,7 +48,7 @@ allquestions:
 cleanquestions:
 	-rm -r questions/.gen.*
 	for i in questions/*; do \
-		if [ -d "$$i" ]; then (cd "$$i"; make clean;); fi; \
+		if [ -d "$$i/code" ]; then (cd "$$i/code"; make clean;); fi; \
 	done
 
 # -----------------------------------------------------------------------------
@@ -74,8 +77,8 @@ $(BUILDDIR)/%.shuffle.pdf: $(BUILDDIR)/.gen.blank.pdf \
 
 # -----------------------------------------------------------------------------
 
-questions/.gen.%.tex:: questions/%.tex.prep
-	if [ -d 'questions/$*' ]; then (cd 'questions/$*'; make); fi;
+questions/.gen.%,,.tex:: questions/%,,.tex.prep
+	if [ -d 'questions/$*/code' ]; then (cd 'questions/$*/code'; make); fi;
 	$(PREP) -o '$@' '$<'
 
 quizzes/.gen.%.tex:: quizzes/%.tex.prep
@@ -101,11 +104,11 @@ quizzes/%.answers.tex: quizzes/%.tex
 
 quizzes/%.pdf: quizzes/%.tex
 	make $$( i='$(notdir $<)'; \
-		 i=$${i#*,}; \
-		 i=$${i%.*.tex}; \
-		 i=($${i//,/ }); \
+		 i=$${i#*,,}; \
+		 i=$${i%,,*}; \
+		 i=($${i//,,/ }); \
 		 i=($${i[@]/#/questions/.gen.}); \
-		 i=($${i[@]/%/.tex}); \
+		 i=($${i[@]/%/,,.tex}); \
 		 echo $${i[@]}; )
 	( cd quizzes; \
 	  ulimit -S -n 512; \

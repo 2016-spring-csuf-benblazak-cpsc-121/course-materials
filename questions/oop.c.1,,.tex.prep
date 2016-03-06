@@ -1,0 +1,46 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Leave a bit of room at the top of the page for comments,
+\mintinline{cpp}{#include} directives, and \mintinline{cpp}{using} statements.
+
+Write a class named \mintinline{cpp}{AvatarCharacter} that has two private data
+members of type \mintinline{cpp}{string}: \mintinline{cpp}{name} and
+\mintinline{cpp}{element}.  Write a constructor capable of initializing the
+data members (using the initialization list).  Write prototypes for two
+methods, both of which take no arguments and return \mintinline{cpp}{void}:
+\mintinline{cpp}{sayName}, and \mintinline{cpp}{sayElement}.
+
+Directly below the class, define the \mintinline{cpp}{sayName} method.  It
+should output \mintinline{cpp}{"My name is "}, followed by the character's
+\mintinline{cpp}{name}, followed by a newline.
+
+Below this, define the \mintinline{cpp}{sayElement} method.  It should output
+\mintinline{cpp}{"I bend "}, followed by the character's
+\mintinline{cpp}{element}, followed by a newline.
+
+Write a \mintinline{cpp}{main()} to do the following:
+\begin{itemize}
+  \item Create three \mintinline{cpp}{AvatarCharacter}s:
+    \begin{itemize}
+      \item ``Aang'', who bends ``everything!''
+      \item ``Katara'', who bends ``water :)''
+      \item ``Sokka'', who bends ``nothing :(''
+    \end{itemize}
+  \item Call the \mintinline{cpp}{sayName} and \mintinline{cpp}{sayElement}
+    methods on each one to produce the following output:
+    \inputminted{text}{\docCodeDir/.gen.question.output.section.all}
+\end{itemize}
+
+\newpage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+

@@ -3,18 +3,18 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
-PREP := ../../../scripts/prep.py
-SECTION := ../../../scripts/section.py
+PREP := ../../../../scripts/prep.py
+SECTION := ../../../../scripts/section.py
 
 CXX := clang++
 CXXFLAGS := -std=c++14
 
 # .............................................................................
 
-OUTPUT := $(wildcard code/*.cpp)
-OUTPUT := $(filter-out code/.gen.%,$(OUTPUT))
-OUTPUT := $(filter-out code/%.part.cpp,$(OUTPUT))
-OUTPUT := $(OUTPUT:code/%.cpp=code/.gen.%.output)
+OUTPUT := $(wildcard *.cpp)
+OUTPUT := $(filter-out .gen.%,$(OUTPUT))
+OUTPUT := $(filter-out %.part.cpp,$(OUTPUT))
+OUTPUT := $(OUTPUT:%.cpp=.gen.%.output)
 
 SECTIONED := $(OUTPUT:%.output=%.cpp.section.all) $(OUTPUT:%=%.section.all)
 
@@ -22,17 +22,17 @@ SECTIONED := $(OUTPUT:%.output=%.cpp.section.all) $(OUTPUT:%=%.section.all)
 .PHONY: all clean cleanall
 
 all: $(OUTPUT) $(SECTIONED)
-	-for i in code/.*--good; do make "$${i/%--good/--diff}"; done
-	for i in code/.*.output code/.*.section.*; do make $${i%.blank}.blank; done
+	-for i in .*--good; do make "$${i/%--good/--diff}"; done
+	for i in .*.output .*.section.*; do make $${i%.blank}.blank; done
 
 clean:
-	-rm -r code/.gen.*
+	-rm -r .gen.*
 
 cleanall: clean
 
 # -----------------------------------------------------------------------------
 
-.gen.%: %
+.gen.%:: %
 	cp '$<' '$@'
 
 .gen.%: .gen.%.cpp

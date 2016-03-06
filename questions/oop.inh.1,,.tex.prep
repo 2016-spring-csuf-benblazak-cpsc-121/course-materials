@@ -1,0 +1,40 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Leave a bit of room at the top of the page for comments,
+\mintinline{cpp}{#include} directives, and \mintinline{cpp}{using} statements.
+
+Write a class named \mintinline{cpp}{Rectangle} that has two private data
+members of type \mintinline{cpp}{double}: \mintinline{cpp}{length}, and
+\mintinline{cpp}{width}.  Write a constructor capable of initializing both
+private data members.  Write a method named \mintinline{cpp}{area} that returns
+the product of \mintinline{cpp}{length} and \mintinline{cpp}{witdh} as a
+\mintinline{cpp}{double}.
+
+Write a class named \mintinline{cpp}{Square} that inherits from
+\mintinline{cpp}{Rectangle} and has no non-inherited data members.  Write a
+constructor that takes a single argument named \mintinline{cpp}{edge}, and
+passes this argument (for both parameters) to the parent constructor (in the
+initialization list).
+
+Write a \mintinline{cpp}{main()} to do the following:
+\begin{itemize}
+  \item Create a \mintinline{cpp}{Rectangle} named \mintinline{cpp}{r} and a
+    \mintinline{cpp}{Square} named \mintinline{cpp}{s}, initialize them both,
+    and use the \mintinline{cpp}{area} method on each as appropriate, to
+    produce the following output:
+    \inputminted[label=Output]{text}{\docCodeDir/.gen.question.output.section.all}
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+
