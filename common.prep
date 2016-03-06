@@ -50,6 +50,9 @@ doc.gen_quiz_tex = !repr(((
         if re.match( r'\w\d\d', doc.args[0] ):
             if   doc.args[0][0] == 'q': doc.title = 'quiz '
             elif doc.args[0][0] == 'r': doc.title = 'reassessment '
+            elif doc.args[0][0] == 'p': doc.title = 'practical '
+            elif doc.args[0][0] == 'v': doc.title = 'verbal '
+            elif doc.args[0][0] == 'h': doc.title = 'homework '
             else:                   doc.title = doc.args[0][0] + ' '
             doc.title += doc.args[0][1:]
         else:
