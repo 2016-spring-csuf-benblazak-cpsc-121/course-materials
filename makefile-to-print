@@ -27,11 +27,15 @@ print:
 	for p in *.pdf; do make "print-$$p"; done
 
 print-%:
+	name='$*'; \
+	number=1; \
+	if [[ '$*' == *'--'* ]]; then number=$${name%--*}; fi; \
 	lpr -P $(PRINTER) \
 	    -o InputSlot=Tray3 \
 	    -o XRFinishing=Staple \
 	    -o XRStapleOption=1Staple \
 	    -o XRStapleLocation=TopLeft \
 	    -o sides=two-sided-long-edge \
+	    -#$${number} \
 	    '$*'
 
