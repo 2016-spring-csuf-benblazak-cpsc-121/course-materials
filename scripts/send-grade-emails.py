@@ -36,7 +36,7 @@ else:            studentdir = '../../../../students'
 studentdir = os.path.abspath(os.path.join(filedir, studentdir))
 
 scandir = os.path.join(studentdir, 'scans')
-gradedir = os.path.join(studentdir, 'build.grades.pdf')
+gradedir = os.path.join(studentdir, 'build.grades.html')
 
 # -----------------------------------------------------------------------------
 
@@ -134,7 +134,7 @@ def send_email(*args):
 
 # .............................................................................
 
-sp = subprocess.Popen( './gen-grade-sheets--pdf.command', shell = True )
+sp = subprocess.Popen( './gen-grade-sheets--html.command', shell = True )
 sp.communicate()
 
 files = {}
@@ -181,7 +181,7 @@ for cwid,attachments in files.items():
     body = textwrap.dedent( '''\
         Dear {alias},
 
-        Your updated grade sheet is attached, along with any graded quizzes which have not previously been sent.  Please let me know if you find any errors, or if you have any questions.  Available answer keys for quizzes will be posted to Google Drive: https://drive.google.com/folderview?id=0By3dRR4gD9xtOTZjVm5MMElqeVE&usp=sharing .
+        Your updated grade sheet is attached (please download before viewing), along with any graded quizzes which have not previously been sent.  Please let me know if you find any errors, or if you have any questions.  Available answer keys for quizzes will be posted to Google Drive: https://drive.google.com/folderview?id=0By3dRR4gD9xtOTZjVm5MMElqeVE&usp=sharing .
 
         Sincerely,
         Ben Blazak
