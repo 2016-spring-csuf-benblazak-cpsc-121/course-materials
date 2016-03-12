@@ -359,7 +359,9 @@
   \def\codeFile{\docCodeDir/.gen.#1.cpp.section.#2}
   \def\outputFile{\docCodeDir/.gen.#1.output.section.#2}
   \par
-  \inputminted[label={\normalsize{}Incorrect Code},fontsize=\Large]{cpp}{\codeFile--bad}
+  \textQuestion{
+    \inputminted[label={\normalsize{}Incorrect Code},fontsize=\Large]{cpp}{\codeFile--bad}
+  }
   \par
   \textQuestion{
     \IfFileExists{\outputFile--good}

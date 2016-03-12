@@ -41,51 +41,18 @@
         & \textAnswer{\mintinline{cpp}{float}}
         & \textAnswer{4}
         \\\hline
-        \mintinline{cpp}{"hello"}
-        & \textAnswer{\mintinline{cpp}{const char[6]}}
-        & \textAnswer{6}
+        \mintinline{cpp}{":)"}
+        & \textAnswer{\mintinline{cpp}{const char[3]}}
+        & \textAnswer{3}
         \\\hline
       \end{tabular}
     }
-    \vspace{3ex}
+    \vspace{5ex}
 
-  \item Complete the following table:
-
-    {
-      \def\arraystretch{2}
-      \begin{tabular}{|c|c|c|}
-        \hline
-        \textbf{binary}
-        & \textbf{decimal}
-        & \textbf{hexadecimal}
-        \\\hline
-        \mintinline{cpp}{0b0111}
-        & \textAnswer{\mintinline{cpp}{7}}
-        & \textAnswer{\mintinline{cpp}{0x7}}
-        \\\hline
-        \textAnswer{\mintinline{cpp}{0b1011}}
-        & \mintinline{cpp}{11}
-        & \textAnswer{\mintinline{cpp}{0xB}}
-        \\\hline
-        \textAnswer{\mintinline{cpp}{0b1101}}
-        & \textAnswer{\mintinline{cpp}{13}}
-        & \mintinline{cpp}{0xD}
-        \\\hline
-      \end{tabular}
-    }
-    \vspace{3ex}
-
-  \item What would be the minimum and maximum values of a signed 8-bit integer?
-    \textAnswer{\par
-      $-2^{8-1} = -128$ and $2^{8-1}-1 = 127$
-    }
-    \vfill
-
-  \item What would be the minimum and maximum values of a unsigned 8-bit
-    integer?
-    \textAnswer{\par
-      $0$ and $2^8-1 = 255$
-    }
+  \item Use two \mintinline{cpp}{for} loops (one inside the other, and without
+    any conditionals) to produce the following output:
+    \inputminted[label=Output]{text}{\docCodeDir/.gen.question.output.section.all}
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
     \vfill
 
 \end{itemize}
