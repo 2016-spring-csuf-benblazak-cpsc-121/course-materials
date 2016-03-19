@@ -15,6 +15,21 @@
   A very good collection of quotes and such.
 
 
+## Fun
+
+- [Parable of the Polygons]
+  (http://ncase.me/polygons/)
+
+- [The Sounds of Sorting Algorithms]
+  (http://www.caseyrule.com/projects/sounds-of-sorting/)
+
+- [The Sound of Sorting - "Audibilization" and Visualization of Sorting Algorithms]
+  (http://panthema.net/2013/sound-of-sorting/)
+
+- [youtube : 15 Sorting Algorithms in 6 Minutes]
+  (https://www.youtube.com/watch?v=kPRA0W1kECg)
+
+
 ## Technical Reference
 
 - [The C++ Programming Language]
