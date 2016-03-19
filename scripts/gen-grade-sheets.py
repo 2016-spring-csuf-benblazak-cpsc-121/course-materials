@@ -130,3 +130,27 @@ for title in titles:
                                universal_newlines = True )
         sp.communicate()
 
+        # .....................................................................
+        # combined student sheets (for printing)
+
+        command = (
+            'pdfjoin -o' +
+            " '" + os.path.join(
+                pdfbuilddir,
+                '_group_' + title + '.pdf'
+            ) + "'" +
+            " '" + "' '".join([
+                os.path.join(
+                    pdfbuilddir,
+                    students.students[cwid]['alias'].lower() + '.pdf'
+                ) for cwid in cwids
+            ]) + "'"
+        )
+
+        sp = subprocess.Popen( command,
+                               shell = True,
+                               stdout = subprocess.DEVNULL,
+                               stderr = subprocess.DEVNULL,
+                               universal_newlines = True )
+        sp.communicate()
+
