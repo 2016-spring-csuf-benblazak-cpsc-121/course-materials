@@ -1,0 +1,27 @@
+!dwsr,dnl vim: ft=markdown
+
+## Administrative
+
+- Math salute!
+- Questions
+
+
+## Discussion
+
+### Part 1
+- Inheritance
+- Polymorphism
+
+### Part 2
+- Operator overloading
+    - Inside the class
+    - Outside the class (better for binary operators)
+- Friends
+- Special constructors (abbreviated "ctors")
+    - Copy constructors
+    - Type conversion constructors
+
+### Part 3
+- Interfaces
+- Static members
+
