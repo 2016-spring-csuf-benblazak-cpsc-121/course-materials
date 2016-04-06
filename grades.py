@@ -115,12 +115,6 @@ def _gen_grades():
 
             (i.name, i.scores) = \
                 f.split('.',maxsplit=1)[0].split(',', maxsplit=1)
-            i.scores = i.scores.split(',')
-
-            if '' in i.scores:
-                raise Error(
-                    'WARNING: empty score in'
-                    + ' "' + os.path.join(d, f) + '"' )
             if len(i.scores) != len(i.standards):
                 raise Error(
                     'WARNING: mismatch in number of scores for'
