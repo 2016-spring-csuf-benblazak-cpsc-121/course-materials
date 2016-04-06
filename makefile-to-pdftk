@@ -12,7 +12,7 @@ all:
 .PHONY: backup join rotate split
 
 backup:
-	dir="_original/$$(date | tr ' ' '_' | tr ':' ',')"; \
+	dir="_original/$$(gdate +'%Y-%m-%dT%H:%M:%S' | tr ' ' '_' | tr ':' '_')"; \
 	mkdir -p "$${dir}"; \
 	cp *.pdf "$${dir}";
 
