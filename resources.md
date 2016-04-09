@@ -15,21 +15,6 @@
   A very good collection of quotes and such.
 
 
-## Fun
-
-- [Parable of the Polygons]
-  (http://ncase.me/polygons/)
-
-- [The Sounds of Sorting Algorithms]
-  (http://www.caseyrule.com/projects/sounds-of-sorting/)
-
-- [The Sound of Sorting - "Audibilization" and Visualization of Sorting Algorithms]
-  (http://panthema.net/2013/sound-of-sorting/)
-
-- [youtube : 15 Sorting Algorithms in 6 Minutes]
-  (https://www.youtube.com/watch?v=kPRA0W1kECg)
-
-
 ## Technical Reference
 
 - [The C++ Programming Language]
@@ -158,6 +143,10 @@
 
 - [Why should I use a pointer rather than the object itself?]
   (http://stackoverflow.com/a/22146244)
+
+- [C++11 allows in-class initialization of non-static and non-const members. What changed?]
+  (http://stackoverflow.com/questions/13662441/c11-allows-in-class-initialization-of-non-static-and-non-const-members-what-c)  
+  Good, short discussion on the topic.  Gets a little technical.
 
 
 ## Tutorials
