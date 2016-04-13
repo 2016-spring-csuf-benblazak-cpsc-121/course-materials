@@ -3,6 +3,8 @@
 # Released under the [MIT License] (http://opensource.org/licenses/MIT)
 # -----------------------------------------------------------------------------
 
+SCANDIR := ../students/scans/
+
 # -----------------------------------------------------------------------------
 .PHONY: all
 
@@ -42,4 +44,13 @@ split-%: backup
 		done; \
 		rm "$${file}"; \
 	done;
+
+# .............................................................................
+.PHONY: file
+
+file: backup
+	for f in *.pdf; do \
+		dir=($(SCANDIR)/*,$${f%%,*},*/); \
+		mv -v "$$f" "$${dir}/$${f#*,}"; \
+	done
 
