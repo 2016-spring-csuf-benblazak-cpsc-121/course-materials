@@ -112,6 +112,7 @@ def _gen_grades():
 
         for f in os.listdir(os.path.join(scandir, d)):
             if f.startswith('.'): continue
+            if f.startswith('_'): continue
 
             (i.name, i.scores) = \
                 f.split('.',maxsplit=1)[0].split(',', maxsplit=1)

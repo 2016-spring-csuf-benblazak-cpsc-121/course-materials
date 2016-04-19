@@ -24,7 +24,7 @@ list-options:
 	lpoptions -p $(PRINTER) -l
 
 print:
-	for p in *.pdf; do make "print-$$p"; done
+	for p in *.pdf; do make "print-$$p"; sleep 1; done
 
 print-%:
 	name='$*'; \
