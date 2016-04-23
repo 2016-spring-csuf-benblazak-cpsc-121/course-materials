@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------------------
 
 # part time faculty work room
-PRINTER := ptr0940_fullerton_edu
+# PRINTER := ptr0940_fullerton_edu
 
 # office
 # PRINTER := ptr0941_fullerton_edu

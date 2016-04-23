@@ -51,6 +51,6 @@ split-%: backup
 file: backup
 	for f in *.pdf; do \
 		dir=($(SCANDIR)/*,$${f%%,*},*/); \
-		mv -v "$$f" "$${dir}/$${f#*,}"; \
+		mv -v -n "$$f" "$${dir}/$${f#*,}"; \
 	done
 

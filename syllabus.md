@@ -18,8 +18,8 @@ office | CS 303
 
 | section | day | time | place |
 |---------|-----|------|-------|
-01 | Tu | 7pm--8pm | CS 303
-03 | Tu | 7pm--8pm | CS 303
+01 | W | 4:30pm--5:30pm | CS 303
+03 | W | 4:30pm--5:30pm | CS 303
 09 | Th | 7pm--8pm | CS 303
 11 | Th | 7pm--8pm | CS 303
 17 | W | 3:30pm--4:30pm | CS 303

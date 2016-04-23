@@ -29,14 +29,14 @@
             'lab': [ 'Tu', '2:00pm--3:50pm', 'CS 104' ],
             'midterm': [ None, None, None ],
             'final': [ 'Tuesday, May 17', 'noon--1:50pm', None ],
-            'office hour': [ 'Tu', '7pm--8pm', None ],
+            'office hour': [ 'W', '4:30pm--5:30pm', None ],
         },
         '03': {
             'lecture': [ 'TuTh', '1:00pm--1:50pm', 'E 202' ],
             'lab': [ 'Th', '2:00pm--3:50pm', 'CS 104' ],
             'midterm': [ None, None, None ],
             'final': [ 'Tuesday, May 17', 'noon--1:50pm', None ],
-            'office hour': [ 'Tu', '7pm--8pm', None ],
+            'office hour': [ 'W', '4:30pm--5:30pm', None ],
         },
         '09': {
             'lecture': [ 'TuTh', '4:00pm--4:50pm', 'E 202' ],
