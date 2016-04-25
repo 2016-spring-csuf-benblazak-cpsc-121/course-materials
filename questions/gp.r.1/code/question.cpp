@@ -4,21 +4,30 @@ using std::cout;
 using std::endl;
 
 // SECTION BEGIN function
-int factorial(int n) {
+int sumEven(int n) {
     if (n < 0)
-        return 0;
+        throw "error: n is less than 0";
 
     if (n == 0)
-        return 1;
+        return 0;
 
-    return n * factorial(n-1);
+    if (n%2)
+        return sumEven(n-1);
+
+    return n + sumEven(n-2);
 }
 // SECTION END function
 
 // SECTION BEGIN main
 int main() {
-    for (int i = -1; i <= 5; i++)
-        cout << factorial(i) << " ";
+    try {
+        sumEven(-1);
+    } catch (const char * e) {
+        cout << e << endl;
+    }
+    for (int i = 0; i <= 5; i++)
+        cout << sumEven(i) << " ";
+    cout << endl;
 
     return 0;
 }

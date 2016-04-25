@@ -9,5 +9,60 @@
 
 % -----------------------------------------------------------------------------
 
-TODO  % TODO
+\subsection*{Style}
+\begin{itemize}
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item Be sure to document your code with a good amount (not too many, not too
+    few) of comments.
+
+\end{itemize}
+
+\subsection*{Instructions}
+\begin{itemize}
+  \item Write a class named \mintinline{cpp}{Phone}, with two
+    \mintinline{cpp}{public} member functions, both of which take no arguments
+    and return \mintinline{cpp}{void}: \mintinline{cpp}{call}, which is
+    \mintinline{cpp}{virtual}, and \mintinline{cpp}{text}, which is
+    non-virtual.  Each should output something unique.
+  \item Write a class named \mintinline{cpp}{IPhone} that inherits from Phone
+    and overrides both member functions (changing what each outputs to
+    something unique).
+  \item Write a class named \mintinline{cpp}{Android} that inherits from Phone
+    and overrides both member functions (changing what each outputs to
+    something unique).
+  \item Write a \mintinline{cpp}{main} to do the following:
+    \begin{itemize}
+      \item Create an \mintinline{cpp}{IPhone} named \mintinline{cpp}{iphone},
+        and an \mintinline{cpp}{Android} named \mintinline{cpp}{android}, and
+        two pointers of type \mintinline{cpp}{Phone*} (one pointing to
+        \mintinline{cpp}{iphone} and the other to \mintinline{cpp}{android}).
+      \item Call the \mintinline{cpp}{call} and \mintinline{cpp}{text} methods
+        (in that order) on the pointer to the instance of
+        \mintinline{cpp}{IPhone}.
+      \item Call the \mintinline{cpp}{call} and \mintinline{cpp}{text} methods
+        (in that order) on the pointer to the instance of
+        \mintinline{cpp}{Android}.
+      \item Call the \mintinline{cpp}{call} and \mintinline{cpp}{text} methods
+        (in that order) on \mintinline{cpp}{iphone}.
+      \item Call the \mintinline{cpp}{call} and \mintinline{cpp}{text} methods
+        (in that order) on \mintinline{cpp}{android}.
+    \end{itemize}
+  \item \textbf{Indicate the output that this program will produce.}
+\end{itemize}
+
+\newOddPage
+\textAnswer{
+  \showCodeTop{question}{all}
+  \newOddPage
+  ~
+}
+\textQuestion{
+  \makePageQuadrilleRuled
+  \newOddPage
+  \makePageQuadrilleRuled
+}
 

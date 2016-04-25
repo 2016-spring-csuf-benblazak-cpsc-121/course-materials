@@ -1,0 +1,77 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\def \memoryImage{%
+  \par\medskip\includegraphics[width=\linewidth,valign=t]{../images/memory}%
+}
+
+% -----------------------------------------------------------------------------
+
+\section*{Instructions}
+
+For questions with a picture illustrating memory, assume that the memory slots
+are one \mintinline{cpp}{int} wide, and use ``?'' in a slot to indicate that it
+contains an undefined value.  For each array, label an appropriately sized
+group of slots with the array name, and fill in the slots with the array's
+values.
+
+\vspace{2.7ex}
+\begin{minipage}[t]{0.5\linewidth} \vspace{0ex}
+  \vspace{-2.7ex}
+  \memoryImage
+  \par
+  \vspace{-0.63in}
+  \hspace{0.45in}
+  \includegraphics[width=1.15in]{\docImageDir/example}
+\end{minipage}
+\begin{minipage}[t]{0.5\linewidth} \vspace{0ex}
+  \inputminted{cpp}{\docCodeDir/.gen.example.cpp.section.array}
+\end{minipage}
+
+\section*{Questions}
+
+\begin{itemize}
+
+  \item What is the index of the first element of an array?
+    \textAnswer{\par
+      Answer: \mintinline{cpp}{0}
+    }
+    \vfill
+
+  \item What is the index of the last element of any array that holds 5 values?
+    \textAnswer{\par
+      Answer: \mintinline{cpp}{4}
+    }
+    \vfill
+
+  \item What happens when you access an element of the array that does not
+    exist?
+    \textAnswer{\par
+      If the program is allowed to access the location in memory then that
+      location in memory is accessed as if it were an element of the array
+      (regardless of what's actually there).  If the program doesn't have
+      access to the location in memory, a segmentation fault (segfault) will
+      occur, and the operating system will kill the process.
+    }
+    \vfill
+    \vfill
+
+  \item \memoryImage
+    \textAnswer{\par
+      \par
+      \vspace{-1.11in}
+      \hspace{0.9in}
+      \includegraphics[width=4.86in]{\docImageDir/question}
+    }
+    \inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.array}
+
+\end{itemize}
+

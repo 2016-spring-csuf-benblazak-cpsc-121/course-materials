@@ -9,44 +9,63 @@
 
 % -----------------------------------------------------------------------------
 
+\subsection*{Style}
 \begin{itemize}
 
   \item Leave a bit of room at the top of the page for comments,
     \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
     statements.
 
-  \item Write a class template named \mintinline{cpp}{Complex} that accepts one
-    template argument, \mintinline{cpp}{T}, and has two public data members of
-    type \mintinline{cpp}{T}: \mintinline{cpp}{r} to store the real part, and
-    \mintinline{cpp}{i} to store the imaginary part.
-    %
-    Write a function member named \mintinline{cpp}{add} that takes one argument
-    of type \mintinline{cpp}{Complex<T>} as a \mintinline{cpp}{const}
-    reference, and returns a \mintinline{cpp}{Complex<T>} representing the sum
-    of the two complex numbers (the one represented by the current instance,
-    and the one passed as an argument).
-    %
-    Recall that the formula for adding two complex numbers
-    $(a_r+a_ii)$ and $(b_r+b_ii)$ is
-    \begin{align*}
-      (a_r+a_ii)+(b_r+b_ii) &= (a_r+b_r) + (a_i+b_i)i
-    \end{align*}
+  \item \textbf{Write prototypes for all function members inside the class, and
+    definitions directly underneath.}
 
-  \item Write a \mintinline{cpp}{main()} to do the following:
+  \item Be sure to document your code with a good amount (not too many, not too
+    few) of comments.
+
+\end{itemize}
+
+\subsection*{Instructions}
+\begin{itemize}
+  \item Write a class template named \mintinline{cpp}{Stack10} that accepts one
+    template argument, \mintinline{cpp}{T}.  This class will implement a
+    simple, fixed-size stack.
+
+  \item The class template should contain the following private data members:
     \begin{itemize}
-      \item Create two objects, \mintinline{cpp}{a} and \mintinline{cpp}{b},
-        using the class template \mintinline{cpp}{Complex} with the template
-        argument \mintinline{cpp}{int}.
-      \item For \mintinline{cpp}{a}, set the real part to \mintinline{cpp}{1}
-        and the imaginary part to \mintinline{cpp}{2}.
-      \item For \mintinline{cpp}{b}, set the real part to \mintinline{cpp}{3}
-        and the imaginary part to \mintinline{cpp}{4}.
-      \item Create an object named \mintinline{cpp}{c} of the same type as
-        \mintinline{cpp}{a} and \mintinline{cpp}{b}, and use the
-        \mintinline{cpp}{add} function member of \mintinline{cpp}{a} to set it
-        equal to the sum of \mintinline{cpp}{a} and \mintinline{cpp}{b}.
-      \item Output the value of \mintinline{cpp}{c} using the following
-        statement: \mintinline{cpp}{cout << c.r << " + " << c.i << "i\n";}.
+      \item \mintinline{cpp}{SIZEMAX}, of type
+        \mintinline{cpp}{static const int}, initialized to
+        \mintinline{cpp}{10}.
+      \item \mintinline{cpp}{size}, of type \mintinline{cpp}{int} or
+        \mintinline{cpp}{unsigned int}, initialized to \mintinline{cpp}{0}.
+      \item \mintinline{cpp}{data}, an array of \mintinline{cpp}{SIZEMAX}
+        elements of type \mintinline{cpp}{T}, initialized to their default
+        value.
+    \end{itemize}
+
+  \item The class template should contain the following public function
+    members:
+    \begin{itemize}
+      \item \mintinline{cpp}{push}, which takes one argument of type
+        \mintinline{cpp}{T}, and returns \mintinline{cpp}{void}.  If there is
+        not room to put another element on the stack, it should throw an
+        exception.  Otherwise, it should set the next unused element of
+        \mintinline{cpp}{data} to the value received as an argument, and then
+        increment \mintinline{cpp}{size}.
+      \item \mintinline{cpp}{pop}, which takes no arguments, and returns
+        something of type \mintinline{cpp}{T}.  If the stack has no elements in
+        it to pop, it should throw an exception.  Otherwise, it should save the
+        most recently inserted element in a temporary variable, decrement
+        \mintinline{cpp}{size}, and return the element that was saved to a
+        temporary variable.
+    \end{itemize}
+
+  \item Inside \mintinline{cpp}{main}
+    \begin{itemize}
+      \item Create a \mintinline{cpp}{Stack10} named \mintinline{cpp}{s}.
+      \item Use the \mintinline{cpp}{push} method on \mintinline{cpp}{s} to
+        push 5 numbers (of your choice) onto the stack.
+      \item Use the \mintinline{cpp}{pop} method on \mintinline{cpp}{s} to
+        remove and output all the elements on the stack.
     \end{itemize}
 
 \end{itemize}
@@ -54,4 +73,8 @@
 \newOddPage
 \textQuestion{\makePageQuadrilleRuled}
 \textAnswer{\showCodeTop{question}{all}}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{~}
 

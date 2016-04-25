@@ -6,11 +6,11 @@ int main() {
 
     // SECTION BEGIN all
     // C++ style
-    char * a = new char[SIZE];
+    float * a = new float[SIZE];
     delete[] a;
 
     // C style
-    char * b = (char *) malloc( sizeof(char) * SIZE );
+    float * b = (float *) malloc( sizeof(float) * SIZE );
     free(b);
     // SECTION END all
 
