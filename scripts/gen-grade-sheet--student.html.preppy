@@ -111,7 +111,13 @@ import datetime
 
               {{script}}
                 d = grades.grades[cwid][(g,sta)].copy()
-                c = 'grade-' + ( grades.letter(round(d['overall']/4*100,1))[0]
+                p = ( round( d['overall']
+                               / (1 if g == 'assignment completion' else 4)
+                               * 100
+                             , 1 )
+                      if d['overall'] is not None
+                      else None )
+                c = 'grade-' + ( grades.letter(p)[0]
                                  if d['overall'] is not None
                                  else 'None' )
               {{endscript}}
@@ -119,7 +125,7 @@ import datetime
               <td class={{c}}>
                 <span class='assessment'>overall : </span>
                 {{if g == 'assignment completion'}}
-                  {{round(d['overall']*100, 1)}}%
+                  {{p}}%
                 {{else}}
                   {{d['overall']}}
                 {{endif}}

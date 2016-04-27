@@ -15,7 +15,7 @@
 all: print clean
 
 clean:
-	i="printed/$$(date '+%Y-%m-%d')"; mkdir -p $$i; mv *.pdf $$i
+	i="printed/$$(gdate +'%Y-%m-%dT%H:%M:%S' | tr ' ' '_' | tr ':' '_')"; mkdir -p $$i; mv *.pdf $$i
 
 # .............................................................................
 .PHONY: list-options print print-%
