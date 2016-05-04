@@ -130,7 +130,12 @@ def _gen_grades():
             ]
 
             for sta,sco in zip(i.standards,i.scores):
-                grades[students.lookup(i.name)][sta][i.assessment] = sco
+                try:
+                    grades[students.lookup(i.name)][sta][i.assessment] = sco
+                except students.Error:
+                    raise Error(
+                        'Name lookup failed for '
+                        + ' "' + os.path.join(d, f) + '"' )
 
     # .........................................................................
     # from file
