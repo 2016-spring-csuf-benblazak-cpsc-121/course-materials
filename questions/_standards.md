@@ -21,7 +21,6 @@ r.dtar
 r.fun
 r.o
 gp.mmadm
-gp.pa
 gp.poi
 gp.r
 gp.ssaaa
@@ -96,27 +95,27 @@ r19,,oop.c.1,,
 r20,,oop.e.1,,
 
 
-r24,,r.dtar.TODO
-r25,,r.a.TODO
-r26,,r.cf.TODO
+r24,,r.dtar.NONE
+r25,,r.a.NONE
+r26,,r.cf.NONE
 r27,,r.fun.4,,
 r28,,r.o.3,,
 
 r29,,gk.oop.1
 
-r30,,d.datc.TODO
+r30,,d.datc.NONE
 r31,,d.doc.0,d.cos.0,,
 
-r32,,gp.mmadm.TODO
-r33,,gp.poi.TODO
-r34,,gp.r.TODO
+r32,,gp.mmadm.NONE
+r33,,gp.poi.NONE
+r34,,gp.r.NONE
 r35,,gp.ssaaa.1,d.p.0,,
-r36,,gp.sl.TODO
+r36,,gp.sl.NONE
 r37,,gp.tem.3
-r38,,gp.td.TODO
+r38,,gp.td.NONE
 
-r39,,oop.c.TODO
-r40,,oop.e.TODO
+r39,,oop.c.NONE
+r40,,oop.e.NONE
 
 
 ## quiz
@@ -125,6 +124,27 @@ q04,,
 oop.inh.1,,
 oop.int.1,,
 oop.p.1,,
+
+
+## final
+
+q05,,
+gk.oop.1,,
+d.datc.f,,
+r.dtar.f,,
+r.a.f,,
+r.cf.f,,
+r.o.f,,
+gp.ssaaa.1,d.p.0,,
+r.fun.f,,
+gp.r.f,,
+gp.td.f,,
+gp.poi.f,,
+gp.mmadm.f,,
+gp.tem.f,gp.sl.0,,
+oop.c.f,,
+oop.e.f,,
+oop.int.f,oop.inh.0,oop.p.0,,
 
 -------------------------------------------------------------------------------
 

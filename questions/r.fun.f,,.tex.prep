@@ -1,0 +1,52 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item Prototype a function named \mintinline{cpp}{max} that returns the value
+    of the largest of 3 integers.  Don't forget to handle the case that some of
+    the integers are equal.
+
+  \item Prototype a function named \mintinline{cpp}{set_to_zero} that accepts
+    two integers by reference, and sets them both to zero.  Think about what
+    the return type should be (are we returning anything?), and don't forget to
+    specify it.
+
+  \item In \mintinline{cpp}{main}
+    \begin{itemize}
+      \item Let \mintinline{cpp}{int a = 5, b = 3, c = 4;}
+      \item Output the values of \mintinline{cpp}{a}, \mintinline{cpp}{b}, and
+        \mintinline{cpp}{c}, separated by whitespace, followed by a newline.
+      \item Output the value returned by \mintinline{cpp}{max}, called with
+        \mintinline{cpp}{a}, \mintinline{cpp}{b}, and \mintinline{cpp}{c} as
+        arguments.
+      \item Output the values of \mintinline{cpp}{a}, \mintinline{cpp}{b}, and
+        \mintinline{cpp}{c} again.
+      \item Call \mintinline{cpp}{set_to_zero} with \mintinline{cpp}{a} and
+        \mintinline{cpp}{b} as arguments.
+      \item Output the values of \mintinline{cpp}{a}, \mintinline{cpp}{b}, and
+        \mintinline{cpp}{c} again.
+    \end{itemize}
+
+  \item Define \mintinline{cpp}{max} and \mintinline{cpp}{set_to_zero}.
+
+  \item \textbf{Indicate the output this program will produce.}
+
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

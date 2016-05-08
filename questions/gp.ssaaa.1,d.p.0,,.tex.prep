@@ -16,7 +16,7 @@ Do the following:
     sort algorithm.
 \end{itemize}
 
-\textAnswer{{\par\footnotesize
+\textAnswer{{\par
   \subsection*{merge sort}
   \begin{itemize}
     \item If the list received is less than 2 elements long then return it
@@ -42,6 +42,8 @@ Do the following:
           \end{itemize}
       \end{itemize}
   \end{itemize}
+
+  \newpage
 
   \subsection*{selection sort}
   \begin{itemize}

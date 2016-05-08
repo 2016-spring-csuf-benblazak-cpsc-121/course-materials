@@ -1,0 +1,29 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+  \item Leave a bit of room for comments, \mintinline{cpp}{#include}
+    directives, and \mintinline{cpp}{using} statements.
+  \item Write a class named \mintinline{cpp}{Pencil} with one private data
+    member of type \mintinline{cpp}{int} named \mintinline{cpp}{lead}, a
+    constructor capable of initializing it (using the initialization list), and
+    one public member function named \mintinline{cpp}{write} that decrements
+    \mintinline{cpp}{lead} if \mintinline{cpp}{lead} is greater than
+    \mintinline{cpp}{0} or else outputs
+    \mintinline{cpp}{"can't write: out of lead!\n"}.
+  \item Inside \mintinline{cpp}{main}, create an object of type
+    \mintinline{cpp}{Pencil}, and call the \mintinline{cpp}{write} method on
+    it.
+\end{itemize}
+
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+

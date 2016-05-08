@@ -13,7 +13,7 @@
 
 \begin{itemize}
   \item Create a file on the desktop named \mintinline{cpp}{input.txt},
-    containg the following:
+    containing the following:
     \begin{minted}[autogobble]{text}
       1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
     \end{minted}
@@ -39,8 +39,10 @@
       \item Open a file for writing, using the second argument as the filename.
       \item Check that opening the file succeeded, and throw an exception if it
         did not.
-      \item Use a loop to read in every integer stored in the input file, and
-        write the square of that number to the output file.
+      \item Use a \mintinline{cpp}{while} loop to read in every integer stored
+        in the input file (without depending on how many are stored in this
+        particular input file), and write the square of that number to the
+        output file.
       \item Close both of the files.
     \end{itemize}
   \item Create a file named \mintinline{cpp}{main.cpp}.

@@ -1,0 +1,53 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\filbreak
+% \newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Complete the following table for a typical 64 bit system:
+
+    {
+      \def\arraystretch{2}
+      \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Literal}
+        & \textbf{\hbox to 2in{\hfill{}Type\hfill}}
+        & \textbf{Size (in bytes)}
+        \\\hline
+        \mintinline{cpp}{"^_^"}
+        & \textAnswer{\mintinline{cpp}{const char[4]}}
+        & \textAnswer{4}
+        \\\hline
+        \mintinline{cpp}{true}
+        & \textAnswer{\mintinline{cpp}{bool}}
+        & \textAnswer{1}
+        \\\hline
+        \mintinline{cpp}{'a'}
+        & \textAnswer{\mintinline{cpp}{char}}
+        & \textAnswer{1}
+        \\\hline
+        \mintinline{cpp}{3}
+        & \textAnswer{\mintinline{cpp}{int}}
+        & \textAnswer{4}
+        \\\hline
+        \mintinline{cpp}{3.14F}
+        & \textAnswer{\mintinline{cpp}{float}}
+        & \textAnswer{4}
+        \\\hline
+        \mintinline{cpp}{3.14}
+        & \textAnswer{\mintinline{cpp}{double}}
+        & \textAnswer{8}
+        \\\hline
+      \end{tabular}
+    }
+
+\end{itemize}
+
