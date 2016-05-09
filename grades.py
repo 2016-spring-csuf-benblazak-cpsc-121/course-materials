@@ -114,6 +114,10 @@ def _gen_grades():
             if f.startswith('.'): continue
             if f.startswith('_'): continue
 
+            if ',' not in f:
+                raise Error(
+                    'WARNING: no comma in'
+                    + ' "' + os.path.join(d, f) + '"' )
             (i.name, i.scores) = \
                 f.split('.',maxsplit=1)[0].split(',', maxsplit=1)
             if len(i.scores) != len(i.standards):
