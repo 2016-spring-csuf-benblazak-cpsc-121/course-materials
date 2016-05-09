@@ -16,8 +16,10 @@ Briefly explain each concept and why it's important.
     \vfill\textQuestion{\makeDashedLine}
   \item big-O
     \vfill\textQuestion{\makeDashedLine}
-  \item best, worst, and amortized cases for algorithmic analysis
+  \item best, worst, and average cases for algorithmic analysis
     \vfill\vfill\textQuestion{\makeDashedLine}
+  \item asymptotic vs amortized analysis
+    \vfill\textQuestion{\makeDashedLine}
   \item translation unit
     \vfill\textQuestion{\makeDashedLine}
   \item \mintinline{cpp}{const} correctness
