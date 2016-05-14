@@ -61,6 +61,7 @@ _to = ',\n '.join([
     if cwid in cwids
     and 'alias' in info
     and 'email' in info
+    and info['email'] is not None
 ])
 
 boundary = 'CONTENTBOUNDARY'
