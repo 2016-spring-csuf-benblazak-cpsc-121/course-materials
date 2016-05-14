@@ -16,24 +16,24 @@ all:
 backup:
 	dir="_original/$$(gdate +'%Y-%m-%dT%H:%M:%S' | tr ' ' '_' | tr ':' '_')"; \
 	mkdir -p "$${dir}"; \
-	cp *.pdf "$${dir}";
+	cp _process/*.pdf "$${dir}";
 
 # .............................................................................
 
 join: backup
-	pdftk *.pdf cat output _joined.pdf.join
-	rm *.pdf
-	mv _joined.pdf.join _joined.pdf
+	pdftk _process/*.pdf cat output _process/_joined.pdf.join
+	rm _process/*.pdf
+	mv _process/_joined.pdf.join _process/_joined.pdf
 
 rotate: backup
-	for i in *.pdf; do \
+	for i in _process/*.pdf; do \
 		pdftk "$$i" cat 1-enddown output "$$i.rotate"; \
 		mv "$$i.rotate" "$$i"; \
 	done
 
 split-%: backup
 	# mostly from <http://unix.stackexchange.com/a/66932>
-	for file in *.pdf; do \
+	for file in _process/*.pdf; do \
 		pages="$$(pdfinfo "$${file}"|grep 'Pages:'|sed 's/.*  *//')"; \
 		start=1; \
 		for end in $$(seq $$(($*)) $* $$((pages-1))) $${pages}; do \
@@ -49,8 +49,9 @@ split-%: backup
 .PHONY: file
 
 file: backup
+	cd _process; \
 	for f in *.pdf; do \
-		dir=($(SCANDIR)/*,$${f%%,*},*/); \
+		dir=(../$(SCANDIR)/*,$${f%%,*},*/); \
 		mv -v -n "$$f" "$${dir}/$${f#*,}"; \
 	done
 
