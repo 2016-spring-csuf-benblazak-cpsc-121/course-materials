@@ -107,9 +107,11 @@ for title in titles:
         cwids = [ cwid for cwid,info in students.students.items()
                   if 'name' in info and info['section'] == title ]
 
+    cwids = [cwid for cwid in cwids if 'si' not in cwid]
+
     cwids = sorted(
         cwids,
-        key = lambda cwid: \
+        key = lambda cwid:
             ', '.join(reversed(students.students[cwid]['alias'].split()))
     )
 
@@ -142,7 +144,7 @@ for title in titles:
             " '" + "' '".join([
                 os.path.join(
                     pdfbuilddir,
-                    students.students[cwid]['alias'].lower() + '.pdf'
+                    students.students[cwid]['name'].lower() + '.pdf'
                 ) for cwid in cwids
             ]) + "'"
         )

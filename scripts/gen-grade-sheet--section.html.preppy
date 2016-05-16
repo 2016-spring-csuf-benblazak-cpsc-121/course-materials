@@ -65,6 +65,7 @@ import datetime
             <th>name</th>
             <th>grade</th>
             <th>cwid</th>
+            <th>full name</th>
             <th>percent</th>
           </tr>
         </thead>
@@ -83,11 +84,13 @@ import datetime
             except TypeError:
               pass
             name = ', '.join(reversed(students.students[cwid]['alias'].split()))
+            fullname = students.students[cwid]['name']
           {{endscript}}
           <tr>
             <td class='name'>{{name}}</td>
             <td class='{{c}}'>{{grade}}</td>
             <td>{{cwid}}</td>
+            <td class='name'>{{fullname}}</td>
             <td class='{{c}} percent'>{{percent}}</td>
           </tr>
           {{endfor}}
