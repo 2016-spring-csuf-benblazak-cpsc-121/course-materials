@@ -83,7 +83,7 @@ for cwid,info in students.students.items():
         )
 
     if arg in ( 'pdf', ):
-        sp = subprocess.Popen( "wkhtmltopdf '" + html + "' '" + pdf + "'",
+        sp = subprocess.Popen( "wkhtmltopdf -s Letter '" + html + "' '" + pdf + "'",
                                shell = True,
                                stdout = subprocess.DEVNULL,
                                stderr = subprocess.DEVNULL,
@@ -125,7 +125,7 @@ for title in titles:
         )
 
     if arg in ( 'pdf', ):
-        sp = subprocess.Popen( "wkhtmltopdf '" + html + "' '" + pdf + "'",
+        sp = subprocess.Popen( "wkhtmltopdf -s Letter '" + html + "' '" + pdf + "'",
                                shell = True,
                                stdout = subprocess.DEVNULL,
                                stderr = subprocess.DEVNULL,
@@ -144,7 +144,7 @@ for title in titles:
             " '" + "' '".join([
                 os.path.join(
                     pdfbuilddir,
-                    students.students[cwid]['name'].lower() + '.pdf'
+                    students.students[cwid]['alias'].lower() + '.pdf'
                 ) for cwid in cwids
             ]) + "'"
         )

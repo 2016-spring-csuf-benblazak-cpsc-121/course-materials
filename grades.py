@@ -85,6 +85,7 @@ def _gen_grades():
             }))
 
     except (requests.exceptions.ConnectionError, github3.models.GitHubError):
+        print('WARNING: taking assignment grades from file', file=sys.stderr)
         assignments = eval(open(assignmentsfile).read())
         none = OrderedDict([
             (a, None) for a in assignments[list(assignments.keys())[0]]
