@@ -27,7 +27,7 @@ sections = [ s['section'] if 'section' in s else None
 sections = [ s for s in sections if s is not None ]
 sections = set(sections)
 
-for section in sections:
+for section in sorted(sections):
     values = [ v for k,v in grades.grades.items()
                if 'si' not in k
                and 'section' in students.students[k]
