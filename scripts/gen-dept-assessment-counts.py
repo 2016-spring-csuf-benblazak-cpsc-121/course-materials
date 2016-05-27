@@ -21,7 +21,7 @@ del sys.path[0]
 
 # -----------------------------------------------------------------------------
 
-values = grades.grades.values()
+values = [ v for k,v in grades.grades.items() if 'si' not in k ]
 
 cmnt = [ g[('design','documentation')]['overall'] for g in values ]
 code = [ g[('review','functions')]['overall'] for g in values ]
@@ -33,5 +33,6 @@ for i in 'cmnt', 'code', 'oop':
     print( '    sat', len([ s for s in scores if s is not None and s >= 3.5 ]) )
     print( '    dev', len([ s for s in scores if s is not None and s == 3 ]) )
     print( '  unsat', len([ s for s in scores if s is None or s <= 2 ]) )
+    print( '  total', len(scores) )
     print()
 
