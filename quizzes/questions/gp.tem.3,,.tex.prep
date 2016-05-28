@@ -1,0 +1,72 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\subsection*{Style}
+\begin{itemize}
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item \textbf{Write prototypes for all function members inside the class, and
+    definitions directly underneath.}
+
+  \item Be sure to document your code with a good amount (not too many, not too
+    few) of comments.
+
+\end{itemize}
+
+\subsection*{Instructions}
+\begin{itemize}
+
+  \item Write a class template named \mintinline{cpp}{Array11} that accepts one
+    template argument, \mintinline{cpp}{T}.  This class will implement a
+    fixed-size array with bounds checking.
+
+  \item The class template should contain the following private data members:
+    \begin{itemize}
+      \item \mintinline{cpp}{data}, an array of \mintinline{cpp}{11} elements
+        of type \mintinline{cpp}{T}, initialized to their default value.
+    \end{itemize}
+
+  \item The class template should contain the following public function
+    members:
+    \begin{itemize}
+      \item \mintinline{cpp}{get}, a \mintinline{cpp}{const} method which takes
+        one argument of type \mintinline{cpp}{int}, and returns something of
+        type \mintinline{cpp}{T}.  If the argument is a valid index into the
+        array, it should return the element at that index of
+        \mintinline{cpp}{data}.  Otherwise, it should throw an exception.
+      \item \mintinline{cpp}{set}, which takes two arguments, one of type
+        \mintinline{cpp}{int} and the other of type \mintinline{cpp}{T}, and
+        returns \mintinline{cpp}{void}.  If the integer argument is a valid
+        index into the array, it should set the element at that index of
+        \mintinline{cpp}{data} to the value of the other argument.  Otherwise,
+        it should throw an exception.
+    \end{itemize}
+
+  \item Inside \mintinline{cpp}{main}
+    \begin{itemize}
+      \item Create an \mintinline{cpp}{Array11} named \mintinline{cpp}{a}.
+      \item Use its member functions to set the element at index
+        \mintinline{cpp}{1} to \mintinline{cpp}{"hello"}, and the element at
+        index \mintinline{cpp}{3} to \mintinline{cpp}{"world"}.
+      \item Use it's member functions to output the elements at indices
+        \mintinline{cpp}{1} and \mintinline{cpp}{3} to the terminal, separated
+        by whitespace, and followed by a newline.
+    \end{itemize}
+
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+

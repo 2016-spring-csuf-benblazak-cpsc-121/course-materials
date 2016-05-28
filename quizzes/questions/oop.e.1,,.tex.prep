@@ -1,0 +1,43 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Leave a bit of room at the top of the page for comments,
+\mintinline{cpp}{#include} directives, and \mintinline{cpp}{using} statements.
+
+Given the following \mintinline{cpp}{class}
+
+\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.error-class}
+
+write a function named \mintinline{cpp}{divide} that takes two
+\mintinline{cpp}{double}s and returns a double.  If the second argument is
+\mintinline{cpp}{0}, the function should throw an exception of type
+\mintinline{cpp}{ErrorDivisionByZero}.  Otherwise, it should return the result
+of the first argument divided by the second.
+
+Write a \mintinline{cpp}{main()} to do the following:
+\begin{itemize}
+  \item Try to output the result of this function, passing the arguments
+    \mintinline{cpp}{5} and \mintinline{cpp}{3}.
+  \item Catch exceptions of type \mintinline{cpp}{ErrorDivisionByZero} by
+    \mintinline{cpp}{const} reference.  If one is caught, the program should
+    output \mintinline{cpp}{"It didn't work: "} followed by the error message
+    returned by the \mintinline{cpp}{what()} method of the exception that was
+    caught, followed by a newline.
+  \item Repeat the above, but this time passing the arguments
+    \mintinline{cpp}{3} and \mintinline{cpp}{0}
+\end{itemize}
+
+\textbf{Indicate the output this program will produce.}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

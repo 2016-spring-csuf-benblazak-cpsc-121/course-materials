@@ -1,0 +1,61 @@
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+PREP := ../../../../scripts/prep.py
+SECTION := ../../../../scripts/section.py
+
+CXX := clang++
+CXXFLAGS := -std=c++14
+
+# .............................................................................
+
+OUTPUT := $(wildcard *.cpp)
+OUTPUT := $(filter-out .gen.%,$(OUTPUT))
+OUTPUT := $(filter-out %.part.cpp,$(OUTPUT))
+OUTPUT := $(OUTPUT:%.cpp=.gen.%.output)
+
+SECTIONED := $(OUTPUT:%.output=%.cpp.section.all) $(OUTPUT:%=%.section.all)
+
+# -----------------------------------------------------------------------------
+.PHONY: all clean cleanall
+
+all: $(OUTPUT) $(SECTIONED)
+	-for i in .*--good; do make "$${i/%--good/--diff}"; done
+	for i in .*.output .*.section.*; do make $${i%.blank}.blank; done
+
+clean:
+	-rm -r .gen.*
+
+cleanall: clean
+
+# -----------------------------------------------------------------------------
+
+.gen.%:: %
+	cp '$<' '$@'
+
+.gen.%: .gen.%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o '$@' $^
+
+.gen.%.output: .gen.%
+	'./$<' > '$@'
+
+# this generates more than the specified file
+.gen.%.section.all: .gen.%
+	$(SECTION) '$<'
+
+# .............................................................................
+
+%--diff: %--bad %--good
+	diff -u $^ | tail -n +3 > '$@'
+
+%.blank: %
+	sed 's/.*/ /' '$<' > '$@'
+
+# -----------------------------------------------------------------------------
+
+.SECONDARY:
+
+%:: makefile
+

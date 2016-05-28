@@ -1,0 +1,42 @@
+" inoremap ^^ ^{
+" inoremap !=  \neq
+" inoremap +-  \pm
+" inoremap <=  \leq
+" inoremap <>  \neq
+" inoremap ==  \equiv
+" inoremap >=  \geq
+" inoremap n== \not\equiv
+" inoremap u<  \subset
+" inoremap u<= \subseteq
+" inoremap u>  \supset
+" inoremap u>= \supseteq
+
+inoremap $$  $<esc>F a$<esc>f$a
+inoremap $$$ $<esc>hi$<esc>2la
+
+inoremap ,b \textbf{
+inoremap ,i \textit{
+inoremap ,t \text{
+inoremap ,u \textup{
+
+inoremap ,a \textAnswer{
+inoremap ,q \textQuestion{
+inoremap ,s \section{
+inoremap ,ss \section*{
+
+inoremap ,,a \begin{align*}<return>\end{align*}<esc>O
+inoremap ,,c \begin{centering}<return>\end{centering}<esc>O
+inoremap ,,i \begin{itemize}<return>\end{itemize}<esc>O
+inoremap ,,t \begin{tabular}{}<return>\end{tabular}<esc>O
+
+inoremap ,,fi \begin{figure}<return>\end{figure}<esc>O\includegraphics[]{}<esc>hhi
+inoremap ,,ph \begin{minipage}[t]{0.5\linewidth} \vspace{0ex}<return>\end{minipage}<esc>O
+
+inoremap ,,f \begin{mdframed}<return>\end{mdframed}<esc>k$i
+inoremap ,,fc \begin{mdframed} \centering<return>\end{mdframed}<esc>k$F{a
+
+inoremap ,m \mintinline{cpp}{
+inoremap ,,m \begin{minted}[autogobble]{cpp}<return>\end{minted}<esc>O
+inoremap ,,mc \inputminted{cpp}{\docCodeDir/
+inoremap ,,mt \inputminted{text}{\docCodeDir/
+

@@ -1,0 +1,35 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+If you like, you may use a different STL container in the instructions below,
+rather than using \mintinline{cpp}{vector}.
+
+Write a template for a function named \mintinline{cpp}{print_vector} that
+accepts a \mintinline{cpp}{const} reference to a \mintinline{cpp}{vector<T>},
+and prints every element (separated by whitespace), followed by a newline.
+
+In \mintinline{cpp}{main()}, make sure to use each the following features of
+the container at least once:
+\begin{itemize}
+  \item Static initialization (i.e.~initialization using curly braces)
+  \item At least one of the container's methods
+  \item The subscript operator (i.e.~the array indexing operator) (unless you
+    are using a container that doesn't support this)
+\end{itemize}
+
+Finally, still in \mintinline{cpp}{main()}, call
+\mintinline{cpp}{print_vector}, passing your \mintinline{cpp}{vector} as an
+argument, and \textbf{indicate the output this should produce}.
+
+\newpage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

@@ -1,0 +1,34 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\filbreak
+% \newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Write declarations for the following descriptions, and descriptions for the
+following declarations:
+\begin{itemize}
+
+  \item declare i as array 3 of pointer to int
+    \textAnswer{\par{}\mintinline{cpp}{int * i[3]}}
+    \vfill
+
+  \item \mintinline{cpp}{int (&i)[3]}
+    \textAnswer{\par{}declare i as reference to array 3 of int}
+    \vfill
+
+  \item declare p as pointer to function returning void
+    \textAnswer{\par{}\mintinline{cpp}{void (*p)()}}
+    \vfill
+
+  \item \mintinline{cpp}{int (*(f[3]))(int,int)}
+    \textAnswer{\par{}declare f as array 3 of pointer to function (int, int) returning int}
+    \vfill
+
+\end{itemize}
+

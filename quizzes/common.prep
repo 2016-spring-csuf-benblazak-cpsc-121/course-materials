@@ -1,0 +1,124 @@
+!exec(((
+# vim: ft=python
+# -----------------------------------------------------------------------------
+# Copyright &copy; 2016 Ben Blazak <bblazak@fullerton.edu>
+# Released under the [MIT License] (http://opensource.org/licenses/MIT)
+# -----------------------------------------------------------------------------
+
+self.input('../common.prep')
+
+self._path.insert(1, '..')
+global standards
+import standards
+
+doc.args = doc.jobname.split(',,')[:-1]
+doc.jobnameroot = doc.args[0]
+
+# -----------------------------------------------------------------------------
+)))!exec,prep(((
+# -----------------------------------------------------------------------------
+
+!cnl# to use write `!exec,prep,(doc.gen_question_header)`
+doc.gen_question_header = !repr(((
+    !exec(((
+        doc.questions = [ e for a in doc.args for e in a.split(',') ]
+        doc.standards = [
+            standards.lookup(self.strip_extension(s)) for s in doc.questions
+        ]
+    )))
+
+    self.print( !repr,strip,dedent,prep(((
+        \section{Question}
+        \standards{
+          !('\n'.join([
+              '\\standard{' + ' :: '.join(s) + '}' for s in doc.standards
+          ]))
+        }
+    ))) )
+
+    self.print( !repr,prep,dedent(((
+        \def \docCodeDir {../questions/!(doc.jobnameroot)/code/}
+        \def \docImageDir {../questions/!(doc.jobnameroot)/images/}
+    ))) )
+)))
+
+# .............................................................................
+
+!cnl# to use write `!exec,prep,(doc.gen_quiz_tex)`
+doc.gen_quiz_tex = !repr(((
+    !exec(((
+        if re.match( r'\w\d\d', doc.args[0] ):
+            if   doc.args[0][0] == 'q': doc.title = 'quiz '
+            elif doc.args[0][0] == 'r': doc.title = 'reassessment '
+            elif doc.args[0][0] == 'p': doc.title = 'practical '
+            elif doc.args[0][0] == 'v': doc.title = 'verbal '
+            elif doc.args[0][0] == 'h': doc.title = 'homework '
+            else:                   doc.title = doc.args[0][0] + ' '
+            doc.title += doc.args[0][1:]
+        else:
+            doc.title = doc.args[0]
+        doc.title = doc.title.title()
+
+        doc.questions = [ e for a in doc.args[1:] for e in a.split(',') ]
+
+        doc.standards = [
+            standards.lookup(self.strip_extension(s)) for s in doc.questions
+        ]
+
+        if len(doc.standards) <= 20:
+            doc.standards_section_stretch = 2
+        else:
+            doc.standards_section_stretch = 1.85
+    )))
+
+    self.print( !repr,prep,dedent(((
+        \def\jobnameroot{!(doc.jobnameroot)}
+        \def\docTitle{!(doc.title)}
+        \def\docClass{!(doc.course.subject) !(doc.course.number)}
+        \def\docTerm{!(doc.school) !(doc.season) !(doc.year)}
+        \def\docYear{!(doc.year)}
+        \def\docAuthorName{!(doc.author.name)}
+        \def\docAuthorEmail{!(doc.author.email)}
+        \input{common.tex}
+
+        \begin{document}
+        \docCopyright
+        !exec,prep,dedent(((
+            # print the \standardsSection if
+            # - there is more than one standard
+            # - the one standard begins on an even page
+            print_list = False
+            if len(doc.args[1:]) > 1:
+                print_list = True
+            else:
+                with open('../questions/'+doc.args[1]+',,.tex.prep') as f:
+                    for line in f:
+                        if line.startswith('\\newpage'):
+                            print_list = False
+                            break
+                        if line.startswith('\\newEvenPage'):
+                            print_list = True
+                            break
+            if print_list:
+                self.print( !repr,prep,dedent(((
+                    \standardsSectionStretch{!(doc.standards_section_stretch)}{
+                      !('\n'.join([
+                          '\\standard{' + ' :: '.join(s) + '}'
+                          for s in doc.standards
+                      ]))
+                    }
+
+                    \newpage
+                ))) )
+        )))
+        !('\n'.join([
+            '\\input{../questions/.gen.' + q + ',,.tex}' for q in doc.args[1:]
+        ]))
+
+        \end{document}
+    ))).lstrip() )
+)))
+
+# -----------------------------------------------------------------------------
+)))!dws
+

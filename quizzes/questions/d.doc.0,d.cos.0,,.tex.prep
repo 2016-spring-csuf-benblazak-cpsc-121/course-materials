@@ -1,0 +1,38 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+These standards must be assessed in conjunction with another standard.  To
+choose which of your answers is used for this, please circle one or two of the
+standards below, and on the page where that standard is assessed write ``+
+documentation'' or ``+ consistency of style'' next to the grade box.
+
+\vfill
+\begin{itemize}
+  \vfill\item review
+    \vfill
+    \begin{itemize}
+      !exec( self.print( '  \\vfill\\item ' + '\n  \\vfill\\item '.join(
+        standards.groups['review'] ) ) )
+    \end{itemize}
+  \vfill\item general programming
+    \vfill
+    \begin{itemize}
+      !exec( self.print( '  \\vfill\\item ' + '\n  \\vfill\\item '.join(
+        standards.groups['general programming'] ) ) )
+    \end{itemize}
+  \vfill\item object-oriented programming
+    \vfill
+    \begin{itemize}
+      !exec( self.print( '  \\vfill\\item ' + '\n  \\vfill\\item '.join(
+        standards.groups['object-oriented programming'] ) ) )
+    \end{itemize}
+\end{itemize}
+

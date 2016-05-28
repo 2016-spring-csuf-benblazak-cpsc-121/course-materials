@@ -1,0 +1,36 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Leave a bit of room for comments, \mintinline{cpp}{#include}
+    directives, and \mintinline{cpp}{using} statements.
+
+  \item Write a function named \mintinline{cpp}{f} that outputs something
+    unique at the beginning of the body, something different at the end, and in
+    the middle throws an exception.
+
+  \item Write a function named \mintinline{cpp}{g} that outputs something
+    unique at the beginning of the body, something different at the end, and in
+    the middle calls \mintinline{cpp}{f}.
+
+  \item In \mintinline{cpp}{main}, output something unique at the beginning of
+    the body, and something different at the end (before returning
+    \mintinline{cpp}{0}).  In the middle, call \mintinline{cpp}{g} inside of a
+    \mintinline{cpp}{try ... catch} block, catch the exception, and output it.
+
+  \item \textbf{Indicate the output this program will produce.}
+
+\end{itemize}
+
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeLeft{question}{all}}
+

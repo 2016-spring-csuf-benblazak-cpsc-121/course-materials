@@ -1,0 +1,33 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Show the output of the following program:
+    \evaluateCodeLeft{question}{all}
+    \vspace{3ex}
+
+  \item Evaluate the following statement piece by piece, using the method shown
+    in class (if you are unsure of how this should look, please ask).  If any
+    portion of this statement would produce a runtime error (e.g.~by dividing
+    by \mintinline{cpp}{0}) stop evaluating at that point, and explain.
+
+    \vspace{2ex}
+    \mintinline[fontsize=\Large]{cpp}{2 - - - 2 / 2 * + 2 / 2 || 3 && ! - - 5 + ! ! 2 >= 7 / 7 % 7}
+    \textAnswer{\par
+      \vspace{-2.0em}
+      \hspace{-1.25ex}
+      \includegraphics[width=6.25in]{\docImageDir/question}
+    }
+    \vfill
+
+\end{itemize}
+

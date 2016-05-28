@@ -1,0 +1,47 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item Write a recursive function called \mintinline{cpp}{factorial} that
+    takes as an argument some nonnegative integer and returns the factorial of
+    that integer -- i.e.~for a $n>0$, \mintinline{cpp}{factorial(n)} should
+    return $1 \cdot 2 \cdots (n-1) \cdot n$.  As a special case,
+    \mintinline{cpp}{factorial(0)} should return \mintinline{cpp}{1}.  If the
+    value passed is invalid, the function should throw an exception of type
+    \mintinline{cpp}{const char *} containing an error message.
+
+  \item Write a \mintinline{cpp}{main()} to do the following:
+    \begin{itemize}
+      \item Try to call \mintinline{cpp}{factorial} with an invalid argument,
+        catch the exception, and output the error message.
+      \item Create a vector named \mintinline{cpp}{v} containing the values
+        that are returned by \mintinline{cpp}{factorial} when it is called with
+        the arguments
+        \mintinline{cpp}{0},
+        \mintinline{cpp}{1},
+        \mintinline{cpp}{2},
+        \mintinline{cpp}{3},
+        \mintinline{cpp}{4}, and
+        \mintinline{cpp}{5}.
+      \item Use a loop to output the values contained in \mintinline{cpp}{v}.
+    \end{itemize}
+
+\end{itemize}
+
+\newpage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

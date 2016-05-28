@@ -1,0 +1,28 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Given
+
+\inputminted[label={input.txt}]{text}{\docCodeDir/input.txt}
+
+write an entire program (including \mintinline{cpp}{#include} directives and
+\mintinline{cpp}{using} statements) to generate
+
+\inputminted[label={output.txt}]{text}{\docCodeDir/output.txt}
+
+without hard coding the number of integers to read in.  Be sure to check that
+opening each file succeeded before reading from or writing to it, and
+\mintinline{cpp}{return 1} from \mintinline{cpp}{main()} if it did not.
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+

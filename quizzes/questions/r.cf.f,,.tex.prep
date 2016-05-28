@@ -1,0 +1,20 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\filbreak
+% \newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Use two \mintinline{cpp}{for} loops (one inside the other, and without any
+conditionals) to produce the following output:
+
+\inputminted[label=Output]{text}{\docCodeDir/.gen.question.output.section.all}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+
+\vfill
+

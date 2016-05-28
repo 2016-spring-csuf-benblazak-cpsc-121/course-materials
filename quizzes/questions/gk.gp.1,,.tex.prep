@@ -1,0 +1,28 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Briefly explain each concept and why it's important.
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item stack vs heap
+    \vfill\textQuestion{\makeDashedLine}
+  \item big-O
+    \vfill\textQuestion{\makeDashedLine}
+  \item best, worst, and average cases for algorithmic analysis
+    \vfill\vfill\textQuestion{\makeDashedLine}
+  \item asymptotic vs amortized analysis
+    \vfill\textQuestion{\makeDashedLine}
+  \item translation unit
+    \vfill\textQuestion{\makeDashedLine}
+  \item \mintinline{cpp}{const} correctness
+    \vfill
+\end{itemize}
+

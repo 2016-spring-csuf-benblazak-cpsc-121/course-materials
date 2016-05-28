@@ -1,0 +1,19 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Write a recursive function called \mintinline{cpp}{sumEven} that takes one
+\mintinline{cpp}{int} as an argument, and returns the sum of all the even
+numbers between \mintinline{cpp}{0} and that \mintinline{cpp}{int}.  If the
+argument is less than \mintinline{cpp}{0}, the function should throw an
+exception.
+
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.function}}
+

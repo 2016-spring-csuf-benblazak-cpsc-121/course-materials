@@ -1,0 +1,28 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+When for some reason \mintinline{cpp}{class}es or \mintinline{cpp}{struct}s are
+undesirable for holding associated data, one might use parallel arrays.  For
+example, instead of having an array of \mintinline{cpp}{struct} instances for
+some \mintinline{cpp}{struct} that contains two fields, one might have two
+arrays, where the first array contains the values that would have been in the
+first field and the second array contains the corresponding values that would
+have been in the second field.
+
+Write a \mintinline{cpp}{main()} that does the same thing as the one below,
+except using parallel arrays.  That is, instead of using an array of
+\mintinline{cpp}{Person} instances, use two arrays: one for the names, and one
+for the ages.
+
+\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}
+
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.arrays}}
+

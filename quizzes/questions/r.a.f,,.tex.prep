@@ -1,0 +1,33 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\filbreak
+% \newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\def \memoryImage{%
+  \par\medskip\includegraphics[width=\linewidth,valign=t]{../images/memory}%
+}
+
+% -----------------------------------------------------------------------------
+
+% from r.a.3
+
+\begin{itemize}
+
+  \item \memoryImage
+    \textAnswer{\par
+      \par
+      \vspace{-1.11in}
+      \hspace{0.9in}
+      \includegraphics[width=4.86in]{\docImageDir/question}
+    }
+    \inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.array}
+
+\end{itemize}
+

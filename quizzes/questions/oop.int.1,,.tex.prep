@@ -1,0 +1,36 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Recall that an interface is an abstract class, and an abstract class is a class
+with at least one pure virtual method.
+
+Leave a bit of room at the top of the page for comments,
+\mintinline{cpp}{#include} directives, and \mintinline{cpp}{using} statements.
+
+Write an interface named \mintinline{cpp}{Person} that has four private data
+members of type \mintinline{cpp}{int}:
+\mintinline{cpp}{body},
+\mintinline{cpp}{soul},
+\mintinline{cpp}{mind}, and
+\mintinline{cpp}{magic}.
+Remember to declare and define a virtual destructor (all interface classes
+should have a virtual destructor).  Declare and define (inline) virtual getters
+and setters for at least two of the private data members.  Declare the
+following pure virtual methods, all of which take no arguments and return void:
+\mintinline{cpp}{attack},
+\mintinline{cpp}{defend},
+\mintinline{cpp}{heal}, and
+\mintinline{cpp}{cast}.
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+

@@ -1,0 +1,65 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\subsection*{Style}
+\begin{itemize}
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item \textbf{Write prototypes for all functions above
+    \mintinline{cpp}{main}, and definitions below \mintinline{cpp}{main}.}
+
+  \item Be sure to document your code with a good amount (not too many, not too
+    few) of comments.
+
+\end{itemize}
+
+\subsection*{Instructions}
+\begin{itemize}
+
+  \item Write a function named \mintinline{cpp}{min} that accepts two
+    \mintinline{cpp}{int}s and returns the smaller as an \mintinline{cpp}{int}.
+
+  \item Write a function named \mintinline{cpp}{min} that accepts three
+    \mintinline{cpp}{int}s and returns the smaller as an \mintinline{cpp}{int}.
+    Try to use the first \mintinline{cpp}{min} function to help write this one.
+
+  \item Write a function named \mintinline{cpp}{inc} that accepts one
+    \mintinline{cpp}{int}, by reference, and increments (adds one to) its
+    value.
+
+  \item Inside \mintinline{cpp}{main}
+    \begin{itemize}
+      \item Let \mintinline{cpp}{int a = 2, b = 1, c = 3;}.
+      \item Output the values of \mintinline{cpp}{a}, \mintinline{cpp}{b}, and
+        \mintinline{cpp}{c}, separated by whitespace, followed by a newline.
+      \item Output the value returned by calling \mintinline{cpp}{min} with the
+        arguments {a} and \mintinline{cpp}{b}.
+      \item Output the value returned by calling \mintinline{cpp}{min} with the
+        arguments {a}, \mintinline{cpp}{b}, and \mintinline{cpp}{c}.
+      \item Output the values of \mintinline{cpp}{a}, \mintinline{cpp}{b}, and
+        \mintinline{cpp}{c}, separated by whitespace, followed by a newline.
+      \item Call \mintinline{cpp}{inc}, passing \mintinline{cpp}{a} as the
+        argument.
+      \item Output the values of \mintinline{cpp}{a}, \mintinline{cpp}{b}, and
+        \mintinline{cpp}{c}, separated by whitespace, followed by a newline.
+    \end{itemize}
+
+  \item \textbf{Indicate the output this program will produce.}
+
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

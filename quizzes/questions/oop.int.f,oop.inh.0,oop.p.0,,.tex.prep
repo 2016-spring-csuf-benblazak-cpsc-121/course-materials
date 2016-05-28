@@ -1,0 +1,63 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item \textbf{If there's a part you don't remember, please skip that part and
+    leave a comment about what you would have done.} That way you can continue
+    with the problem and get credit for the parts you remember.
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item Write an interface named \mintinline{cpp}{Monster} with one public pure
+    virtual method named \mintinline{cpp}{smash} that takes no arguments and
+    returns void.  Don't forget to include a virtual destructor.
+
+  \item Write a class named \mintinline{cpp}{Godzilla} that inherits from
+    \mintinline{cpp}{Monster}, overrides \mintinline{cpp}{smash} to output some
+    unique message, and has one new non-virtual method named
+    \mintinline{cpp}{jump} that takes no arguments and returns void.  The
+    \mintinline{cpp}{jump} method should output a different unique message.
+    Don't forget to include all necessary access specifiers.
+
+  \item Write a class named \mintinline{cpp}{NiceGodzilla} that inherits from
+    \mintinline{cpp}{Godzilla} and overrides both member functions to output
+    different messages.
+
+  \item In \mintinline{cpp}{main}
+    \begin{itemize}
+      \item \textit{You may have more than one statement per line to save
+        space.}
+      \item Create an object of type \mintinline{cpp}{Godzilla} named
+        \mintinline{cpp}{g}, an object of type \mintinline{cpp}{NiceGodzilla}
+        named \mintinline{cpp}{ng}, a pointer to type \mintinline{cpp}{Monster}
+        named \mintinline{cpp}{mp}, and a pointer to type
+        \mintinline{cpp}{Godzilla} named \mintinline{cpp}{gp}.
+      \item Set \mintinline{cpp}{mp} to the address of \mintinline{cpp}{g} and
+        use it to call \mintinline{cpp}{smash}.
+      \item Set \mintinline{cpp}{mp} to the address of \mintinline{cpp}{ng} and
+        use it to call \mintinline{cpp}{smash}.
+      \item Set \mintinline{cpp}{gp} to the address of \mintinline{cpp}{g} and
+        use it to call \mintinline{cpp}{smash} and \mintinline{cpp}{jump}.
+      \item Set \mintinline{cpp}{gp} to the address of \mintinline{cpp}{ng} and
+        use it to call \mintinline{cpp}{smash} and \mintinline{cpp}{jump}.
+    \end{itemize}
+
+  \item \textbf{Indicate the output this program will produce.}
+
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

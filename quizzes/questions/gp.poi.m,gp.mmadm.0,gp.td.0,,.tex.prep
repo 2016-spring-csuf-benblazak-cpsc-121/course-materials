@@ -1,0 +1,58 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Write statements to do the following:
+    \begin{itemize}
+      \item Declare a \mintinline{cpp}{char} named \mintinline{cpp}{c} and set
+        it equal to \mintinline{cpp}{'a'}.
+      \item Declare a pointer named \mintinline{cpp}{p} and use it to set
+        \mintinline{cpp}{c} equal to \mintinline{cpp}{'b'}.
+      \item Declare a reference named \mintinline{cpp}{r} and use it to set
+        \mintinline{cpp}{c} equal to \mintinline{cpp}{'c'}.
+      \item Output the value of \mintinline{cpp}{c}, the value pointed to by
+        \mintinline{cpp}{p}, and the value referenced by \mintinline{cpp}{r},
+        separated by whitespace, and \textbf{indicate the results of this
+        statement}.
+    \end{itemize}
+    \textAnswer{\showCodeLeft{question-poi}{all}}
+    \vfill
+    \vfill
+    \vfill
+    \vfill
+
+  \item Given a \mintinline{cpp}{const int SIZE} set to some positive value,
+    use either the C style functions or the C++ style operators to write
+    statements to do the following:
+    \begin{itemize}
+      \item Dynamically allocate memory for an array of \mintinline{cpp}{SIZE}
+        \mintinline{cpp}{char}s, and store the resulting pointer to the first
+        element in a variable of the appropriate type.
+      \item Deallocate the dynamically allocated memory.
+    \end{itemize}
+    \textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question-mmadm.cpp.section.all}}
+    \vfill
+    \vfill
+    \vfill
+
+  \item declare r as reference to array 3 of int
+    {\color{gray}(this is separate from the questions above)}
+    \textAnswer{\par{}\mintinline{cpp}{int (&r)[3]}}
+    \vfill
+
+  \item declare p as pointer to function returning void
+    {\color{gray}(this is separate from the questions above)}
+    \textAnswer{\par{}\mintinline{cpp}{void (*p)()}}
+    \vfill
+
+\end{itemize}
+

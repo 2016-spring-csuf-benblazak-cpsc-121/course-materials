@@ -1,0 +1,77 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Define or describe each of the following:
+\textQuestion{\makeDashedLine}
+\begin{itemize}
+  \item C++ compilation process
+    \begin{itemize}
+      \item preprocess
+        \textAnswer{\par
+          \url{http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html}
+        }
+        \vfill\textQuestion{\makeDashedLine}
+      \item compile
+        \textAnswer{\par
+          \url{http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html}
+        }
+        \vfill\textQuestion{\makeDashedLine}
+      \item assemble
+        \textAnswer{\par
+          \url{http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html}
+        }
+        \vfill\textQuestion{\makeDashedLine}
+      \item link
+        \textAnswer{\par
+          \url{http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html}
+        }
+        \vfill\textQuestion{\makeDashedLine}
+    \end{itemize}
+  \item program execution process
+    \begin{itemize}
+      \item load
+        \textAnswer{\par
+          \url{https://en.wikipedia.org/wiki/Loader_(computing)}
+        }
+        \vfill\textQuestion{\makeDashedLine}
+      \item run
+        \textAnswer{\par
+          \url{https://en.wikipedia.org/wiki/Execution_(computing)}
+        }
+        \vfill\textQuestion{\makeDashedLine}
+    \end{itemize}
+  \item named constant vs object-like macro
+    (e.g.~\mintinline{cpp}{const int ten = 10;} vs
+    \mintinline{cpp}{#define TEN 10})
+    \textAnswer{\par
+      A named constant is like a variable except that its value cannot be
+      changed, while an object-like macro is (roughly) a string of code that
+      will be replaced by the preprocessor with some other string of code
+      before compilation.  This has many implications, depending on how each is
+      used, though in many simple cases (with compiler optimization on) the
+      generated code is the same.
+      \begin{itemize}
+        \item \url{http://duramecho.com/ComputerInformation/WhyHowCppConst.html}
+        \item \url{https://gcc.gnu.org/onlinedocs/cpp/Object-like-Macros.html}
+      \end{itemize}
+    }
+    \vfill\textQuestion{\makeDashedLine}
+  \item bit, byte, word
+    \textAnswer{\par
+      \begin{itemize}
+        \item \url{https://en.wikipedia.org/wiki/Bit}
+        \item \url{https://en.wikipedia.org/wiki/Byte}
+        \item \url{https://en.wikipedia.org/wiki/Word_(computer_architecture)}
+      \end{itemize}
+    }
+    \vfill
+\end{itemize}
+

@@ -1,0 +1,56 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\subsection*{Style}
+\begin{itemize}
+
+  \item Leave a bit of room at the top of the page for comments,
+    \mintinline{cpp}{#include} directives, and \mintinline{cpp}{using}
+    statements.
+
+  \item \textbf{Write prototypes for all functions above
+    \mintinline{cpp}{main}, and definitions below \mintinline{cpp}{main}.}
+
+  \item Be sure to document your code with a good amount (not too many, not too
+    few) of comments.
+
+\end{itemize}
+
+\subsection*{Instructions}
+\begin{itemize}
+
+  \item Write a function named \mintinline{cpp}{print} that takes a
+    \mintinline{cpp}{const} reference to a \mintinline{cpp}{vector<int>}, and
+    outputs every element of the vector, separated by a space, and the whole
+    thing followed by a newline.
+
+  \item Write a function named \mintinline{cpp}{set_to_1} that takes a
+    reference to a \mintinline{cpp}{vector<int>}, and sets every element of the
+    vector to \mintinline{cpp}{1}.
+
+  \item Inside \mintinline{cpp}{main}
+    \begin{itemize}
+      \item Create a \mintinline{cpp}{vector<int>} containing at least 5
+        numbers (not all \mintinline{cpp}{1}).
+      \item Call \mintinline{cpp}{print}, passing the vector as the argument.
+      \item Call \mintinline{cpp}{set_to_1}, passing the vector as the
+        argument.
+      \item Call \mintinline{cpp}{print}, passing the vector as the argument.
+    \end{itemize}
+
+  \item \textbf{Indicate the output this program will produce.}
+
+\end{itemize}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

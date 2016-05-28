@@ -1,0 +1,21 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \filbreak
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\vspace{3.5ex}
+
+Correct the following code section.
+
+\vspace{3.5ex}
+\begin{itemize}
+  \item \correctCodeTop{question}{scope} \vspace{7ex}
+\end{itemize}
+

@@ -1,0 +1,23 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\filbreak
+% \newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Use either the C style functions or the C++ style operators to write statements
+to do the following:
+\begin{itemize}
+  \item Dynamically allocate memory for an array of \mintinline{cpp}{11}
+    \mintinline{cpp}{bool}s, and store the resulting pointer to the first
+    element in a variable of the appropriate type.
+  \item Deallocate the dynamically allocated memory.
+\end{itemize}
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.all}}
+\vfill
+

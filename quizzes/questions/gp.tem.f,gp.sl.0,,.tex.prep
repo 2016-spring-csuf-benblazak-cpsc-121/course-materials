@@ -1,0 +1,34 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+  \item Leave a bit of room for comments, \mintinline{cpp}{#include}
+    directives, and \mintinline{cpp}{using} statements.
+  \item Write a function template named \mintinline{cpp}{print_vector} that
+    accepts (by const reference) a vector of any type, and outputs its
+    contents, separated by whitespace.
+  \item In \mintinline{cpp}{main}:
+    \begin{itemize}
+      \item Create and initialize (in one statement) a vector of
+        \mintinline{cpp}{float}s containing \mintinline{cpp}{3.3},
+        \mintinline{cpp}{2.2}, and \mintinline{cpp}{1.1}, in that order.
+      \item Use the appropriate method to append the value
+        \mintinline{cpp}{4.4}.
+      \item Use the appropriate syntax to change the value at index
+        \mintinline{cpp}{0} to \mintinline{cpp}{5.5}.
+      \item Call \mintinline{cpp}{print_vector}, passing the vector as an
+        argument, and \textbf{indicate the output this should produce}.
+    \end{itemize}
+\end{itemize}
+
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

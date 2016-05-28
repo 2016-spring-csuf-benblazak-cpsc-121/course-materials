@@ -1,0 +1,62 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\subsection*{Setup}
+
+\begin{itemize}
+  \item Create a file on the desktop named \mintinline{cpp}{input.txt},
+    containing the following:
+    \begin{minted}[autogobble]{text}
+      1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+    \end{minted}
+  \item Move it wherever you wish (or don't move it at all).
+\end{itemize}
+
+
+\subsection*{Visual Studio}
+
+\begin{itemize}
+  \item Create an empty project.
+  \item Create a file named \mintinline{cpp}{function.h} containing the
+    prototype for a function named \mintinline{cpp}{square_file} that takes two
+    \mintinline{cpp}{string}s as arguments, and returns \mintinline{cpp}{void}.
+    Be sure to use include guards (\mintinline{cpp}{#ifndef ...}).
+  \item Create a file named \mintinline{cpp}{function.cpp} containing the
+    definition of the function prototyped in \mintinline{cpp}{function.h}.  The
+    function should do the following:
+    \begin{itemize}
+      \item Open a file for reading, using the first argument as the filename.
+      \item Check that opening the file succeeded, and throw an exception if it
+        did not.
+      \item Open a file for writing, using the second argument as the filename.
+      \item Check that opening the file succeeded, and throw an exception if it
+        did not.
+      \item Use a \mintinline{cpp}{while} loop to read in every integer stored
+        in the input file (without depending on how many are stored in this
+        particular input file), and write the square of that number to the
+        output file.
+      \item Close both of the files.
+    \end{itemize}
+  \item Create a file named \mintinline{cpp}{main.cpp}.
+  \item Inside \mintinline{cpp}{main()}, call the function prototyped in
+    \mintinline{cpp}{function.h}, passing the name of the file you created
+    earlier as the first argument, and \mintinline{cpp}{"output.txt"} (with a
+    prepended file path, if you wish) as the second argument.
+\end{itemize}
+
+
+\subsection*{Finish}
+
+\begin{itemize}
+  \item Show the professor your code and your input and output files, and
+    briefly explain what you did and why.
+\end{itemize}
+

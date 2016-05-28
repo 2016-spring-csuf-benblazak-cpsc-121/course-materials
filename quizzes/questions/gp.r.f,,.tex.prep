@@ -1,0 +1,22 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \filbreak
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Write a recursive function named \mintinline{cpp}{pow} that raises its first
+argument to the non-negative integer power of the second.
+
+\textAnswer{\inputminted{cpp}{\docCodeDir/.gen.question.cpp.section.function}}
+\vfill
+\vfill
+\vfill
+\vfill
+\vfill
+

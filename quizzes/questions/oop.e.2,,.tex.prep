@@ -1,0 +1,39 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+% \newpage
+\newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+Leave a bit of room at the top of the page for comments,
+\mintinline{cpp}{#include} directives, and \mintinline{cpp}{using} statements.
+
+Write a \mintinline{cpp}{class} named \mintinline{cpp}{MyException} that
+inherits from \mintinline{cpp}{std::exception}.  Overload the
+\mintinline{cpp}{what()} method to return \mintinline{cpp}{"This is the error
+message for MyException"}.
+
+Write a \mintinline{cpp}{class} named \mintinline{cpp}{MyClass} that has a
+public constructor that does nothing but throw a \mintinline{cpp}{MyException}.
+
+Write a \mintinline{cpp}{main()} to do the following:
+\begin{itemize}
+  \item Try to create an instance of \mintinline{cpp}{MyClass}.  If this
+    succeeds, the program should output \mintinline{cpp}{"It worked!\n"}.
+  \item Catch exceptions of type \mintinline{cpp}{MyException} by reference.
+    If one is caught, the program should output
+    \mintinline{cpp}{"It didn't work.  The error message was:\n"}, followed by
+    the error message returned by the \mintinline{cpp}{what()} method of the
+    exception that was caught, followed by a newline.
+\end{itemize}
+
+\textbf{Indicate the output this program will produce.}
+
+\newOddPage
+\textQuestion{\makePageQuadrilleRuled}
+\textAnswer{\showCodeTop{question}{all}}
+

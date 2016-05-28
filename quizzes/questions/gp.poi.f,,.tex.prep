@@ -1,0 +1,35 @@
+!dnl vim: ft=tex
+!dws,input(../common.prep)
+
+\newpage
+% \newEvenPage
+% \newOddPage
+
+!exec,prep,(doc.gen_question_header)
+
+% -----------------------------------------------------------------------------
+
+\begin{itemize}
+
+  \item Write statements to do the following:
+    \begin{itemize}
+      \item Declare a \mintinline{cpp}{float} named \mintinline{cpp}{f} and set
+        it to \mintinline{cpp}{1.1}.
+      \item Declare a pointer to the float named \mintinline{cpp}{p} and use it
+        to set the float to \mintinline{cpp}{2.2}.
+      \item Declare a reference to the float named \mintinline{cpp}{r} and use
+        it to set the float to \mintinline{cpp}{3.3}.
+      \item Output the value of \mintinline{cpp}{f}, the value pointed to by
+        \mintinline{cpp}{p}, and the value referenced by \mintinline{cpp}{r},
+        separated by whitespace, and \textbf{indicate the results of this
+        statement}.
+    \end{itemize}
+    \textAnswer{\showCodeLeft{question-1}{all}}
+    \vfill
+    \vfill
+
+%   \item Show the output of the following program:
+%     \evaluateCodeLeft{question-2}{all}
+
+\end{itemize}
+
